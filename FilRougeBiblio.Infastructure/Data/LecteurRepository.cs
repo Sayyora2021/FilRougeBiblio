@@ -1,0 +1,56 @@
+﻿using FilRougeBiblio.Core.Entities;
+using FilRougeBiblio.Core.Seedwork;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FilRougeBiblio.Infrastructure.Data
+{
+    public class LecteurRepository : ILecteurRepository
+    {
+
+        private FilRougeBiblioContext Context { get; }
+        public LecteurRepository(FilRougeBiblioContext context)
+        {
+            Context = context;
+        }
+        public async Task Create(Lecteur lecteur)
+        {
+            await Context.Lecteurs.AddAsync(lecteur);
+            await Context.SaveChangesAsync();
+        }
+        public async Task Update(Lecteur lecteur)
+        {
+            Context.Lecteurs.Update(lecteur);
+            await Context.SaveChangesAsync();
+
+        }
+        public async Task Delete(Lecteur lecteur)
+        {
+            Context.Lecteurs.Remove(lecteur);
+            await Context.SaveChangesAsync();
+
+        }
+        public async Task<List<Lecteur>> ListAll()
+        {
+            return await Context.Lecteurs.ToListAsync();
+        }
+        public async Task<Lecteur> GetById(int id)
+        {
+            return await Context.Lecteurs.FirstOrDefaultAsync(c => c.Id == id);
+        }
+
+        public async Task<bool> Exists(int id)
+        {
+            return await Context.Lecteurs.AnyAsync(c => c.Id == id);
+        }
+        public async Task<bool> IsEmpty()
+        {
+            return Context.Lecteurs == null;
+        }
+
+    }
+}
