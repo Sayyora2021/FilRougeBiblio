@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FilRougeBiblio.Infrastructure.Data
+namespace FilRougeBiblio.Core.Seedwork
 {
     public interface IThemeRepository
     {
