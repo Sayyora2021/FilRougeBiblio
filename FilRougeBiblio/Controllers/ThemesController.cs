@@ -8,14 +8,15 @@ using Microsoft.EntityFrameworkCore;
 using FilRougeBiblio.Core.Entities;
 using FilRougeBiblio.Infrastructure.Data;
 using NuGet.Protocol.Core.Types;
+using FilRougeBiblio.Core.Seedwork;
 
 namespace FilRougeBiblio.Controllers
 {
     public class ThemesController : Controller
     {
-        private readonly FilRougeBiblioContext Repository;
+        private readonly IThemeRepository Repository;
 
-        public ThemesController(FilRougeBiblioContext repository)
+        public ThemesController(IThemeRepository repository)
         {
             Repository = repository;
         }
@@ -23,21 +24,21 @@ namespace FilRougeBiblio.Controllers
         // GET: Themes
         public async Task<IActionResult> Index()
         {
-              return Repository.Themes != null ? 
-                          View(await Repository.Themes.ToListAsync()) :
+              return ! await Repository.IsEmpty() ? 
+                          View(await Repository.ListAll()) :
                           Problem("Entity set 'FilRougeBiblioContext.Themes'  is null.");
         }
 
         // GET: Themes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || Repository.Themes == null)
+            if (id == null || await Repository.IsEmpty())
             {
                 return NotFound();
             }
 
-            var theme = await Repository.Themes
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var theme = await Repository.GetById(id.Value);
+                
             if (theme == null)
             {
                 return NotFound();
@@ -61,8 +62,8 @@ namespace FilRougeBiblio.Controllers
         {
             if (ModelState.IsValid)
             {
-                Repository.Add(theme);
-                await Repository.SaveChangesAsync();
+                await Repository.Create(theme);
+                
                 return RedirectToAction(nameof(Index));
             }
             return View(theme);
@@ -71,12 +72,12 @@ namespace FilRougeBiblio.Controllers
         // GET: Themes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || Repository.Themes == null)
+            if (id == null || await Repository.IsEmpty())
             {
                 return NotFound();
             }
 
-            var theme = await Repository.Themes.FindAsync(id);
+            var theme = await Repository.GetById(id.Value);
             if (theme == null)
             {
                 return NotFound();
@@ -100,12 +101,12 @@ namespace FilRougeBiblio.Controllers
             {
                 try
                 {
-                    Repository.Update(theme);
-                    await Repository.SaveChangesAsync();
+                    await Repository.Update(theme);
+                    
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ThemeExists(theme.Id))
+                    if (!await ThemeExists(theme.Id))
                     {
                         return NotFound();
                     }
@@ -122,13 +123,13 @@ namespace FilRougeBiblio.Controllers
         // GET: Themes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || Repository.Themes == null)
+            if (id == null || await Repository.IsEmpty())
             {
                 return NotFound();
             }
 
-            var theme = await Repository.Themes
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var theme = await Repository.GetById(id.Value);
+                
             if (theme == null)
             {
                 return NotFound();
@@ -142,23 +143,23 @@ namespace FilRougeBiblio.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (Repository.Themes == null)
+            if (await Repository.IsEmpty())
             {
                 return Problem("Entity set 'FilRougeBiblioContext.Themes'  is null.");
             }
-            var theme = await Repository.Themes.FindAsync(id);
+            var theme = await Repository.GetById(id);
             if (theme != null)
             {
-                Repository.Themes.Remove(theme);
+                await Repository.Delete(theme);
             }
             
-            await Repository.SaveChangesAsync();
+            
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ThemeExists(int id)
+        private async Task<bool> ThemeExists(int id)
         {
-          return (Repository.Themes?.Any(e => e.Id == id)).GetValueOrDefault();
+            return await Repository.Exists(id);
         }
     }
 }
