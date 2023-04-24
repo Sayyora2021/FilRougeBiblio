@@ -8,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<FilRougeBiblioContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<IMotClefRepository, MotClefRepository>();
+builder.Services.AddScoped<ILivreRepository, LivreRepository>();
+builder.Services.AddScoped<IAuteurRepository, AuteurRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
