@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FilRougeBiblio.Infrastructure.Data
 {
-    internal class ThemeRepository: IThemeRepository
+    public class ThemeRepository: IThemeRepository
     {
         private FilRougeBiblioContext Context { get; }
         public ThemeRepository(FilRougeBiblioContext context)
