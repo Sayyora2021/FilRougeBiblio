@@ -7,29 +7,28 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FilRougeBiblio.Core.Entities;
 using FilRougeBiblio.Infrastructure.Data;
-using NuGet.Protocol.Core.Types;
 using FilRougeBiblio.Core.Seedwork;
 
 namespace FilRougeBiblio.Controllers
 {
-    public class ThemesController : Controller
+    public class BibliothecairesController : Controller
     {
-        private readonly IThemeRepository Repository;
+        private readonly IBibliothecaireRepository Repository;
 
-        public ThemesController(IThemeRepository repository)
+        public BibliothecairesController(IBibliothecaireRepository repository)
         {
             Repository = repository;
         }
 
-        // GET: Themes
+        // GET: Bibliothecaires
         public async Task<IActionResult> Index()
         {
               return ! await Repository.IsEmpty() ? 
                           View(await Repository.ListAll()) :
-                          Problem("Entity set 'FilRougeBiblioContext.Themes'  is null.");
+                          Problem("Entity set 'FilRougeBiblioContext.Bibliothecaires'  is null.");
         }
 
-        // GET: Themes/Details/5
+        // GET: Bibliothecaires/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || await Repository.IsEmpty())
@@ -37,39 +36,37 @@ namespace FilRougeBiblio.Controllers
                 return NotFound();
             }
 
-            var theme = await Repository.GetById(id.Value);
-                
-            if (theme == null)
+            var bibliothecaire = await Repository.GetById(id.Value);
+            if (bibliothecaire == null)
             {
                 return NotFound();
             }
 
-            return View(theme);
+            return View(bibliothecaire);
         }
 
-        // GET: Themes/Create
+        // GET: Bibliothecaires/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Themes/Create
+        // POST: Bibliothecaires/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nom,Description,Id")] Theme theme)
+        public async Task<IActionResult> Create([Bind("Email,MotDePasse,Id")] Bibliothecaire bibliothecaire)
         {
             if (ModelState.IsValid)
             {
-                await Repository.Create(theme);
-                
+                await Repository.Create(bibliothecaire);
                 return RedirectToAction(nameof(Index));
             }
-            return View(theme);
+            return View(bibliothecaire);
         }
 
-        // GET: Themes/Edit/5
+        // GET: Bibliothecaires/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || await Repository.IsEmpty())
@@ -77,22 +74,22 @@ namespace FilRougeBiblio.Controllers
                 return NotFound();
             }
 
-            var theme = await Repository.GetById(id.Value);
-            if (theme == null)
+            var bibliothecaire = await Repository.GetById(id.Value);
+            if (bibliothecaire == null)
             {
                 return NotFound();
             }
-            return View(theme);
+            return View(bibliothecaire);
         }
 
-        // POST: Themes/Edit/5
+        // POST: Bibliothecaires/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Nom,Description,Id")] Theme theme)
+        public async Task<IActionResult> Edit(int id, [Bind("Email,MotDePasse,Id")] Bibliothecaire bibliothecaire)
         {
-            if (id != theme.Id)
+            if (id != bibliothecaire.Id)
             {
                 return NotFound();
             }
@@ -101,12 +98,11 @@ namespace FilRougeBiblio.Controllers
             {
                 try
                 {
-                    await Repository.Update(theme);
-                    
+                    await Repository.Update(bibliothecaire);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!await ThemeExists(theme.Id))
+                    if (! await BibliothecaireExists(bibliothecaire.Id))
                     {
                         return NotFound();
                     }
@@ -117,10 +113,10 @@ namespace FilRougeBiblio.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(theme);
+            return View(bibliothecaire);
         }
 
-        // GET: Themes/Delete/5
+        // GET: Bibliothecaires/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || await Repository.IsEmpty())
@@ -128,38 +124,36 @@ namespace FilRougeBiblio.Controllers
                 return NotFound();
             }
 
-            var theme = await Repository.GetById(id.Value);
-                
-            if (theme == null)
+            var bibliothecaire = await Repository.GetById(id.Value);
+            if (bibliothecaire == null)
             {
                 return NotFound();
             }
 
-            return View(theme);
+            return View(bibliothecaire);
         }
 
-        // POST: Themes/Delete/5
+        // POST: Bibliothecaires/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (await Repository.IsEmpty())
             {
-                return Problem("Entity set 'FilRougeBiblioContext.Themes'  is null.");
+                return Problem("Entity set 'FilRougeBiblioContext.Bibliothecaires'  is null.");
             }
-            var theme = await Repository.GetById(id);
-            if (theme != null)
+            var bibliothecaire = await Repository.GetById(id);
+            if (bibliothecaire != null)
             {
-                await Repository.Delete(theme);
+                await Repository.Delete(bibliothecaire);
             }
-            
             
             return RedirectToAction(nameof(Index));
         }
 
-        private async Task<bool> ThemeExists(int id)
+        private async Task<bool> BibliothecaireExists(int id)
         {
-            return await Repository.Exists(id);
+          return await Repository.Exists(id);
         }
     }
 }

@@ -11,6 +11,10 @@ builder.Services.AddScoped<IMotClefRepository, MotClefRepository>();
 builder.Services.AddScoped<ILecteurRepository, LecteurRepository>();
 builder.Services.AddScoped<IExemplaireRepository, ExemplaireRepository>();
 builder.Services.AddScoped<IThemeRepository, ThemeRepository>();
+builder.Services.AddScoped<IBibliothecaireRepository, BibliothecaireRepository>();
+builder.Services.AddScoped<ILivreRepository, LivreRepository>();
+builder.Services.AddScoped<IAuteurRepository, AuteurRepository>();
+builder.Services.AddScoped<IThemeRepository, ThemeRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

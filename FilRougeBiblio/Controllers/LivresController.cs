@@ -7,29 +7,28 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FilRougeBiblio.Core.Entities;
 using FilRougeBiblio.Infrastructure.Data;
-using NuGet.Protocol.Core.Types;
 using FilRougeBiblio.Core.Seedwork;
 
 namespace FilRougeBiblio.Controllers
 {
-    public class ThemesController : Controller
+    public class LivresController : Controller
     {
-        private readonly IThemeRepository Repository;
+        private readonly ILivreRepository Repository;
 
-        public ThemesController(IThemeRepository repository)
+        public LivresController(ILivreRepository repository)
         {
             Repository = repository;
         }
 
-        // GET: Themes
+        // GET: Livres
         public async Task<IActionResult> Index()
         {
               return ! await Repository.IsEmpty() ? 
                           View(await Repository.ListAll()) :
-                          Problem("Entity set 'FilRougeBiblioContext.Themes'  is null.");
+                          Problem("Entity set 'FilRougeBiblioContext.Livres'  is null.");
         }
 
-        // GET: Themes/Details/5
+        // GET: Livres/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || await Repository.IsEmpty())
@@ -37,39 +36,39 @@ namespace FilRougeBiblio.Controllers
                 return NotFound();
             }
 
-            var theme = await Repository.GetById(id.Value);
+            var livre = await Repository.ListAll();
                 
-            if (theme == null)
+            if (livre == null)
             {
                 return NotFound();
             }
 
-            return View(theme);
+            return View(livre);
         }
 
-        // GET: Themes/Create
+        // GET: Livres/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Themes/Create
+        // POST: Livres/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nom,Description,Id")] Theme theme)
+        public async Task<IActionResult> Create([Bind("ISBN,Titre,Id")] Livre livre)
         {
             if (ModelState.IsValid)
             {
-                await Repository.Create(theme);
+                await Repository.Create(livre);
                 
                 return RedirectToAction(nameof(Index));
             }
-            return View(theme);
+            return View(livre);
         }
 
-        // GET: Themes/Edit/5
+        // GET: Livres/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || await Repository.IsEmpty())
@@ -77,22 +76,22 @@ namespace FilRougeBiblio.Controllers
                 return NotFound();
             }
 
-            var theme = await Repository.GetById(id.Value);
-            if (theme == null)
+            var livre = await Repository.GetById(id.Value);
+            if (livre == null)
             {
                 return NotFound();
             }
-            return View(theme);
+            return View(livre);
         }
 
-        // POST: Themes/Edit/5
+        // POST: Livres/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Nom,Description,Id")] Theme theme)
+        public async Task<IActionResult> Edit(int id, [Bind("ISBN,Titre,Id")] Livre livre)
         {
-            if (id != theme.Id)
+            if (id != livre.Id)
             {
                 return NotFound();
             }
@@ -101,12 +100,12 @@ namespace FilRougeBiblio.Controllers
             {
                 try
                 {
-                    await Repository.Update(theme);
+                    await Repository.Update(livre);
                     
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!await ThemeExists(theme.Id))
+                    if (!await LivreExists(livre.Id))
                     {
                         return NotFound();
                     }
@@ -117,10 +116,10 @@ namespace FilRougeBiblio.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(theme);
+            return View(livre);
         }
 
-        // GET: Themes/Delete/5
+        // GET: Livres/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || await Repository.IsEmpty())
@@ -128,36 +127,36 @@ namespace FilRougeBiblio.Controllers
                 return NotFound();
             }
 
-            var theme = await Repository.GetById(id.Value);
+            var livre = await Repository.GetById(id.Value);
                 
-            if (theme == null)
+            if (livre == null)
             {
                 return NotFound();
             }
 
-            return View(theme);
+            return View(livre);
         }
 
-        // POST: Themes/Delete/5
+        // POST: Livres/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (await Repository.IsEmpty())
             {
-                return Problem("Entity set 'FilRougeBiblioContext.Themes'  is null.");
+                return Problem("Entity set 'FilRougeBiblioContext.Livres'  is null.");
             }
-            var theme = await Repository.GetById(id);
-            if (theme != null)
+            var livre = await Repository.GetById(id) ;
+            if (livre != null)
             {
-                await Repository.Delete(theme);
+                await Repository.Delete(livre);
             }
             
             
             return RedirectToAction(nameof(Index));
         }
 
-        private async Task<bool> ThemeExists(int id)
+        private async Task<bool> LivreExists(int id)
         {
             return await Repository.Exists(id);
         }

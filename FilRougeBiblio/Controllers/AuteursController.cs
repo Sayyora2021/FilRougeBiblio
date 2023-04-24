@@ -7,29 +7,28 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FilRougeBiblio.Core.Entities;
 using FilRougeBiblio.Infrastructure.Data;
-using NuGet.Protocol.Core.Types;
 using FilRougeBiblio.Core.Seedwork;
 
 namespace FilRougeBiblio.Controllers
 {
-    public class ThemesController : Controller
+    public class AuteursController : Controller
     {
-        private readonly IThemeRepository Repository;
+        private readonly IAuteurRepository Repository;
 
-        public ThemesController(IThemeRepository repository)
+        public AuteursController(IAuteurRepository repository)
         {
             Repository = repository;
         }
 
-        // GET: Themes
+        // GET: Auteurs
         public async Task<IActionResult> Index()
         {
-              return ! await Repository.IsEmpty() ? 
+              return !await Repository.IsEmpty() ? 
                           View(await Repository.ListAll()) :
-                          Problem("Entity set 'FilRougeBiblioContext.Themes'  is null.");
+                          Problem("Entity set 'FilRougeBiblioContext.Auteurs'  is null.");
         }
 
-        // GET: Themes/Details/5
+        // GET: Auteurs/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || await Repository.IsEmpty())
@@ -37,39 +36,39 @@ namespace FilRougeBiblio.Controllers
                 return NotFound();
             }
 
-            var theme = await Repository.GetById(id.Value);
+            var auteur = await Repository.GetById(id.Value);
                 
-            if (theme == null)
+            if (auteur == null)
             {
                 return NotFound();
             }
 
-            return View(theme);
+            return View(auteur);
         }
 
-        // GET: Themes/Create
+        // GET: Auteurs/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Themes/Create
+        // POST: Auteurs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nom,Description,Id")] Theme theme)
+        public async Task<IActionResult> Create([Bind("Prenom,Nom,Id")] Auteur auteur)
         {
             if (ModelState.IsValid)
             {
-                await Repository.Create(theme);
+                await Repository.Create(auteur);
                 
                 return RedirectToAction(nameof(Index));
             }
-            return View(theme);
+            return View(auteur);
         }
 
-        // GET: Themes/Edit/5
+        // GET: Auteurs/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || await Repository.IsEmpty())
@@ -77,22 +76,22 @@ namespace FilRougeBiblio.Controllers
                 return NotFound();
             }
 
-            var theme = await Repository.GetById(id.Value);
-            if (theme == null)
+            var auteur = await Repository.GetById(id.Value);
+            if (auteur == null)
             {
                 return NotFound();
             }
-            return View(theme);
+            return View(auteur);
         }
 
-        // POST: Themes/Edit/5
+        // POST: Auteurs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Nom,Description,Id")] Theme theme)
+        public async Task<IActionResult> Edit(int id, [Bind("Prenom,Nom,Id")] Auteur auteur)
         {
-            if (id != theme.Id)
+            if (id != auteur.Id)
             {
                 return NotFound();
             }
@@ -101,12 +100,12 @@ namespace FilRougeBiblio.Controllers
             {
                 try
                 {
-                    await Repository.Update(theme);
+                    await Repository.Create(auteur);
                     
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!await ThemeExists(theme.Id))
+                    if (!await AuteurExists(auteur.Id))
                     {
                         return NotFound();
                     }
@@ -117,10 +116,10 @@ namespace FilRougeBiblio.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(theme);
+            return View(auteur);
         }
 
-        // GET: Themes/Delete/5
+        // GET: Auteurs/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || await Repository.IsEmpty())
@@ -128,36 +127,36 @@ namespace FilRougeBiblio.Controllers
                 return NotFound();
             }
 
-            var theme = await Repository.GetById(id.Value);
-                
-            if (theme == null)
+            var auteur = await Repository.GetById(id.Value);
+                    
+            if (auteur == null)
             {
                 return NotFound();
             }
 
-            return View(theme);
+            return View(auteur);
         }
 
-        // POST: Themes/Delete/5
+        // POST: Auteurs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (await Repository.IsEmpty())
             {
-                return Problem("Entity set 'FilRougeBiblioContext.Themes'  is null.");
+                return Problem("Entity set 'FilRougeBiblioContext.Auteurs'  is null.");
             }
-            var theme = await Repository.GetById(id);
-            if (theme != null)
+            var auteur = await Repository.GetById(id);
+            if (auteur != null)
             {
-                await Repository.Delete(theme);
+                await Repository.Delete(auteur);
             }
             
             
             return RedirectToAction(nameof(Index));
         }
 
-        private async Task<bool> ThemeExists(int id)
+        private async Task<bool> AuteurExists(int id)
         {
             return await Repository.Exists(id);
         }
