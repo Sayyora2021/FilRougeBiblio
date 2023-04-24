@@ -37,6 +37,7 @@ namespace FilRougeBiblio.Infrastructure.Data
         {
             return await Context.MotClefs.ToListAsync();
         }
+
         public async Task<MotClef> GetById(int id)
         {
             return await Context.MotClefs.FirstOrDefaultAsync(c => c.Id == id);
