@@ -11,5 +11,6 @@ namespace FilRougeBiblio.Core.Entities
     {
     
         public string Tag { get; set; } = null!;
+        public virtual List<Livre> Livres { get; set; }
     }
 }

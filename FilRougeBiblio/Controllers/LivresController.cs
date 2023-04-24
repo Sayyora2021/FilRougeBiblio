@@ -35,7 +35,7 @@ namespace FilRougeBiblio.Controllers
             {
                 ViewBag.Auteurs = new SelectList(await AuteurRepository.ListAll(), nameof(Auteur.Id), nameof(Auteur.Nom));
                 ViewBag.Themes = new SelectList(await ThemeRepository.ListAll(), nameof(Theme.Id), nameof(Theme.Nom));
-                ViewBag.Exemplaires = new SelectList(await ExemplaireRepository.ListAll(), nameof(Exemplaire.Id), nameof(Exemplaire.NumeroInventaire));
+                //ViewBag.Exemplaires = new SelectList(await ExemplaireRepository.ListAll(), nameof(Exemplaire.Id), nameof(Exemplaire.NumeroInventaire));
                 ViewBag.Tags = new SelectList(await MotClefRepository.ListAll(),nameof(MotClef.Id), nameof(MotClef.Tag));
             }
         }
@@ -56,7 +56,7 @@ namespace FilRougeBiblio.Controllers
                 return NotFound();
             }
 
-            var livre = await LivreRepository.ListAll();
+            var livre = await LivreRepository.GetById(id.Value);
                 
             if (livre == null)
             {
@@ -81,9 +81,7 @@ namespace FilRougeBiblio.Controllers
         public async Task<IActionResult> Create(Livre livre,List<MotClef> tags,List<Auteur> auteurs,List<Theme> themes)
         {
             await SetupViewBags();
-            livre.Themes = themes;
-            livre.Tags = tags;
-            livre.Auteurs = auteurs;
+            
             if (ModelState.IsValid)
             {
                 await LivreRepository.Create(livre);
