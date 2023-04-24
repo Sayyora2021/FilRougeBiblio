@@ -10,16 +10,18 @@ namespace FilRougeBiblio.Infrastructure.Data
 {
     public class FilRougeBiblioContext : Microsoft.EntityFrameworkCore.DbContext
     {
-        DbSet<Lecteur> Lecteurs => Set<Lecteur>();
-        DbSet<MotClef> MotsClefs => Set<MotClef>();
-        DbSet<Exemplaire> Exemplaires => Set<Exemplaire>();
-        DbSet<Livre> Livres => Set<Livre>();
-        DbSet<Emprunt> Emprunts => Set<Emprunt>();
-        DbSet<Bibliothecaire> Bibliothecaires => Set<Bibliothecaire>();
-        DbSet<Auteur> Auteurs => Set<Auteur>();
-        DbSet<Theme> Themes => Set<Theme>();
+       public DbSet<Lecteur> Lecteurs => Set<Lecteur>();
+     public DbSet<MotClef> MotClef => Set<MotClef>();
+     public   DbSet<Exemplaire> Exemplaires => Set<Exemplaire>();
+     public   DbSet<Livre> Livres => Set<Livre>();
+     public   DbSet<Emprunt> Emprunts => Set<Emprunt>();
+      public  DbSet<Bibliothecaire> Bibliothecaires => Set<Bibliothecaire>();
+     public   DbSet<Auteur> Auteurs => Set<Auteur>();
+    public  DbSet<Theme> Themes => Set<Theme>();
+        
 
-        public FilRougeBiblioContext(DbContextOptions options) : base(options) { }
+        public FilRougeBiblioContext(DbContextOptions<FilRougeBiblioContext> options) : base(options) { }
+
 
 
     }
