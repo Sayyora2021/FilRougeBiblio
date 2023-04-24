@@ -7,37 +7,39 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FilRougeBiblio.Core.Entities;
 using FilRougeBiblio.Infrastructure.Data;
+using FilRougeBiblio.Core.Seedwork;
 
 namespace FilRougeBiblio.Controllers
 {
+    
     public class MotClefsController : Controller
     {
-        private readonly FilRougeBiblioContext _context;
+        
+        private readonly IMotClefRepository Repository;
 
-        public MotClefsController(FilRougeBiblioContext context)
+        public MotClefsController(IMotClefRepository repository)
         {
-            _context = context;
+            Repository = repository;
         }
 
         // GET: MotClefs
         public async Task<IActionResult> Index()
         {
-              return _context.MotClef != null ? 
-                          View(await _context.MotClef.ToListAsync()) :
+              return ! await Repository.IsEmpty() ? 
+                          View(await Repository.ListAll()):
                           Problem("Entity set 'FilRougeBiblioContext.MotClef'  is null.");
         }
 
         // GET: MotClefs/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.MotClef == null)
+            if (id == null || await Repository.IsEmpty())
             {
                 return NotFound();
             }
 
-            var motClef = await _context.MotClef
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (motClef == null)
+            var motClef = await Repository.GetById(id.Value);
+               if (motClef == null)
             {
                 return NotFound();
             }
@@ -60,9 +62,8 @@ namespace FilRougeBiblio.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(motClef);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+               await Repository.Create(motClef);
+               return RedirectToAction(nameof(Index));
             }
             return View(motClef);
         }
@@ -70,12 +71,12 @@ namespace FilRougeBiblio.Controllers
         // GET: MotClefs/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.MotClef == null)
+            if (id == null ||await Repository.IsEmpty())
             {
                 return NotFound();
             }
 
-            var motClef = await _context.MotClef.FindAsync(id);
+            var motClef = await Repository.GetById(id.Value);
             if (motClef == null)
             {
                 return NotFound();
@@ -99,12 +100,12 @@ namespace FilRougeBiblio.Controllers
             {
                 try
                 {
-                    _context.Update(motClef);
-                    await _context.SaveChangesAsync();
+                    await Repository.Update(motClef);
+                    
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MotClefExists(motClef.Id))
+                    if (! await MotClefExists(motClef.Id))
                     {
                         return NotFound();
                     }
@@ -121,13 +122,13 @@ namespace FilRougeBiblio.Controllers
         // GET: MotClefs/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.MotClef == null)
+            if (id == null || await Repository.IsEmpty())
             {
                 return NotFound();
             }
 
-            var motClef = await _context.MotClef
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var motClef = await Repository.GetById(id.Value);
+                
             if (motClef == null)
             {
                 return NotFound();
@@ -141,23 +142,23 @@ namespace FilRougeBiblio.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.MotClef == null)
+            if (await Repository.IsEmpty())
             {
                 return Problem("Entity set 'FilRougeBiblioContext.MotClef'  is null.");
             }
-            var motClef = await _context.MotClef.FindAsync(id);
+            var motClef = await Repository.GetById(id);
             if (motClef != null)
             {
-                _context.MotClef.Remove(motClef);
+                await Repository.Delete(motClef);
             }
             
-            await _context.SaveChangesAsync();
+           
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MotClefExists(int id)
+        private async Task<bool> MotClefExists(int id)
         {
-          return (_context.MotClef?.Any(e => e.Id == id)).GetValueOrDefault();
+            return await Repository.Exists(id);
         }
     }
 }

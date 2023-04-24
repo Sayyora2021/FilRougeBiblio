@@ -11,7 +11,7 @@ namespace FilRougeBiblio.Infrastructure.Data
     public class FilRougeBiblioContext : Microsoft.EntityFrameworkCore.DbContext
     {
        public DbSet<Lecteur> Lecteurs => Set<Lecteur>();
-     public DbSet<MotClef> MotClef => Set<MotClef>();
+     public DbSet<MotClef> MotClefs => Set<MotClef>();
      public   DbSet<Exemplaire> Exemplaires => Set<Exemplaire>();
      public   DbSet<Livre> Livres => Set<Livre>();
      public   DbSet<Emprunt> Emprunts => Set<Emprunt>();
