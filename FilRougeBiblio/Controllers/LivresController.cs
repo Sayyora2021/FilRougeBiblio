@@ -13,30 +13,50 @@ namespace FilRougeBiblio.Controllers
 {
     public class LivresController : Controller
     {
-        private readonly ILivreRepository Repository;
+        private readonly ILivreRepository LivreRepository;
+        private readonly IAuteurRepository AuteurRepository;
+        private readonly IThemeRepository ThemeRepository;
+        private readonly IExemplaireRepository ExemplaireRepository;
+        private readonly IMotClefRepository MotClefRepository;
 
-        public LivresController(ILivreRepository repository)
+
+        public LivresController(ILivreRepository livreRepository, IAuteurRepository auteurRepository, IThemeRepository themeRepository, IExemplaireRepository exemplaireRepository, IMotClefRepository motClefRepository)
         {
-            Repository = repository;
+            LivreRepository = livreRepository;
+            AuteurRepository = auteurRepository;
+            ThemeRepository = themeRepository;
+            ExemplaireRepository = exemplaireRepository;
+            MotClefRepository = motClefRepository;
+        }
+
+        private async Task SetupViewBags()
+        {
+            if(!(await AuteurRepository.IsEmpty() && await ThemeRepository.IsEmpty() && await ExemplaireRepository.IsEmpty() && await MotClefRepository.IsEmpty()))
+            {
+                ViewBag.Auteurs = new SelectList(await AuteurRepository.ListAll(), nameof(Auteur.Id), nameof(Auteur.Nom));
+                ViewBag.Themes = new SelectList(await ThemeRepository.ListAll(), nameof(Theme.Id), nameof(Theme.Nom));
+                ViewBag.Exemplaires = new SelectList(await ExemplaireRepository.ListAll(), nameof(Exemplaire.Id), nameof(Exemplaire.NumeroInventaire));
+                ViewBag.Tags = new SelectList(await MotClefRepository.ListAll(),nameof(MotClef.Id), nameof(MotClef.Tag));
+            }
         }
 
         // GET: Livres
         public async Task<IActionResult> Index()
         {
-              return ! await Repository.IsEmpty() ? 
-                          View(await Repository.ListAll()) :
+              return ! await LivreRepository.IsEmpty() ? 
+                          View(await LivreRepository.ListAll()) :
                           Problem("Entity set 'FilRougeBiblioContext.Livres'  is null.");
         }
 
         // GET: Livres/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || await Repository.IsEmpty())
+            if (id == null || await LivreRepository.IsEmpty())
             {
                 return NotFound();
             }
 
-            var livre = await Repository.ListAll();
+            var livre = await LivreRepository.ListAll();
                 
             if (livre == null)
             {
@@ -47,8 +67,9 @@ namespace FilRougeBiblio.Controllers
         }
 
         // GET: Livres/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            await SetupViewBags();
             return View();
         }
 
@@ -57,11 +78,15 @@ namespace FilRougeBiblio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ISBN,Titre,Id")] Livre livre)
+        public async Task<IActionResult> Create(Livre livre,List<MotClef> tags,List<Auteur> auteurs,List<Theme> themes)
         {
+            await SetupViewBags();
+            livre.Themes = themes;
+            livre.Tags = tags;
+            livre.Auteurs = auteurs;
             if (ModelState.IsValid)
             {
-                await Repository.Create(livre);
+                await LivreRepository.Create(livre);
                 
                 return RedirectToAction(nameof(Index));
             }
@@ -71,12 +96,12 @@ namespace FilRougeBiblio.Controllers
         // GET: Livres/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || await Repository.IsEmpty())
+            if (id == null || await LivreRepository.IsEmpty())
             {
                 return NotFound();
             }
 
-            var livre = await Repository.GetById(id.Value);
+            var livre = await LivreRepository.GetById(id.Value);
             if (livre == null)
             {
                 return NotFound();
@@ -100,7 +125,7 @@ namespace FilRougeBiblio.Controllers
             {
                 try
                 {
-                    await Repository.Update(livre);
+                    await LivreRepository.Update(livre);
                     
                 }
                 catch (DbUpdateConcurrencyException)
@@ -122,12 +147,12 @@ namespace FilRougeBiblio.Controllers
         // GET: Livres/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || await Repository.IsEmpty())
+            if (id == null || await LivreRepository.IsEmpty())
             {
                 return NotFound();
             }
 
-            var livre = await Repository.GetById(id.Value);
+            var livre = await LivreRepository.GetById(id.Value);
                 
             if (livre == null)
             {
@@ -142,14 +167,14 @@ namespace FilRougeBiblio.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (await Repository.IsEmpty())
+            if (await LivreRepository.IsEmpty())
             {
                 return Problem("Entity set 'FilRougeBiblioContext.Livres'  is null.");
             }
-            var livre = await Repository.GetById(id) ;
+            var livre = await LivreRepository.GetById(id) ;
             if (livre != null)
             {
-                await Repository.Delete(livre);
+                await LivreRepository.Delete(livre);
             }
             
             
@@ -158,7 +183,7 @@ namespace FilRougeBiblio.Controllers
 
         private async Task<bool> LivreExists(int id)
         {
-            return await Repository.Exists(id);
+            return await LivreRepository.Exists(id);
         }
     }
 }

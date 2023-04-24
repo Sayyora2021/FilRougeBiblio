@@ -12,11 +12,10 @@ namespace FilRougeBiblio.Core.Entities
 
         public string ISBN { get; set; } = null!;
         public string Titre { get; set; } = null!;
+        public virtual List<Theme> Themes { get; set; }
 
-        public List<Theme> Themes { get; set; }
+        public virtual List<MotClef> Tags { get; set; }
 
-        public List<MotClef> Tags { get; set; }
-
-        public List<Auteur> Auteurs { get; set;}
+        public virtual List<Auteur> Auteurs { get; set;}
     }
 }
