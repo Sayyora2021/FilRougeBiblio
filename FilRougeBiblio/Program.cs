@@ -1,6 +1,7 @@
 using FilRougeBiblio.Core.Seedwork;
 using FilRougeBiblio.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 

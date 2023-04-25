@@ -120,18 +120,15 @@ namespace FilRougeBiblio.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Livre livre, int[] tags, int[] auteurs, int[] themes)
         {
-            /*var _tags = await MotClefRepository.GetList(m => tags.Contains(m.Id));
-            var _auteurs = await AuteurRepository.GetList(m => auteurs.Contains(m.Id));
-            var _themes = await ThemeRepository.GetList(m => themes.Contains(m.Id));*/
-
-
+            livre.Tags = await MotClefRepository.GetList(m => tags.Contains(m.Id));
+            livre.Auteurs = await AuteurRepository.GetList(m => auteurs.Contains(m.Id));
+            livre.Themes = await ThemeRepository.GetList(m => themes.Contains(m.Id));
             if (ModelState.IsValid)
             {
                 try
                 {
 
-                    //await LivreRepository.Update(livre, _tags, _auteurs, _themes) ;
-                    await LivreRepository.Update(livre, tags, auteurs, themes);
+                    await LivreRepository.Update(livre);
 
                 }
                 catch (DbUpdateConcurrencyException)
