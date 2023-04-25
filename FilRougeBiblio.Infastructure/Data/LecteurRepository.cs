@@ -36,7 +36,8 @@ namespace FilRougeBiblio.Infrastructure.Data
         }
         public async Task<List<Lecteur>> ListAll()
         {
-            return await Context.Lecteurs.ToListAsync();
+            return await Context.Lecteurs.Include(t=>t.Id).ToListAsync();
+           
         }
         public async Task<Lecteur> GetById(int id)
         {
