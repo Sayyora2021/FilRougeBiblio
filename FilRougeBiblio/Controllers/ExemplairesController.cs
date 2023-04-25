@@ -14,10 +14,20 @@ namespace FilRougeBiblio.Controllers
     public class ExemplairesController : Controller
     {
         private readonly IExemplaireRepository Repository;
+        private readonly ILivreRepository LivreRepository;
 
-        public ExemplairesController(IExemplaireRepository repository)
+        public ExemplairesController(IExemplaireRepository repository, ILivreRepository livreRepository)
         {
             Repository = repository;
+            LivreRepository = livreRepository;
+        }
+
+        private async Task SetupViewBags()
+        {
+            if (!await LivreRepository.IsEmpty())
+            {
+                ViewBag.Livres = new SelectList(await LivreRepository.ListAll(), nameof(Livre.Id), nameof(Livre.Titre));
+            }
         }
 
         // GET: Exemplaires
@@ -46,8 +56,9 @@ namespace FilRougeBiblio.Controllers
         }
 
         // GET: Exemplaires/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            await SetupViewBags();
             return View();
         }
 
@@ -56,14 +67,17 @@ namespace FilRougeBiblio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NumeroInventaire,MiseEnService,Id")] Exemplaire exemplaire)
+        public async Task<IActionResult> Create(Exemplaire exemplaire, int livreId)
         {
-            if (ModelState.IsValid)
-            {
-               await Repository.Create(exemplaire);
+            
+            await SetupViewBags();
+            exemplaire.Livre = await LivreRepository.GetById(livreId);
+            //if (ModelState.IsValid)
+            //{
+                await Repository.Create(exemplaire);
                 return RedirectToAction(nameof(Index));
-            }
-            return View(exemplaire);
+            //}
+            //return View(exemplaire);
         }
 
         // GET: Exemplaires/Edit/5

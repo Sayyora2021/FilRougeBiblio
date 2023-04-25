@@ -58,7 +58,7 @@ namespace FilRougeBiblio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Tag,Id")] MotClef motClef)
+        public async Task<IActionResult> Create(MotClef motClef)
         {
             if (ModelState.IsValid)
             {

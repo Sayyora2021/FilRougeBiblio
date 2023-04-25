@@ -1,4 +1,5 @@
-﻿@model FilRougeBiblio.Core.Entities.Theme
+﻿@using FilRougeBiblio.Core.Entities;
+@model FilRougeBiblio.Core.Entities.Theme
 
 @{
     ViewData["Title"] = "Create";
@@ -12,7 +13,7 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+                       <div class="form-group">
                 <label asp-for="Nom" class="control-label"></label>
                 <input asp-for="Nom" class="form-control" />
                 <span asp-validation-for="Nom" class="text-danger"></span>
@@ -22,6 +23,7 @@
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
+            <input asp-for="Livres" type="hidden" value="@(new List<Livre>())" />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

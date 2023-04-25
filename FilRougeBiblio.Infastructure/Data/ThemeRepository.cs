@@ -39,12 +39,12 @@ namespace FilRougeBiblio.Infrastructure.Data
 
        public async Task<List<Theme>> ListAll()
         {
-            return await Context.Themes.Include(c => c.Livres).ToListAsync();
+            return await Context.Themes.Include(t => t.Livres).ToListAsync();
         }
 
         public async Task<Theme> GetById(int id)
         {
-            return await Context.Themes.Include(c => c.Livres).FirstOrDefaultAsync(c => c.Id == id);
+            return await Context.Themes.Include(t =>t.Livres).FirstOrDefaultAsync(c => c.Id == id);
         }
 
         public async Task<bool> Exists(int id)
@@ -58,7 +58,7 @@ namespace FilRougeBiblio.Infrastructure.Data
         }
         public async Task<List<Theme>> GetList(Expression<Func<Theme, bool>> criteria)
         {
-            return await Context.Themes.Include(c => c.Livres).Where(criteria).ToListAsync();
+            return await Context.Themes.Include(t => t.Livres).Where(criteria).ToListAsync();
         }
     }
 }

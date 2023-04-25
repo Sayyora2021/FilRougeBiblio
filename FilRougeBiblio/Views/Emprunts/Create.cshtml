@@ -1,5 +1,4 @@
-﻿@using FilRougeBiblio.Core.Entities;
-@model FilRougeBiblio.Core.Entities.Auteur
+﻿@model FilRougeBiblio.Core.Entities.Emprunt
 
 @{
     ViewData["Title"] = "Create";
@@ -7,23 +6,22 @@
 
 <h1>Create</h1>
 
-<h4>Auteur</h4>
+<h4>Emprunt</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Prenom" class="control-label"></label>
-                <input asp-for="Prenom" class="form-control" />
-                <span asp-validation-for="Prenom" class="text-danger"></span>
+                <label asp-for="DateEmprunt" class="control-label"></label>
+                <input asp-for="DateEmprunt" class="form-control" />
+                <span asp-validation-for="DateEmprunt" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Nom" class="control-label"></label>
-                <input asp-for="Nom" class="form-control" />
-                <span asp-validation-for="Nom" class="text-danger"></span>
+                <label asp-for="DateRetour" class="control-label"></label>
+                <input asp-for="DateRetour" class="form-control" />
+                <span asp-validation-for="DateRetour" class="text-danger"></span>
             </div>
-            <input asp-for="Livres" type="hidden" value="@(new List<Livre>())" />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

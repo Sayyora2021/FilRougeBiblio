@@ -15,6 +15,7 @@ builder.Services.AddScoped<IBibliothecaireRepository, BibliothecaireRepository>(
 builder.Services.AddScoped<ILivreRepository, LivreRepository>();
 builder.Services.AddScoped<IAuteurRepository, AuteurRepository>();
 builder.Services.AddScoped<IThemeRepository, ThemeRepository>();
+builder.Services.AddScoped<IEmpruntRepository, EmpruntRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

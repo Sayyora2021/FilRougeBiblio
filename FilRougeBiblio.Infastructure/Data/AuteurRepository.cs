@@ -36,7 +36,8 @@ namespace FilRougeBiblio.Infrastructure.Data
         }
         public async Task<List<Auteur>> ListAll()
         {
-            return await Context.Auteurs.Include(c => c.Livres).ToListAsync();
+            return await Context.Auteurs.Include(t=>t.Livres).ToListAsync();
+           
         }
         public async Task<Auteur> GetById(int id)
         {
@@ -54,7 +55,8 @@ namespace FilRougeBiblio.Infrastructure.Data
 
         public async Task<List<Auteur>> GetList(Expression<Func<Auteur, bool>> criteria)
         {
-            return await Context.Auteurs.Include(c => c.Livres).Where(criteria).ToListAsync();
+            return await Context.Auteurs.Include(t=>t.Livres).Where(criteria).ToListAsync();
+            
         }
 
     }
