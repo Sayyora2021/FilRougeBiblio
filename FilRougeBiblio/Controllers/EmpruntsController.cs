@@ -22,7 +22,8 @@ namespace FilRougeBiblio.Controllers
         {
             if (!(await ExemplaireRepository.IsEmpty() && await LecteurRepository.IsEmpty()))
             {
-                ViewBag.Exemplaires = new SelectList(await ExemplaireRepository.ListAll(), nameof(Exemplaire.Id), nameof(Exemplaire.NumeroInventaire));
+                //ViewBag.Exemplaires = new SelectList(await ExemplaireRepository.ListAll(), nameof(Exemplaire.Id), nameof(Exemplaire.NumeroInventaire));
+                ViewBag.Exemplaires = await ExemplaireRepository.ListAll();
                 ViewBag.Lecteurs = new SelectList(await LecteurRepository.ListAll(), nameof(Lecteur.Id), nameof(Lecteur.Nom));
             }
         }
