@@ -10,6 +10,7 @@ namespace FilRougeBiblio.Core.Entities
 {
     public class Bibliothecaire : Entity
     {
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; } = null!;
         [DataType(DataType.Password)]
         public string MotDePasse { get; set; } = null!;

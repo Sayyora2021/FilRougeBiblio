@@ -9,15 +9,14 @@ namespace FilRougeBiblio.Core.Entities
 {
     public class Livre : Entity
     {
-
         public string ISBN { get; set; } = null!;
         public string Titre { get; set; } = null!;
-        public virtual List<Theme> Themes { get; set; }
+        public virtual List<Theme> Themes { get; set; } = null!;
 
-        public virtual List<MotClef> Tags { get; set; }
+        public virtual List<MotClef> Tags { get; set; } = null!;
 
-        public virtual List<Auteur> Auteurs { get; set;}
+        public virtual List<Auteur> Auteurs { get; set; } = null!;
 
-        public virtual List<Exemplaire> Exemplaires { get; set; }
+        public virtual List<Exemplaire> Exemplaires { get; set; } = null!;
     }
 }

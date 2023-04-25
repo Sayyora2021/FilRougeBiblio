@@ -67,10 +67,17 @@ namespace FilRougeBiblio.Controllers
             await EmpruntRepository.Create(e);
             return RedirectToAction(nameof(Index));
         }
+        public async Task<IActionResult> Rendre(int? id)
+        {
+            Emprunt emprunt = await EmpruntRepository.GetById(id.Value);
+            await EmpruntRepository.RemoveBookFromLecteur(emprunt);
+            return RedirectToAction(nameof(Index));
+
+        }
 
 
 
 
-        
+
     }
 }
