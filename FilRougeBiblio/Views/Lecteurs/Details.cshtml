@@ -1,4 +1,5 @@
-﻿@model FilRougeBiblio.Core.Entities.Lecteur
+﻿@using FilRougeBiblio.Core.Entities;
+@model FilRougeBiblio.Core.Entities.Lecteur
 
 @{
     ViewData["Title"] = "Details";
@@ -40,6 +41,17 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Adresse)
         </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ListEmprunts)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (Emprunt emprunt in Model.ListEmprunts)
+            {
+                <p>@emprunt.Exemplaire.Livre.Titre @emprunt.Exemplaire.NumeroInventaire</p>
+            }
+        </dd>
+
     </dl>
 </div>
 <div>

@@ -17,5 +17,7 @@ namespace FilRougeBiblio.Core.Entities
         public string Telephone { get; set; } = null!;
 
         public string Adresse { get; set; } = null!;
+
+        public List<Emprunt> ListEmprunts { get; set; }
     }
 }
