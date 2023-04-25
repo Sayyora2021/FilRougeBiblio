@@ -69,6 +69,7 @@ namespace FilRougeBiblio.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Exemplaire exemplaire, int livreId)
         {
+            //TODO : recuperer livreId
             await SetupViewBags();
             exemplaire.Livre = await LivreRepository.GetById(livreId);
             if (ModelState.IsValid)
