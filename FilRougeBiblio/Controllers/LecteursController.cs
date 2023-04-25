@@ -87,7 +87,7 @@ namespace FilRougeBiblio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Nom,Prenom,Email,Telephone,Adresse,Cotisation,Id")] Lecteur lecteur)
+        public async Task<IActionResult> Edit(int id, Lecteur lecteur)
         {
             if (id != lecteur.Id)
             {
