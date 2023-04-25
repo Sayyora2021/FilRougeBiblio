@@ -39,9 +39,15 @@ namespace FilRougeBiblio.Infrastructure.Data
             return await Context.Emprunts.Include(e => e.Exemplaire).Include(e => e.Lecteur).FirstOrDefaultAsync(e => e.Id == id);
         }
 
-        private async Task CalculatePrice()
+        public async Task Create(Emprunt emprunt)
         {
+            Context.Emprunts.Add(emprunt);
+            await Context.SaveChangesAsync();
+        }
 
+        public async Task<IEnumerable<Emprunt>> ListAll()
+        {
+            return await Context.Emprunts.Include(c => c.Lecteur).Include(c => c.Exemplaire).Include(c => c.Exemplaire.Livre).ToListAsync();
         }
         
     }

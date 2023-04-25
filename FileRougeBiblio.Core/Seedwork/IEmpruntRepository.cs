@@ -15,5 +15,9 @@ namespace FilRougeBiblio.Core.Seedwork
         Task<List<Emprunt>> ListAllBookTaken(int lecteurId);
         Task RemoveBookFromLecteur(Emprunt emprunt);
 
+        Task Create(Emprunt emprunt);
+
+        Task<IEnumerable<Emprunt>> ListAll();
+
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using FilRougeBiblio.Core.Entities;
 using FilRougeBiblio.Infrastructure.Data;
 using FilRougeBiblio.Core.Seedwork;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
 namespace FilRougeBiblio.Controllers
 {
@@ -109,6 +110,9 @@ namespace FilRougeBiblio.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Auteurs = await AuteurRepository.ListAll();
+            ViewBag.Themes = await ThemeRepository.ListAll();
+            ViewBag.Tags = await MotClefRepository.ListAll();
             return View(livre);
         }
 
@@ -119,18 +123,15 @@ namespace FilRougeBiblio.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Livre livre, int[] tags, int[] auteurs, int[] themes)
         {
-            /*var _tags = await MotClefRepository.GetList(m => tags.Contains(m.Id));
-            var _auteurs = await AuteurRepository.GetList(m => auteurs.Contains(m.Id));
-            var _themes = await ThemeRepository.GetList(m => themes.Contains(m.Id));*/
-
-
+            livre.Tags = await MotClefRepository.GetList(m => tags.Contains(m.Id));
+            livre.Auteurs = await AuteurRepository.GetList(m => auteurs.Contains(m.Id));
+            livre.Themes = await ThemeRepository.GetList(m => themes.Contains(m.Id));
             if (ModelState.IsValid)
             {
                 try
                 {
 
-                    //await LivreRepository.Update(livre, _tags, _auteurs, _themes) ;
-                    await LivreRepository.Update(livre, tags, auteurs, themes);
+                    await LivreRepository.Update(livre);
 
                 }
                 catch (DbUpdateConcurrencyException)
@@ -191,5 +192,31 @@ namespace FilRougeBiblio.Controllers
         {
             return await LivreRepository.Exists(id);
         }
+
+        public async Task<IActionResult> Recherche()
+        {
+            await SetupViewBags();
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RechercheResultats(String ISBN, String Titre)
+        {
+
+            var r = await LivreRepository.ListAll();
+            if(ISBN != null && !String.IsNullOrWhiteSpace(ISBN))
+            {
+                r = r.Where(l => l.ISBN.ToLower().Contains(ISBN.ToLower())).ToList();
+            }
+            if (Titre != null && !String.IsNullOrWhiteSpace(Titre))
+            {
+                r = r.Where(l => l.Titre.ToLower().Contains(Titre.ToLower())).ToList();
+            }
+
+            return View(r);
+        }
+
+        
     }
 }

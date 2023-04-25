@@ -15,154 +15,62 @@ namespace FilRougeBiblio.Controllers
     {
         private readonly IEmpruntRepository EmpruntRepository;
         private readonly ILecteurRepository LecteurRepository;
+        private readonly IExemplaireRepository ExemplaireRepository;
 
-        public EmpruntsController(IEmpruntRepository empruntRepository, ILecteurRepository lecteurRepository)
+
+        private async Task SetupViewBags()
+        {
+            if (!(await ExemplaireRepository.IsEmpty() && await LecteurRepository.IsEmpty()))
+            {
+                //ViewBag.Exemplaires = new SelectList(await ExemplaireRepository.ListAll(), nameof(Exemplaire.Id), nameof(Exemplaire.NumeroInventaire));
+                ViewBag.Exemplaires = await ExemplaireRepository.ListAll();
+                ViewBag.Lecteurs = new SelectList(await LecteurRepository.ListAll(), nameof(Lecteur.Id), nameof(Lecteur.Nom));
+            }
+        }
+
+        public EmpruntsController(IEmpruntRepository empruntRepository, ILecteurRepository lecteurRepository, IExemplaireRepository exemplaireRepository)
         {
             EmpruntRepository = empruntRepository;
             LecteurRepository = lecteurRepository;
+            ExemplaireRepository = exemplaireRepository;
         }
 
         // GET: Emprunts
         public async Task<IActionResult> Index()
         {
+            //await SetupViewBags();
               return ! await LecteurRepository.IsEmpty() ? 
-                          View(await LecteurRepository.ListAll()) :
+                          View(await EmpruntRepository.ListAll()) :
                           Problem("Entity set 'FilRougeBiblioContext.Emprunts'  is null.");
         }
 
 
 
+        public async Task<IActionResult> Create()
+        {
+            await SetupViewBags();
+            return View();
+        }
 
-        // GET: Emprunts/Details/5
-        //public async Task<IActionResult> Details(int? id)
-        //{
-        //    if (id == null || await LecteurRepository.IsEmpty())
-        //    {
-        //        return NotFound();
-        //    }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(int LecteurId, int ExemplaireId)
+        {
+            var e = new Emprunt()
+            {
+                Lecteur = await LecteurRepository.GetById(LecteurId),
+                Exemplaire = await ExemplaireRepository.GetById(ExemplaireId),
+                DateEmprunt = DateTime.Now,
+                DateRetour = DateTime.Now.AddMonths(1)
+            };
 
-        //    var emprunt = await _context.Emprunts
-        //        .FirstOrDefaultAsync(m => m.Id == id);
-        //    if (emprunt == null)
-        //    {
-        //        return NotFound();
-        //    }
+            await EmpruntRepository.Create(e);
+            return RedirectToAction(nameof(Index));
+        }
 
-        //    return View(emprunt);
-        //}
 
-        //// GET: Emprunts/Create
-        //public IActionResult Create()
-        //{
-        //    return View();
-        //}
 
-        //// POST: Emprunts/Create
-        //// To protect from overposting attacks, enable the specific properties you want to bind to.
-        //// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("DateEmprunt,DateRetour,Id")] Emprunt emprunt)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add(emprunt);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(emprunt);
-        //}
 
-        //// GET: Emprunts/Edit/5
-        //public async Task<IActionResult> Edit(int? id)
-        //{
-        //    if (id == null || await LecteurRepository.IsEmpty())
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var emprunt = await _context.Emprunts.FindAsync(id);
-        //    if (emprunt == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(emprunt);
-        //}
-
-        //// POST: Emprunts/Edit/5
-        //// To protect from overposting attacks, enable the specific properties you want to bind to.
-        //// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(int id, [Bind("DateEmprunt,DateRetour,Id")] Emprunt emprunt)
-        //{
-        //    if (id != emprunt.Id)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            _context.Update(emprunt);
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!EmpruntExists(emprunt.Id))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(emprunt);
-        //}
-
-        //// GET: Emprunts/Delete/5
-        //public async Task<IActionResult> Delete(int? id)
-        //{
-        //    if (id == null || await LecteurRepository.IsEmpty())
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var emprunt = await _context.Emprunts
-        //        .FirstOrDefaultAsync(m => m.Id == id);
-        //    if (emprunt == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(emprunt);
-        //}
-
-        //// POST: Emprunts/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteConfirmed(int id)
-        //{
-        //    if (await LecteurRepository.IsEmpty())
-        //    {
-        //        return Problem("Entity set 'FilRougeBiblioContext.Emprunts'  is null.");
-        //    }
-        //    var emprunt = await _context.Emprunts.FindAsync(id);
-        //    if (emprunt != null)
-        //    {
-        //        _context.Emprunts.Remove(emprunt);
-        //    }
-            
-        //    return RedirectToAction(nameof(Index));
-        //}
-
-        //private async Task<bool> EmpruntExists(int id)
-        //{
-        //  return await LecteurRepository.Exists(id);
-        //}
+        
     }
 }

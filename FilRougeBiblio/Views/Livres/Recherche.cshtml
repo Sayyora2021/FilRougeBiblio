@@ -1,0 +1,47 @@
+﻿@model FilRougeBiblio.Core.Entities.Livre
+
+
+
+<h1>Recherche avancée</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="RechercheResultats" method="post">
+            <div></div>
+            <div class="form-group">
+                <label asp-for="ISBN" class="control-label"></label>
+                <input id="ISBN" name="ISBN" class="form-control" />
+                <span  class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Titre" class="control-label"></label>
+                <input id="Titre" name="Titre" class="form-control" />
+                <span  class="text-danger"></span>
+            </div>
+
+            <!--<div class="form-group">
+                <label asp-for="Themes" class="control-label"></label>
+                <select asp-for="Themes" asp-items="@(ViewBag.Themes as SelectList)"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tags" asp-for="Tags" class="control-label"></label>
+                <select asp-for="Tags" asp-items="@(ViewBag.Tags as SelectList)"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Auteurs" class="control-label"></label>
+                <select asp-for="Auteurs" asp-items="@(ViewBag.Auteurs as SelectList)"></select>
+            </div>-->
+
+            <div class="form-group">
+                <input type="submit" value="Recherche" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

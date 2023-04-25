@@ -20,7 +20,9 @@ namespace FilRougeBiblio.Infrastructure.Data
      public  DbSet<Theme> Themes => Set<Theme>();
         
 
-        public FilRougeBiblioContext(DbContextOptions<FilRougeBiblioContext> options) : base(options) { }
+        public FilRougeBiblioContext(DbContextOptions<FilRougeBiblioContext> options) : base(options) {
+            
+        }
 
 
 

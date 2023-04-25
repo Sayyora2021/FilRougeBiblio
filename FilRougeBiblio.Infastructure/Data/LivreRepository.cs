@@ -50,6 +50,14 @@ namespace FilRougeBiblio.Infrastructure.Data
             await Context.SaveChangesAsync();
 
         }
+        public async Task Update(Livre livre)
+        {
+            Livre livreOld = await GetById(livre.Id);
+            Context.Livres.Remove(livreOld);
+            Context.Livres.Update(livre);
+            await Context.SaveChangesAsync();
+
+        }
         public async Task Delete(Livre livre)
         {
             Context.Livres.Remove(livre);

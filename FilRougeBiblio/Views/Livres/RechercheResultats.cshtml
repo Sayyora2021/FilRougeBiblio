@@ -1,21 +1,24 @@
-﻿@model IEnumerable<FilRougeBiblio.Core.Entities.Bibliothecaire>
+﻿@model IEnumerable<FilRougeBiblio.Core.Entities.Livre>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Resultats de recherche</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Recherche">Nouvelle Recherche</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.ISBN)
             </th>
-            
+            <th>
+                @Html.DisplayNameFor(model => model.Titre)
+            </th>
+
             <th></th>
         </tr>
     </thead>
@@ -23,9 +26,11 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Email)
+                @Html.DisplayFor(modelItem => item.ISBN)
             </td>
-            
+            <td>
+                @Html.DisplayFor(modelItem => item.Titre)
+            </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
