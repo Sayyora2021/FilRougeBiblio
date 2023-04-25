@@ -19,12 +19,23 @@ namespace FilRougeBiblio.Infrastructure.Data
         }
         public async Task AddBookToLecteur(Emprunt emprunt)
         {
+            // cotisation ok?
+            if(!emprunt.Lecteur.Cotisation) { return; }
+
+            // pas plus de trois livres
+            if(emprunt.Lecteur.ListEmprunts.Where(e => e.DateRetourReel == null).ToList().Count >= 3) { return; }
+
+            // exemplaire disponible.
+            if(Context.Emprunts.Any(e => e.Exemplaire.Id == e.Exemplaire.Id && e.DateRetourReel == null)) { return; }
+
             await Context.Emprunts.AddAsync(emprunt);
             await Context.SaveChangesAsync();
         }
         public async Task RemoveBookFromLecteur(Emprunt emprunt)
         {
-            Context.Emprunts.Remove(emprunt);
+            
+            emprunt.DateRetourReel = DateTime.Now;
+            Context.Update(emprunt);
             await Context.SaveChangesAsync();
         }
 

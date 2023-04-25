@@ -43,12 +43,16 @@
             <td>@item.DateEmprunt.ToString()</td>
                
                 <td>@item.DateRetour.ToString()</td>
-                @if (item.DateRetour != null)
+                @if (item.DateRetourReel == null)
                 {
                     <td>
                         <a asp-action="Rendre" asp-route-id="@item.Id">Rendre</a>
                     </td>
+                } else
+                {
+                    <td>@item.DateRetourReel.ToString()</td>
                 }
+
         </tr>
     }
 </tbody>

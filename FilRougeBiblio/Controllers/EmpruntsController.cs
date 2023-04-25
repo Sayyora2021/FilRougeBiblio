@@ -64,7 +64,7 @@ namespace FilRougeBiblio.Controllers
                 DateRetour = DateTime.Now.AddMonths(1)
             };
 
-            await EmpruntRepository.Create(e);
+            await EmpruntRepository.AddBookToLecteur(e);
             return RedirectToAction(nameof(Index));
         }
         public async Task<IActionResult> Rendre(int? id)

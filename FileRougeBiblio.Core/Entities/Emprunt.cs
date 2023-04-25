@@ -14,5 +14,9 @@ namespace FilRougeBiblio.Core.Entities
         public DateTime? DateEmprunt { get; set; }
 
         public DateTime? DateRetour { get; set; }
+
+        public DateTime? DateRetourReel { get; set; }
+
+        
     }
 }
