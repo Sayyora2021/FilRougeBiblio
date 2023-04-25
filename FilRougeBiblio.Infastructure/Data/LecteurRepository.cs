@@ -36,17 +36,17 @@ namespace FilRougeBiblio.Infrastructure.Data
         }
         public async Task<List<Lecteur>> ListAll()
         {
-            return await Context.Lecteurs.Include(t=>t.Id).ToListAsync();
+            return await Context.Lecteurs.Include(t=>t.ListEmprunts).ToListAsync();
            
         }
         public async Task<Lecteur> GetById(int id)
         {
-            return await Context.Lecteurs.FirstOrDefaultAsync(c => c.Id == id);
+            return await Context.Lecteurs.Include(t => t.ListEmprunts).FirstOrDefaultAsync(c => c.Id == id);
         }
 
         public async Task<bool> Exists(int id)
         {
-            return await Context.Lecteurs.AnyAsync(c => c.Id == id);
+            return await Context.Lecteurs.Include(t => t.ListEmprunts).AnyAsync(c => c.Id == id);
         }
         public async Task<bool> IsEmpty()
         {
