@@ -1,4 +1,5 @@
-﻿@model FilRougeBiblio.Core.Entities.Auteur
+﻿@using FilRougeBiblio.Core.Entities;
+@model FilRougeBiblio.Core.Entities.Auteur
 
 @{
     ViewData["Title"] = "Create";
@@ -22,6 +23,7 @@
                 <input asp-for="Nom" class="form-control" />
                 <span asp-validation-for="Nom" class="text-danger"></span>
             </div>
+            <input asp-for="Livres" type="hidden" value="@(new List<Livre>())" />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

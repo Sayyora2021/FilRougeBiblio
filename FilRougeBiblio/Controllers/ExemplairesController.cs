@@ -67,11 +67,11 @@ namespace FilRougeBiblio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Exemplaire exemplaire, int livreId)
+        public async Task<IActionResult> Create(Exemplaire exemplaire, int livre)
         {
-            //TODO : recuperer livreId
+            
             await SetupViewBags();
-            exemplaire.Livre = await LivreRepository.GetById(livreId);
+            exemplaire.Livre = await LivreRepository.GetById(livre);
             if (ModelState.IsValid)
             {
                await Repository.Create(exemplaire);
