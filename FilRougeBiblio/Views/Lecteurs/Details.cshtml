@@ -41,6 +41,19 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Adresse)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cotisation)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Cotisation)
+            {
+                <text>Cotisation payée</text>
+            }
+            else
+            {
+                <text>Cotisation non payée</text>
+            }
+        </dd>
 
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ListEmprunts)
@@ -50,9 +63,8 @@
             {
                 <p>@emprunt.Exemplaire.Livre.Titre @emprunt.Exemplaire.NumeroInventaire</p>
             }
-        </dd>
-
-    </dl>
+          </dd>
+         </dl>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |

@@ -20,5 +20,6 @@ namespace FilRougeBiblio.Core.Entities
         public string Adresse { get; set; } = null!;
         
         public List<Emprunt> ListEmprunts { get; set; } = null!;
+        public bool Cotisation { get; set; }
     }
 }

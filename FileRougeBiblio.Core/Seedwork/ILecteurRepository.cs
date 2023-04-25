@@ -11,5 +11,6 @@ namespace FilRougeBiblio.Core.Seedwork
         Task<bool> IsEmpty();
         Task<List<Lecteur>> ListAll();
         Task Update(Lecteur lecteur);
+        
     }
 }
