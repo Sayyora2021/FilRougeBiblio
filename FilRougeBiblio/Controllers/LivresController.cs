@@ -110,6 +110,9 @@ namespace FilRougeBiblio.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Auteurs = await AuteurRepository.ListAll();
+            ViewBag.Themes = await ThemeRepository.ListAll();
+            ViewBag.Tags = await MotClefRepository.ListAll();
             return View(livre);
         }
 
