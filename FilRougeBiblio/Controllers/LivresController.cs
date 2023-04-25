@@ -102,6 +102,9 @@ namespace FilRougeBiblio.Controllers
             }
 
             var livre = await LivreRepository.GetById(id.Value);
+            await SetupViewBags();
+
+
             if (livre == null)
             {
                 return NotFound();
@@ -114,19 +117,21 @@ namespace FilRougeBiblio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ISBN,Titre,Id")] Livre livre)
+        public async Task<IActionResult> Edit(int id, Livre livre, int[] tags, int[] auteurs, int[] themes)
         {
-            if (id != livre.Id)
-            {
-                return NotFound();
-            }
+            /*var _tags = await MotClefRepository.GetList(m => tags.Contains(m.Id));
+            var _auteurs = await AuteurRepository.GetList(m => auteurs.Contains(m.Id));
+            var _themes = await ThemeRepository.GetList(m => themes.Contains(m.Id));*/
+
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    await LivreRepository.Update(livre);
-                    
+
+                    //await LivreRepository.Update(livre, _tags, _auteurs, _themes) ;
+                    await LivreRepository.Update(livre, tags, auteurs, themes);
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -141,6 +146,7 @@ namespace FilRougeBiblio.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            await SetupViewBags();
             return View(livre);
         }
 

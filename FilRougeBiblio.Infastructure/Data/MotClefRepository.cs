@@ -36,12 +36,12 @@ namespace FilRougeBiblio.Infrastructure.Data
         }
         public async Task<List<MotClef>> ListAll()
         {
-            return await Context.MotClefs.ToListAsync();
+            return await Context.MotClefs.Include(c => c.Livres).ToListAsync();
         }
 
         public async Task<MotClef> GetById(int id)
         {
-            return await Context.MotClefs.FirstOrDefaultAsync(c => c.Id == id);
+            return await Context.MotClefs.Include(c => c.Livres).FirstOrDefaultAsync(c => c.Id == id);
         }
 
         public async Task<bool> Exists(int id)
@@ -59,7 +59,7 @@ namespace FilRougeBiblio.Infrastructure.Data
         //}
         public async Task<List<MotClef>> GetList(Expression<Func<MotClef, bool>> criteria)
         {
-            return await Context.MotClefs.Where(criteria).ToListAsync();
+            return await Context.MotClefs.Include(c => c.Livres).Where(criteria).ToListAsync();
         }
     }
 }

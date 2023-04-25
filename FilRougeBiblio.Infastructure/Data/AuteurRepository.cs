@@ -36,11 +36,11 @@ namespace FilRougeBiblio.Infrastructure.Data
         }
         public async Task<List<Auteur>> ListAll()
         {
-            return await Context.Auteurs.ToListAsync();
+            return await Context.Auteurs.Include(c => c.Livres).ToListAsync();
         }
         public async Task<Auteur> GetById(int id)
         {
-            return await Context.Auteurs.FirstOrDefaultAsync(c => c.Id == id);
+            return await Context.Auteurs.Include(c => c.Livres).FirstOrDefaultAsync(c => c.Id == id);
         }
 
         public async Task<bool> Exists(int id)
@@ -54,7 +54,7 @@ namespace FilRougeBiblio.Infrastructure.Data
 
         public async Task<List<Auteur>> GetList(Expression<Func<Auteur, bool>> criteria)
         {
-            return await Context.Auteurs.Where(criteria).ToListAsync();
+            return await Context.Auteurs.Include(c => c.Livres).Where(criteria).ToListAsync();
         }
 
     }
