@@ -1,4 +1,5 @@
-﻿@model IEnumerable<FilRougeBiblio.Core.Entities.Lecteur>
+﻿@model IEnumerable<FilRougeBiblio.Core.Entities.Emprunt>
+@using FilRougeBiblio.Core.Entities;
 
 @{
     ViewData["Title"] = "Index";
@@ -7,7 +8,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Nouvel emprunt</a>
 </p>
 
 
@@ -15,27 +16,33 @@
 <thead>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nom)
+            Exemplaire (livre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Prenom)
+            Emprunteur
         </th>
-    </tr>
-</thead>
+            <th>
+                Date d'emprunt
+                </th>
+                <th>Date de retour</th>
+        </tr>
+        
+        </thead>
 <tbody>
     @foreach (var item in Model)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Nom)
+                @Html.DisplayFor(modelItem => item.Exemplaire.NumeroInventaire) 
+                --
+                @Html.DisplayFor(modelItem => item.Exemplaire.Livre.Titre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Prenom)
+                @Html.DisplayFor(modelItem => item.Lecteur.Nom)
             </td>
-            <td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.Id">Liste des livres emprunter</a>
-            </td>
+            <td>@item.DateEmprunt.ToString()</td>
+               
+                <td>@item.DateRetour.ToString()</td>
         </tr>
     }
 </tbody>

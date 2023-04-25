@@ -17,5 +17,7 @@ namespace FilRougeBiblio.Core.Entities
         public virtual List<MotClef> Tags { get; set; }
 
         public virtual List<Auteur> Auteurs { get; set;}
+
+        public virtual List<Exemplaire> Exemplaires { get; set; }
     }
 }
