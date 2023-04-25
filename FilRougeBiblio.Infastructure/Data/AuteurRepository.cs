@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FilRougeBiblio.Core.Seedwork;
+using System.Linq.Expressions;
 
 namespace FilRougeBiblio.Infrastructure.Data 
 {
@@ -50,5 +51,11 @@ namespace FilRougeBiblio.Infrastructure.Data
         {
             return Context.Auteurs == null;
         }
+
+        public async Task<List<Auteur>> GetList(Expression<Func<Auteur, bool>> criteria)
+        {
+            return await Context.Auteurs.Where(criteria).ToListAsync();
+        }
+
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,5 +17,6 @@ namespace FilRougeBiblio.Core.Seedwork
         Task Update(Theme theme);
         Task<bool> Exists(int id);
         Task<bool> IsEmpty();
+        Task<List<Theme>> GetList(Expression<Func<Theme, bool>> criteria);
     }
 }

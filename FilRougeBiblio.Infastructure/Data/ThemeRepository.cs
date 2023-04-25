@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FilRougeBiblio.Core.Seedwork;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace FilRougeBiblio.Infrastructure.Data
 {
@@ -54,7 +55,10 @@ namespace FilRougeBiblio.Infrastructure.Data
         public async Task<bool> IsEmpty()
         {
             return Context.Themes == null;
-        }        
-       
+        }
+        public async Task<List<Theme>> GetList(Expression<Func<Theme, bool>> criteria)
+        {
+            return await Context.Themes.Where(criteria).ToListAsync();
+        }
     }
 }

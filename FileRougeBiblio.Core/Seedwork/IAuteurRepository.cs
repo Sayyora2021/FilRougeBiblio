@@ -1,4 +1,5 @@
 ﻿using FilRougeBiblio.Core.Entities;
+using System.Linq.Expressions;
 
 namespace FilRougeBiblio.Core.Seedwork
 {
@@ -11,5 +12,6 @@ namespace FilRougeBiblio.Core.Seedwork
         Task Update(Auteur auteur);
         Task<bool> Exists(int id);
         Task<bool> IsEmpty();
+        Task<List<Auteur>> GetList(Expression<Func<Auteur, bool>> criteria);
     }
 }

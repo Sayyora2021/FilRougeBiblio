@@ -1,4 +1,5 @@
 ﻿using FilRougeBiblio.Core.Entities;
+using System.Linq.Expressions;
 
 namespace FilRougeBiblio.Core.Seedwork
 {
@@ -11,5 +12,6 @@ namespace FilRougeBiblio.Core.Seedwork
         Task Update(MotClef motclef);
         Task<bool> Exists(int id);
         Task<bool> IsEmpty();
+        Task<List<MotClef>> GetList(Expression<Func<MotClef, bool>> criteria);
     }
 }

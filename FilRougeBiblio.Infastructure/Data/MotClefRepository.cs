@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FilRougeBiblio.Core.Seedwork;
+using System.Linq.Expressions;
 
 namespace FilRougeBiblio.Infrastructure.Data 
 {
@@ -50,6 +51,15 @@ namespace FilRougeBiblio.Infrastructure.Data
         public async Task<bool> IsEmpty()
         {
             return Context.MotClefs == null;
+        }
+
+        //public async Task<List<MotClef>> GetBookTags(int[] tags)
+        //{
+        //    return await Context.MotClefs.Where(m => tags.Contains(m.Id)).ToListAsync();
+        //}
+        public async Task<List<MotClef>> GetList(Expression<Func<MotClef, bool>> criteria)
+        {
+            return await Context.MotClefs.Where(criteria).ToListAsync();
         }
     }
 }
