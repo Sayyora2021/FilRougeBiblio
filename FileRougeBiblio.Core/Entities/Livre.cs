@@ -9,7 +9,11 @@ namespace FilRougeBiblio.Core.Entities
 {
     public class Livre : Entity
     {
+        [Required]
+        [MaxLength(100)]
         public string ISBN { get; set; } = null!;
+        [Required]
+        [MaxLength(100)]
         public string Titre { get; set; } = null!;
         public virtual List<Theme> Themes { get; set; } = null!;
 

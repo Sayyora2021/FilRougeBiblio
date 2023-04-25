@@ -9,7 +9,8 @@ namespace FilRougeBiblio.Core.Entities
 {
     public class MotClef : Entity
     {
-    
+        [Required]
+        [MaxLength(50)]
         public string Tag { get; set; } = null!;
         public virtual List<Livre> Livres { get; set; } = null!;
     }
