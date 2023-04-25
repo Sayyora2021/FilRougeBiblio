@@ -33,7 +33,8 @@ namespace FilRougeBiblio.Infrastructure.Data
         }
         public async Task<List<Exemplaire>> ListAll()
         {
-            return await Context.Exemplaires.ToListAsync();
+            return await Context.Exemplaires.Include(t=>t.Id).ToListAsync();
+           
         }
         public async Task<Exemplaire> GetById(int id)
         {
