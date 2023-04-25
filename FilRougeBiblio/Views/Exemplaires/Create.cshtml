@@ -1,5 +1,5 @@
 ﻿@model FilRougeBiblio.Core.Entities.Exemplaire
-
+@using FilRougeBiblio.Core.Entities;
 @{
     ViewData["Title"] = "Create";
 }
@@ -23,9 +23,10 @@
                 <span asp-validation-for="MiseEnService" class="text-danger"></span>
             </div>*@
             <input asp-for="MiseEnService" type="hidden" value="@DateTime.Now">
+            <input asp-for="Livre" type="hidden" value="@(new Livre())">
             <div class="form-group">
                 <label asp-for="Livre" class="control-label"></label>
-                <select asp-for="Livre" asp-items="@(ViewBag.Livres as SelectList)"></select>
+                <select name="livreId" asp-items="@(ViewBag.Livres as SelectList)"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
