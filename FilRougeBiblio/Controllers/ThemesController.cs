@@ -38,7 +38,6 @@ namespace FilRougeBiblio.Controllers
             }
 
             var theme = await Repository.GetById(id.Value);
-                
             if (theme == null)
             {
                 return NotFound();
