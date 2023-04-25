@@ -43,6 +43,9 @@
             <td>@item.DateEmprunt.ToString()</td>
                
                 <td>@item.DateRetour.ToString()</td>
+                <td>
+                    <a asp-action="Rendre" asp-route-id="@item.Id">Rendre</a>
+                </td>
         </tr>
     }
 </tbody>
