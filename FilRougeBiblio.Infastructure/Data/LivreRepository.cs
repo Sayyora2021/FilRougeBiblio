@@ -39,7 +39,7 @@ namespace FilRougeBiblio.Infrastructure.Data
         }
         public async Task<Livre> GetById(int id)
         {
-            return await Context.Livres.Include(c => c.Auteurs).FirstOrDefaultAsync(c => c.Id == id);
+            return await Context.Livres.Include(c => c.Auteurs).Include(c => c.Tags).Include(c => c.Themes).FirstOrDefaultAsync(c => c.Id == id);
         }
 
         public async Task<bool> Exists(int id)

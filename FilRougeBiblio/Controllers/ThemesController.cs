@@ -58,7 +58,7 @@ namespace FilRougeBiblio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nom,Description,Id")] Theme theme)
+        public async Task<IActionResult> Create(Theme theme)
         {
             if (ModelState.IsValid)
             {
