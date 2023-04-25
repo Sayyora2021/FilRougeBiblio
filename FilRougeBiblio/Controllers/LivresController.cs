@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using FilRougeBiblio.Core.Entities;
 using FilRougeBiblio.Infrastructure.Data;
 using FilRougeBiblio.Core.Seedwork;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
 namespace FilRougeBiblio.Controllers
 {
@@ -191,5 +192,31 @@ namespace FilRougeBiblio.Controllers
         {
             return await LivreRepository.Exists(id);
         }
+
+        public async Task<IActionResult> Recherche()
+        {
+            await SetupViewBags();
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RechercheResultats(String ISBN, String Titre)
+        {
+
+            var r = await LivreRepository.ListAll();
+            if(ISBN != null && !String.IsNullOrWhiteSpace(ISBN))
+            {
+                r = r.Where(l => l.ISBN.ToLower().Contains(ISBN.ToLower())).ToList();
+            }
+            if (Titre != null && !String.IsNullOrWhiteSpace(Titre))
+            {
+                r = r.Where(l => l.Titre.ToLower().Contains(Titre.ToLower())).ToList();
+            }
+
+            return View(r);
+        }
+
+        
     }
 }
