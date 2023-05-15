@@ -1,0 +1,13 @@
+<div *ngIf="lecteurs" class="container">
+    <h2>Liste des lecteurs</h2>
+    <ul class="list-group">
+        <li *ngFor="let lecteur of lecteurs" class="list-group-item">
+            {{ lecteur.Nom }} {{ lecteur.Prenom }}
+            <div class="btn-group">
+                <button class="btn btn-primary">Modifier</button>
+                <button class="btn btn-danger">Supprimer</button>
+                <button class="btn btn-info">Détail</button>
+            </div>
+        </li>
+    </ul>
+</div>
