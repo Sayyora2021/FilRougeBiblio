@@ -96,8 +96,8 @@ namespace FilRougeBiblio.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
                     await Repository.Update(theme);
@@ -115,7 +115,7 @@ namespace FilRougeBiblio.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
+            //}
             return View(theme);
         }
 

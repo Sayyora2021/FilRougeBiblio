@@ -94,8 +94,8 @@ namespace FilRougeBiblio.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
                     await Repository.Update(lecteur);
@@ -112,7 +112,7 @@ namespace FilRougeBiblio.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
+            //}
             return View(lecteur);
         }
 
