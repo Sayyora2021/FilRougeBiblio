@@ -22,7 +22,7 @@ namespace FilRougeBiblio.API.Controllers
             Repository = repository;
         }
 
-        // GET: Auteurs
+        // GET: Themes
         [HttpGet,Route("")]
         public async Task<ActionResult<List<Theme>>> Index()
         {
@@ -31,7 +31,7 @@ namespace FilRougeBiblio.API.Controllers
                           Problem("Entity set 'FilRougeBiblioContext.Themes'  is null.");
         }
 
-        // GET: Auteurs/Details/5
+        // GET: Themes/Details/5
         [HttpGet, Route("Details/{id}")]
         public async Task<ActionResult<Theme>> Details(int? id)
         {
@@ -51,7 +51,7 @@ namespace FilRougeBiblio.API.Controllers
         }
 
 
-        // POST: Auteurs/Create
+        // POST: Themes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost,Route("Create")]
@@ -67,7 +67,7 @@ namespace FilRougeBiblio.API.Controllers
         }
 
 
-        // PUT: Auteurs/Edit/5
+        // PUT: Themes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPut,Route("Edit/{id}")]
@@ -103,7 +103,7 @@ namespace FilRougeBiblio.API.Controllers
 
 
 
-        // DELETE: Auteurs/Delete/5
+        // DELETE: Themes/Delete/5
         [HttpDelete,Route("Delete/{id}")]
         public async Task<ActionResult<Auteur>> DeleteConfirmed(int id)
         {
