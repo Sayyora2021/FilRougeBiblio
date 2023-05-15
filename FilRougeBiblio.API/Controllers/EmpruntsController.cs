@@ -3,6 +3,7 @@ using FilRougeBiblio.Core.Seedwork;
 using FilRougeBiblio.Infrastructure.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol;
 
 namespace FilRougeBiblio.API.Controllers
 {
@@ -21,6 +22,22 @@ namespace FilRougeBiblio.API.Controllers
             ExemplaireRepository = exemplaireRepository;
         }
 
+        [HttpGet, Route("")]
+        public async Task<IEnumerable<Emprunt>> Index()
+        {
+            return await EmpruntRepository.ListAll();
+        }
+
+        
+        [HttpPut, Route("Rendre")]
+        public async Task<ActionResult<Emprunt>> Rendre(int empruntId)
+        {
+            Emprunt e = await EmpruntRepository.GetById(empruntId);
+            if(e == null) { return BadRequest("EmpruntId invalide"); }
+
+            await EmpruntRepository.RemoveBookFromLecteur(e);
+            return Ok();
+        }
 
         [HttpPost, Route("Create")]
         public async Task<ActionResult<Emprunt>> Create(int lecteurId, int exemplaireId)
