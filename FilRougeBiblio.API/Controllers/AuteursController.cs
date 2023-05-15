@@ -55,7 +55,7 @@ namespace FilRougeBiblio.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost,Route("Create")]
-        [ValidateAntiForgeryToken]
+        
         public async Task<ActionResult<Auteur>> Create(Auteur auteur)
         {
             if (ModelState.IsValid)
@@ -72,7 +72,7 @@ namespace FilRougeBiblio.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPut,Route("Edit/{id}")]
-        [ValidateAntiForgeryToken]
+        
         public async Task<ActionResult<Auteur>> Edit(int id, [Bind("Prenom,Nom,Id")] Auteur auteur)
         {
             if (id != auteur.Id)
@@ -105,7 +105,7 @@ namespace FilRougeBiblio.API.Controllers
 
         // POST: Auteurs/Delete/5
         [HttpDelete,Route("Delete/{id}")]
-        [ValidateAntiForgeryToken]
+        
         public async Task<ActionResult<Auteur>> DeleteConfirmed(int id)
         {
             if (await Repository.IsEmpty())

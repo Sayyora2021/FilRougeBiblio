@@ -54,7 +54,7 @@ namespace FilRougeBiblio.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost,Route("Create")]
-        [ValidateAntiForgeryToken]
+        
         public async Task<ActionResult<MotClef>> Create(MotClef motClef)
         {
             if (ModelState.IsValid)
@@ -71,7 +71,7 @@ namespace FilRougeBiblio.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPut,Route("Edit/{id}")]
-        [ValidateAntiForgeryToken]
+        
         public async Task<ActionResult<MotClef>> Edit(int id, [Bind("Tag,Id")] MotClef motClef)
         {
             if (id != motClef.Id)
@@ -106,7 +106,7 @@ namespace FilRougeBiblio.API.Controllers
 
         // POST: MotClefs/Delete/5
         [HttpDelete, Route("Delete/{id}")]
-        [ValidateAntiForgeryToken]
+        
         public async Task<ActionResult<MotClef>> DeleteConfirmed(int id)
         {
             if (await Repository.IsEmpty())
