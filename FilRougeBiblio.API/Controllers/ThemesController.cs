@@ -13,41 +13,41 @@ namespace FilRougeBiblio.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuteursController : ControllerBase
+    public class ThemesController : ControllerBase
     {
-        private readonly IAuteurRepository Repository;
+        private readonly IThemeRepository Repository;
 
-        public AuteursController(IAuteurRepository repository)
+        public ThemesController(IThemeRepository repository)
         {
             Repository = repository;
         }
 
         // GET: Auteurs
         [HttpGet,Route("")]
-        public async Task<ActionResult<List<Auteur>>> Index()
+        public async Task<ActionResult<List<Theme>>> Index()
         {
             return !await Repository.IsEmpty() ?
                           await Repository.ListAll() :
-                          Problem("Entity set 'FilRougeBiblioContext.Auteurs'  is null.");
+                          Problem("Entity set 'FilRougeBiblioContext.Themes'  is null.");
         }
 
         // GET: Auteurs/Details/5
         [HttpGet, Route("Details/{id}")]
-        public async Task<ActionResult<Auteur>> Details(int? id)
+        public async Task<ActionResult<Theme>> Details(int? id)
         {
             if (id == null || await Repository.IsEmpty())
             {
                 return NotFound();
             }
 
-            var auteur = await Repository.GetById(id.Value);
+            var theme = await Repository.GetById(id.Value);
 
-            if (auteur == null)
+            if (theme == null)
             {
                 return NotFound();
             }
 
-            return auteur;
+            return theme;
         }
 
 
@@ -55,27 +55,25 @@ namespace FilRougeBiblio.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost,Route("Create")]
-        
-        public async Task<ActionResult<Auteur>> Create(Auteur auteur)
+        public async Task<ActionResult<Theme>> Create(Theme theme)
         {
             if (ModelState.IsValid)
             {
-                await Repository.Create(auteur);
+                await Repository.Create(theme);
 
-                return auteur;
+                return theme;
             }
-            return BadRequest();
+            return NoContent();
         }
 
 
-        // POST: Auteurs/Edit/5
+        // PUT: Auteurs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPut,Route("Edit/{id}")]
-        
-        public async Task<ActionResult<Auteur>> Edit(int id, [Bind("Prenom,Nom,Id")] Auteur auteur)
+        public async Task<ActionResult<Theme>> Edit(int id, Theme theme)
         {
-            if (id != auteur.Id)
+            if (id != theme.Id)
             {
                 return NotFound();
             }
@@ -84,12 +82,12 @@ namespace FilRougeBiblio.API.Controllers
             {
                 try
                 {
-                    await Repository.Create(auteur);
+                    await Repository.Create(theme);
 
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!await AuteurExists(auteur.Id))
+                    if (!await ThemeExists(theme.Id))
                     {
                         return NotFound();
                     }
@@ -98,32 +96,35 @@ namespace FilRougeBiblio.API.Controllers
                         throw;
                     }
                 }
-                return auteur;
+                return Ok();
             }
             return BadRequest();
         }
 
-        // POST: Auteurs/Delete/5
+
+
+        // DELETE: Auteurs/Delete/5
         [HttpDelete,Route("Delete/{id}")]
-        
         public async Task<ActionResult<Auteur>> DeleteConfirmed(int id)
         {
             if (await Repository.IsEmpty())
             {
-                return Problem("Entity set 'FilRougeBiblioContext.Auteurs'  is null.");
+                return Problem("Entity set 'FilRougeBiblioContext.Themes'  is null.");
             }
-            var auteur = await Repository.GetById(id);
-            if (auteur != null)
+            var theme = await Repository.GetById(id);
+            if (theme != null)
             {
-                await Repository.Delete(auteur);
+                await Repository.Delete(theme);
+                return Ok();
             }
-
-
-            return auteur;
+            else
+            {
+                return Problem("Erreur effacement");
+            }
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
-        private async Task<bool> AuteurExists(int id)
+        private async Task<bool> ThemeExists(int id)
         {
             return await Repository.Exists(id);
         }
