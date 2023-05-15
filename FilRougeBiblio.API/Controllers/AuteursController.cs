@@ -67,22 +67,6 @@ namespace FilRougeBiblio.API.Controllers
             return NoContent();
         }
 
-        // GET: Auteurs/Edit/5
-        [HttpGet,Route("Edit/{id}")]
-        public async Task<ActionResult<Auteur>> Edit(int? id)
-        {
-            if (id == null || await Repository.IsEmpty())
-            {
-                return NotFound();
-            }
-
-            var auteur = await Repository.GetById(id.Value);
-            if (auteur == null)
-            {
-                return NotFound();
-            }
-            return auteur;
-        }
 
         // POST: Auteurs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -116,25 +100,6 @@ namespace FilRougeBiblio.API.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return auteur;
-        }
-
-        // GET: Auteurs/Delete/5
-        [HttpGet,Route("Delete/{id}")]
-        public async Task<ActionResult<Auteur>> Delete(int? id)
-        {
-            if (id == null || await Repository.IsEmpty())
-            {
-                return NotFound();
-            }
-
-            var auteur = await Repository.GetById(id.Value);
-
-            if (auteur == null)
-            {
-                return NotFound();
-            }
-
             return auteur;
         }
 
