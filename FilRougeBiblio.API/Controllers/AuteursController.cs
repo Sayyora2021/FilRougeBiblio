@@ -54,7 +54,7 @@ namespace FilRougeBiblio.API.Controllers
         // POST: Auteurs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost,Route("/Create")]
+        [HttpPost,Route("Create")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult<Auteur>> Create(Auteur auteur)
         {
