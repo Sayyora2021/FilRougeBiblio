@@ -1,14 +1,11 @@
 ﻿using FilRougeBiblio.Core.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FilRougeBiblio.Core.Seedwork;
 using System.Linq.Expressions;
 
-namespace FilRougeBiblio.Infrastructure.Data 
+
+
+namespace FilRougeBiblio.Infrastructure.Data
 {
     public class LivreRepository : ILivreRepository
     {
@@ -46,8 +43,8 @@ namespace FilRougeBiblio.Infrastructure.Data
             await Context.SaveChangesAsync();
 
 
-            Context.Livres.Update(livre);
-            await Context.SaveChangesAsync();
+            //Context.Livres.Update(livre);
+            //await Context.SaveChangesAsync();
 
         }
         public async Task Update(Livre livre)
