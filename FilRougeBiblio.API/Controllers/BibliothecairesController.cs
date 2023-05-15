@@ -120,7 +120,6 @@ namespace FilRougeBiblio.API.Controllers
                 await Repository.Delete(bibliothecaire);
             }
 
-
             return bibliothecaire;
         }
 
