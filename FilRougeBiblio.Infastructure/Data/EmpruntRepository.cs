@@ -20,13 +20,13 @@ namespace FilRougeBiblio.Infrastructure.Data
         public async Task AddBookToLecteur(Emprunt emprunt)
         {
             // cotisation ok?
-            if(!emprunt.Lecteur.Cotisation) { return; }
+            if(!emprunt.Lecteur.Cotisation) { throw new Exception("Emprunt impossible: cotisation non payée."); }
 
             // pas plus de trois livres
-            if(emprunt.Lecteur.ListEmprunts.Where(e => e.DateRetourReel == null).ToList().Count >= 3) { return; }
+            if(emprunt.Lecteur.ListEmprunts.Where(e => e.DateRetourReel == null).ToList().Count >= 3) { throw new Exception("Emprunt impossible: nombre d'emprunt maximum atteint."); }
 
             // exemplaire disponible.
-            if(Context.Emprunts.Any(e => e.Exemplaire.Id == e.Exemplaire.Id && e.DateRetourReel == null)) { return; }
+            if(Context.Emprunts.Any(e => e.Exemplaire.Id == e.Exemplaire.Id && e.DateRetourReel == null)) { throw new Exception("Emprunt impossible: aucun exemplaire disponible."); }
 
             await Context.Emprunts.AddAsync(emprunt);
             await Context.SaveChangesAsync();
