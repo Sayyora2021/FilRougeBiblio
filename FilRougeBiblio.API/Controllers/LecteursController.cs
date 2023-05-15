@@ -61,9 +61,9 @@ namespace FilRougeBiblio.API.Controllers
             if (ModelState.IsValid)
             {
                 await Repository.Create(lecteur);
-                return RedirectToAction(nameof(Index));
+                return lecteur;
             }
-            return lecteur;
+            return BadRequest();
         }
 
         // POST: Lecteurs/Edit/5

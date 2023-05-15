@@ -60,9 +60,9 @@ namespace FilRougeBiblio.API.Controllers
             if (ModelState.IsValid)
             {
                 await Repository.Create(motClef);
-                return RedirectToAction(nameof(Index));
+                return motClef;
             }
-            return motClef;
+            return NoContent();
         }
 
         
@@ -97,9 +97,9 @@ namespace FilRougeBiblio.API.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return motClef;
             }
-            return motClef;
+            return BadRequest();
         }
 
        
