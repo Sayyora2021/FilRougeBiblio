@@ -33,7 +33,8 @@ namespace FilRougeBiblio.API.Controllers
         }
 
         // GET: MotClefs/Details/5
-        public async Task<IActionResult> Details(int? id)
+        [HttpGet, Route("Details/{id}")]
+        public async Task<ActionResult<MotClef>> Details(int? id)
         {
             if (id == null || await Repository.IsEmpty())
             {
@@ -46,32 +47,27 @@ namespace FilRougeBiblio.API.Controllers
                 return NotFound();
             }
 
-            return View(motClef);
-        }
-
-        // GET: MotClefs/Create
-        public IActionResult Create()
-        {
-            return View();
+            return motClef;
         }
 
         // POST: MotClefs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost,Route("Create")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(MotClef motClef)
+        public async Task<ActionResult<MotClef>> Create(MotClef motClef)
         {
             if (ModelState.IsValid)
             {
                 await Repository.Create(motClef);
                 return RedirectToAction(nameof(Index));
             }
-            return View(motClef);
+            return motClef;
         }
 
         // GET: MotClefs/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        [HttpGet, Route("Edit/{id}")]
+        public async Task<ActionResult<MotClef>> Edit(int? id)
         {
             if (id == null || await Repository.IsEmpty())
             {
@@ -83,15 +79,15 @@ namespace FilRougeBiblio.API.Controllers
             {
                 return NotFound();
             }
-            return View(motClef);
+            return motClef;
         }
 
         // POST: MotClefs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPut,Route("Edit/{id}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Tag,Id")] MotClef motClef)
+        public async Task<ActionResult<MotClef>> Edit(int id, [Bind("Tag,Id")] MotClef motClef)
         {
             if (id != motClef.Id)
             {
@@ -118,11 +114,12 @@ namespace FilRougeBiblio.API.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(motClef);
+            return motClef;
         }
 
         // GET: MotClefs/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        [HttpGet,Route("Delete/{id}")]
+        public async Task<ActionResult<MotClef>> Delete(int? id)
         {
             if (id == null || await Repository.IsEmpty())
             {
@@ -136,13 +133,13 @@ namespace FilRougeBiblio.API.Controllers
                 return NotFound();
             }
 
-            return View(motClef);
+            return motClef;
         }
 
         // POST: MotClefs/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpDelete, Route("Delete/{id}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<ActionResult<MotClef>> DeleteConfirmed(int id)
         {
             if (await Repository.IsEmpty())
             {
@@ -155,9 +152,9 @@ namespace FilRougeBiblio.API.Controllers
             }
 
 
-            return RedirectToAction(nameof(Index));
+            return motClef;
         }
-
+        [ApiExplorerSettings(IgnoreApi = true)]
         private async Task<bool> MotClefExists(int id)
         {
             return await Repository.Exists(id);
