@@ -13,69 +13,68 @@ namespace FilRougeBiblio.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuteursController : ControllerBase
+    public class MotClefsController : ControllerBase
     {
-        private readonly IAuteurRepository Repository;
 
-        public AuteursController(IAuteurRepository repository)
+        private readonly IMotClefRepository Repository;
+
+        public MotClefsController(IMotClefRepository repository)
         {
             Repository = repository;
         }
 
-        // GET: Auteurs
-        [HttpGet,Route("")]
-        public async Task<ActionResult<List<Auteur>>> Index()
+        // GET: MotClefs
+        [HttpGet, Route("")]
+        public async Task<ActionResult<List<MotClef>>> Index()
         {
             return !await Repository.IsEmpty() ?
-                          await Repository.ListAll() :
-                          Problem("Entity set 'FilRougeBiblioContext.Auteurs'  is null.");
+                        await Repository.ListAll() :
+                        Problem("Entity set 'FilRougeBiblioContext.MotClef'  is null.");
         }
 
-        // GET: Auteurs/Details/5
+        // GET: MotClefs/Details/5
         [HttpGet, Route("Details/{id}")]
-        public async Task<ActionResult<Auteur>> Details(int? id)
+        public async Task<ActionResult<MotClef>> Details(int? id)
         {
             if (id == null || await Repository.IsEmpty())
             {
                 return NotFound();
             }
 
-            var auteur = await Repository.GetById(id.Value);
-
-            if (auteur == null)
+            var motClef = await Repository.GetById(id.Value);
+            if (motClef == null)
             {
                 return NotFound();
             }
 
-            return auteur;
+            return motClef;
         }
 
-
-        // POST: Auteurs/Create
+        // POST: MotClefs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost,Route("Create")]
         
-        public async Task<ActionResult<Auteur>> Create(Auteur auteur)
+        public async Task<ActionResult<MotClef>> Create(MotClef motClef)
         {
             if (ModelState.IsValid)
             {
-                await Repository.Create(auteur);
-
-                return auteur;
+                await Repository.Create(motClef);
+                return RedirectToAction(nameof(Index));
             }
-            return NoContent();
+            return motClef;
         }
 
+        
 
-        // POST: Auteurs/Edit/5
+        // POST: MotClefs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPut,Route("Edit/{id}")]
         
-        public async Task<ActionResult<Auteur>> Edit(int id, [Bind("Prenom,Nom,Id")] Auteur auteur)
+        public async Task<ActionResult<MotClef>> Edit(int id, [Bind("Tag,Id")] MotClef motClef)
         {
-            if (id != auteur.Id)
+            if (id != motClef.Id)
             {
                 return NotFound();
             }
@@ -84,12 +83,12 @@ namespace FilRougeBiblio.API.Controllers
             {
                 try
                 {
-                    await Repository.Create(auteur);
+                    await Repository.Update(motClef);
 
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!await AuteurExists(auteur.Id))
+                    if (!await MotClefExists(motClef.Id))
                     {
                         return NotFound();
                     }
@@ -100,30 +99,31 @@ namespace FilRougeBiblio.API.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return auteur;
+            return motClef;
         }
 
-        // POST: Auteurs/Delete/5
-        [HttpDelete,Route("Delete/{id}")]
+       
+
+        // POST: MotClefs/Delete/5
+        [HttpDelete, Route("Delete/{id}")]
         
-        public async Task<ActionResult<Auteur>> DeleteConfirmed(int id)
+        public async Task<ActionResult<MotClef>> DeleteConfirmed(int id)
         {
             if (await Repository.IsEmpty())
             {
-                return Problem("Entity set 'FilRougeBiblioContext.Auteurs'  is null.");
+                return Problem("Entity set 'FilRougeBiblioContext.MotClef'  is null.");
             }
-            var auteur = await Repository.GetById(id);
-            if (auteur != null)
+            var motClef = await Repository.GetById(id);
+            if (motClef != null)
             {
-                await Repository.Delete(auteur);
+                await Repository.Delete(motClef);
             }
 
 
-            return auteur;
+            return motClef;
         }
-
         [ApiExplorerSettings(IgnoreApi = true)]
-        private async Task<bool> AuteurExists(int id)
+        private async Task<bool> MotClefExists(int id)
         {
             return await Repository.Exists(id);
         }
