@@ -64,26 +64,11 @@ namespace FilRougeBiblio.API.Controllers
 
                 return bibliothecaire;
             }
-            return NoContent();
+            return BadRequest();
         }
 
 
-        // GET: Auteurs/Edit/5
-        [HttpGet, Route("Edit/{id}")]
-        public async Task<ActionResult<Bibliothecaire>> Edit(int? id)
-        {
-            if (id == null || await Repository.IsEmpty())
-            {
-                return NotFound();
-            }
-
-            var bibliothecaire = await Repository.GetById(id.Value);
-            if (bibliothecaire == null)
-            {
-                return NotFound();
-            }
-            return bibliothecaire;
-        }
+        
         // POST: Bibliothecaire/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -114,27 +99,11 @@ namespace FilRougeBiblio.API.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return bibliothecaire;
             }
-            return bibliothecaire;
+            return BadRequest();
         }
        
-        //GET: DELETE: api/Bibliothecaires/5
-        [HttpDelete, Route("{id}")]
-        public async Task<ActionResult<Bibliothecaire>> Delete(int? id)
-        {
-            if (id == null|| await Repository.IsEmpty())
-            {
-                return NotFound();
-            }
-            var bibliothecaire = await Repository.GetById(id.Value);
-            if (bibliothecaire == null)
-            {
-                return NotFound();
-            }
-
-            return bibliothecaire;
-        }
 
         // POST: Bibliothecaire/Delete/5
         [HttpDelete, Route("Delete/{id}")]
