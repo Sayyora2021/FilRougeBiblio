@@ -64,7 +64,7 @@ namespace FilRougeBiblio.API.Controllers
 
                 return auteur;
             }
-            return NoContent();
+            return BadRequest();
         }
 
 
@@ -98,9 +98,9 @@ namespace FilRougeBiblio.API.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return auteur;
             }
-            return auteur;
+            return BadRequest();
         }
 
         // POST: Auteurs/Delete/5
