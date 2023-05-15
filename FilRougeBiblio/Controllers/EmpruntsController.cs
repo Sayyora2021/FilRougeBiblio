@@ -65,6 +65,9 @@ namespace FilRougeBiblio.Controllers
             };
 
             await EmpruntRepository.AddBookToLecteur(e);
+
+            
+
             return RedirectToAction(nameof(Index));
         }
         public async Task<IActionResult> Rendre(int? id)
