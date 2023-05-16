@@ -20,6 +20,7 @@ import { CreateExemplairesComponent } from 'src/Components/Exemplaire/create-exe
 import { DetailsExemplairesComponent } from 'src/Components/Exemplaire/details-exemplaires/details-exemplaires.component';
 import { DeleteExemplairesComponent } from 'src/Components/Exemplaire/delete-exemplaires/delete-exemplaires.component';
 import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exemplaires/update-exemplaires.component';
+import { UpdateMotclefsComponent } from 'src/Components/MotClefs/update-motclefs/update-motclefs.component';
 
 const routes: Routes = [{
   path: 'Lecteurs/Create',
@@ -41,7 +42,20 @@ component: CreateMotclefsComponent
 },{
   path: 'Lecteurs/Edit/:id',
   component: UpdateLecteursComponent
+},{
+  path: 'MotClefs/Details/:id',
+  component: DetailsMotclefsComponent
+},{
+  path: 'MotClefs/Delete/:id',
+  component: DeleteMotclefsComponent
+},{
+  path: 'MotClefs',
+  component: ListMotclefsComponent
 },
+{path: 'MotClefs/Edit/:id',
+component: UpdateMotclefsComponent
+},
+
 {path: 'Themes', component: ListThemesComponent},
 {
   path: 'Auteurs/Create',

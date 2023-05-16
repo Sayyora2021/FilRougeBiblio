@@ -22,12 +22,21 @@ export class MotclefsService {
     this.http.post<IMotClef>('https://localhost:7120/api/MotClefs/Create',motclef).subscribe();
     
   }
+  
   details(id:number) : Observable<IMotClef>{
     return this.http.get<IMotClef>('https://localhost:7120/api/MotClefs/Details/' + id);
   }
+
+
   delete(id:number){
     this.http.delete<IMotClef>('https://localhost:7120/api/MotClefs/Delete/'+id).subscribe();
   }
+
+  update(motclefs: IMotClef,id:number){
+    this.http.put<IMotClef>('https://localhost:7120/api/MotClefs/Edit/'+id,motclefs).subscribe();
+  }
+
+
   listAll() : Observable<IMotClef[]>{
 
     return this.http.get<IMotClef[]>('https://localhost:7120/api/MotClefs').pipe(
