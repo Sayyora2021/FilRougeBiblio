@@ -4,11 +4,11 @@ import { ITheme } from "./ITheme";
 import { IMotClef } from "./IMotClef";
 
 export interface ILivre {
-    Id: number,
-    ISBN: string,
-    Titre: string,
-    Themes: ITheme[],
-    Tags: IMotClef[],
-    Auteurs: IAuteur[],
-    Exemplaires: IExemplaire
+    id: number,
+    iSBN: string,
+    titre: string,
+    themes: ITheme[],
+    tags: IMotClef[],
+    auteurs: IAuteur[],
+    exemplaires: IExemplaire
 }

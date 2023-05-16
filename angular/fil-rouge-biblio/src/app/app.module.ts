@@ -8,13 +8,15 @@ import { FormsModule } from '@angular/forms';
 import { CreateLecteurComponent } from 'src/Components/Lecteur/create-lecteur/create-lecteur.component';
 import { CreateMotclefsComponent } from 'src/Components/MotClefs/create-motclefs/create-motclefs.component';
 import { ListLecteursComponent } from 'src/Components/Lecteur/list-lecteurs/list-lecteurs.component';
+import { DeleteLecteursComponent } from 'src/Components/Lecteur/delete-lecteurs/delete-lecteurs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateLecteurComponent,
     CreateMotclefsComponent,
-    ListLecteursComponent
+    ListLecteursComponent,
+    DeleteLecteursComponent
   ],
   imports: [
     BrowserModule,

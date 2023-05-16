@@ -1,8 +1,8 @@
 import { ILivre } from "./ILivre";
 
 export interface ITheme {
-    Id: number,
-    Nom: string,
-    Description: string,
-    Livres: ILivre[],
+    id: number,
+    nom: string,
+    description: string,
+    livres: ILivre[],
 }

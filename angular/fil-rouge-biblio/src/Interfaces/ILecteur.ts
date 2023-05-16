@@ -1,12 +1,12 @@
 import { IEmprunt } from "./IEmprunt";
 
 export interface ILecteur {
-    Id: number,
-    Nom: string,
-    Prenom: string,
-    Email: string,
-    Telephone: string,
-    Adresse: string,
-    Cotisation: boolean,
-    ListEmprunts: IEmprunt[]
+    id: number,
+    nom: string,
+    prenom: string,
+    email: string,
+    telephone: string,
+    adresse: string,
+    cotisation: boolean,
+    listEmprunts: IEmprunt[]
 }
