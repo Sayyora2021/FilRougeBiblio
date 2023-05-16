@@ -1,0 +1,23 @@
+<div *ngIf="motclefs" class="container">
+  <h2>Liste des tags</h2>
+  <a href="/MotClefs/Create" class="btn btn-primary">Ajouter un mot clef</a>
+  <ul class="list-group border border-black">
+    <li
+      *ngFor="let motclefs of motclefs"
+      class="list-group-item d-flex justify-content-between align-items-center border border-black"
+    >
+      <span class="list-group-item">{{ motclefs.id }} {{ motclefs.tag }}</span>
+      <div class="btn-group list-group-item">
+        <a href="/Lecteurs/Edit/{{ motclefs.id }}" class="btn btn-primary"
+          >Modifier</a
+        >
+        <a href="/Lecteurs/Delete/{{ motclefs.id }}" class="btn btn-danger"
+          >Supprimer</a
+        >
+        <a href="/Lecteurs/Details/{{ motclefs.id }}" class="btn btn-info"
+          >Details</a
+        >
+      </div>
+    </li>
+  </ul>
+</div>
