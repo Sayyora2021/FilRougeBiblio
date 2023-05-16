@@ -13,6 +13,7 @@ import { UpdateLecteursComponent } from 'src/Components/Lecteur/update-lecteurs/
 import { DetailsMotclefsComponent } from 'src/Components/MotClefs/details-motclefs/details-motclefs.component';
 import { DeleteMotclefsComponent } from 'src/Components/MotClefs/delete-motclefs/delete-motclefs.component';
 import { ListMotclefsComponent } from 'src/Components/MotClefs/list-motclefs/list-motclefs.component';
+import { AuteurService } from 'src/Services/auteur.service';
 import { ListThemesComponent } from 'src/Components/Themes/list-themes/list-themes.component';
 import { CreateAuteursComponent } from 'src/Components/Auteur/create-auteurs/create-auteurs.component';
 import { ListAuteursComponent } from 'src/Components/Auteur/list-auteurs/list-auteurs.component';
@@ -23,6 +24,8 @@ import { CreateExemplairesComponent } from 'src/Components/Exemplaire/create-exe
 import { DeleteExemplairesComponent } from 'src/Components/Exemplaire/delete-exemplaires/delete-exemplaires.component';
 import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exemplaires/update-exemplaires.component';
 import { UpdateMotclefsComponent } from 'src/Components/MotClefs/update-motclefs/update-motclefs.component';
+
+
 
 @NgModule({
   declarations: [
@@ -44,7 +47,23 @@ import { UpdateMotclefsComponent } from 'src/Components/MotClefs/update-motclefs
     ListExemplairesComponent,
     CreateExemplairesComponent,
     DeleteExemplairesComponent,
-    UpdateExemplairesComponent
+    UpdateExemplairesComponent,
+    CreateLecteurComponent,
+    CreateMotclefsComponent,
+    ListLecteursComponent,
+    DeleteLecteursComponent,
+    UpdateLecteursComponent,
+    ListThemesComponent,
+    CreateAuteursComponent,
+    ListAuteursComponent,
+    DeleteAuteursComponent,
+    UpdateAuteursComponent,
+    ListExemplairesComponent,
+    CreateExemplairesComponent,
+    DeleteExemplairesComponent,
+    UpdateExemplairesComponent,
+    
+    
   ],
   imports: [
     BrowserModule,

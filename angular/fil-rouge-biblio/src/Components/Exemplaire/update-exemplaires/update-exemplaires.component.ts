@@ -12,26 +12,27 @@ import { LivreService } from 'src/Services/livre.service';
 })
 export class UpdateExemplairesComponent {
 
-  exemplaire : IExemplaire = {} as IExemplaire;
+  exemplaire: IExemplaire = {} as IExemplaire;
   livres: ILivre[] = {} as ILivre[];
 
-  constructor(private exemplaireService: ExemplaireService, private router: Router, private activatedRoute: ActivatedRoute,private livreService: LivreService){
+  constructor(private exemplaireService: ExemplaireService, private router: Router, private activatedRoute: ActivatedRoute, private livreService: LivreService) {
     const id = activatedRoute.snapshot.paramMap.get('id');
-    if(id)
-    exemplaireService.details(parseInt(id)).subscribe(
-      (data: IExemplaire) => {
-        this.exemplaire = data;
-      });
-
-      livreService.listAll().subscribe(
-        (data: ILivre[]) => {
-          this.livres = data;
+    if (id)
+      exemplaireService.details(parseInt(id)).subscribe(
+        (data: IExemplaire) => {
+          this.exemplaire = data;
         });
+
+    livreService.listAll().subscribe(
+      (data: ILivre[]) => {
+        this.livres = data;
+      });
+      
 
   }
 
-  update(){
-    this.exemplaireService.update(this.exemplaire,this.exemplaire.id);
+  update() {
+    this.exemplaireService.update(this.exemplaire);
     this.router.navigate(['/Exemplaires']);
   }
 
