@@ -13,7 +13,9 @@ export class MotclefsService {
  
 
   create(motclef:IMotClef){
-    this.http.post<IMotClef>('https://localhost:7120/api/Lecteurs/Create',motclef).subscribe();
+    console.log(motclef);
+    
+    this.http.post<IMotClef>('https://localhost:7120/api/MotClefs/Create',motclef).subscribe();
     
   }
 }
