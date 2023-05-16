@@ -12,17 +12,14 @@ import { ListLecteursComponent } from 'src/Components/Lecteur/list-lecteurs/list
 import { CreateMotclefsComponent } from 'src/Components/MotClefs/create-motclefs/create-motclefs.component';
 import { ListThemesComponent } from 'src/Components/Themes/list-themes/list-themes.component';
 import { UpdateLecteursComponent } from 'src/Components/Lecteur/update-lecteurs/update-lecteurs.component';
-<<<<<<< HEAD
 import { DetailsMotclefsComponent } from 'src/Components/MotClefs/details-motclefs/details-motclefs.component';
 import { DeleteMotclefsComponent } from 'src/Components/MotClefs/delete-motclefs/delete-motclefs.component';
 import { ListMotclefsComponent } from 'src/Components/MotClefs/list-motclefs/list-motclefs.component';
-=======
 import { ListExemplairesComponent } from 'src/Components/Exemplaire/list-exemplaires/list-exemplaires.component';
 import { CreateExemplairesComponent } from 'src/Components/Exemplaire/create-exemplaires/create-exemplaires.component';
 import { DetailsExemplairesComponent } from 'src/Components/Exemplaire/details-exemplaires/details-exemplaires.component';
 import { DeleteExemplairesComponent } from 'src/Components/Exemplaire/delete-exemplaires/delete-exemplaires.component';
 import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exemplaires/update-exemplaires.component';
->>>>>>> ed9f18ff8769f6013d956991329e6553b9778e2b
 
 const routes: Routes = [{
   path: 'Lecteurs/Create',
@@ -44,20 +41,6 @@ component: CreateMotclefsComponent
 },{
   path: 'Lecteurs/Edit/:id',
   component: UpdateLecteursComponent
-<<<<<<< HEAD
-},{
-  path: 'MotClefs/Details/:id',
-  component: DetailsMotclefsComponent
-},{
-  path: 'MotClefs/Delete/:id',
-  component: DeleteMotclefsComponent
-},{
-  path: 'MotClefs',
-  component: ListMotclefsComponent
-}
-
-];
-=======
 },
 {path: 'Themes', component: ListThemesComponent},
 {
@@ -91,7 +74,6 @@ component: CreateMotclefsComponent
   path: 'Exemplaires/Edit/:id',
   component: UpdateExemplairesComponent
 }];
->>>>>>> ed9f18ff8769f6013d956991329e6553b9778e2b
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
