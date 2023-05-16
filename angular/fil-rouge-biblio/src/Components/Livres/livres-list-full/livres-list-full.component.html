@@ -1,0 +1,21 @@
+<h2>Liste des Livres</h2>
+<div *ngIf="livres" class="container">
+    
+    <ul class="list-group border border-black">
+        <li *ngFor="let livre of livres" class="list-group-item d-flex justify-content-between align-items-center border border-black">
+            
+                
+                <input [(ngModel)]="livre.isbn" type="text" value="livre.isbn" name="iSBNInput"/>
+                <input [(ngModel)]="livre.titre" type="text" value="livre.titre" name="titreInput"/>
+                <!--<span>Auteur: {{ livre.auteurs }}</span>
+                <span>Themes: {{ livre.auteurs }}</span>
+                <span>Mot Clef{{ livre.auteurs }}</span>-->
+
+            <div class="btn-group list-group-item">
+                
+                <!--<button (click)="update(livre)" class="btn btn-primary">Mettre à jour</button>-->
+                <button (click)="delete(livre)" class="btn btn-danger">Supprimer</button>
+            </div>
+        </li>
+    </ul>
+</div>

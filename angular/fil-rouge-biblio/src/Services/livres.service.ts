@@ -6,7 +6,7 @@ import { ILivre } from 'src/Interfaces/ILivre';
 @Injectable({
   providedIn: 'root'
 })
-export class LivreService {
+export class LivresService {
 
   path = 'https://localhost:7120/api/Livres';
 

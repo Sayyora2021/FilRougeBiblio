@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IExemplaire } from 'src/Interfaces/IExemplaire';
 import { ILivre } from 'src/Interfaces/ILivre';
 import { ExemplaireService } from 'src/Services/exemplaire.service';
-import { LivreService } from 'src/Services/livre.service';
+import { LivresService } from 'src/Services/livres.service';
 
 @Component({
   selector: 'app-update-exemplaires',
@@ -15,7 +15,7 @@ export class UpdateExemplairesComponent {
   exemplaire : IExemplaire = {} as IExemplaire;
   livres: ILivre[] = {} as ILivre[];
 
-  constructor(private exemplaireService: ExemplaireService, private router: Router, private activatedRoute: ActivatedRoute,private livreService: LivreService){
+  constructor(private exemplaireService: ExemplaireService, private router: Router, private activatedRoute: ActivatedRoute,private livresService: LivresService){
     const id = activatedRoute.snapshot.paramMap.get('id');
     if(id)
     exemplaireService.details(parseInt(id)).subscribe(
@@ -23,7 +23,7 @@ export class UpdateExemplairesComponent {
         this.exemplaire = data;
       });
 
-      livreService.listAll().subscribe(
+      livresService.listAll().subscribe(
         (data: ILivre[]) => {
           this.livres = data;
         });

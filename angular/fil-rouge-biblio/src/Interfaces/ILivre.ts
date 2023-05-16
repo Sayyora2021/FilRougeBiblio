@@ -5,10 +5,10 @@ import { IMotClef } from "./IMotClef";
 
 export interface ILivre {
     id: number,
-    iSBN: string,
+    isbn: string,
     titre: string,
     themes: ITheme[],
     tags: IMotClef[],
     auteurs: IAuteur[],
-    exemplaires: IExemplaire
+    exemplaires: IExemplaire[]
 }

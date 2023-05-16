@@ -23,7 +23,7 @@ import { ListExemplairesComponent } from 'src/Components/Exemplaire/list-exempla
 import { CreateExemplairesComponent } from 'src/Components/Exemplaire/create-exemplaires/create-exemplaires.component';
 import { DeleteExemplairesComponent } from 'src/Components/Exemplaire/delete-exemplaires/delete-exemplaires.component';
 import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exemplaires/update-exemplaires.component';
-
+import { LivresListFullComponent } from '../Components/Livres/livres-list-full/livres-list-full.component';
 
 
 @NgModule({
@@ -43,8 +43,7 @@ import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exe
     CreateExemplairesComponent,
     DeleteExemplairesComponent,
     UpdateExemplairesComponent,
-    
-    
+    LivresListFullComponent
   ],
   imports: [
     BrowserModule,
