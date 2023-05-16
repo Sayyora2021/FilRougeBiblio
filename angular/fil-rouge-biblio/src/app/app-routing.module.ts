@@ -56,7 +56,8 @@ component: CreateMotclefsComponent
 {path: 'MotClefs/Edit/:id',
 component: UpdateMotclefsComponent
 },
-{path: 'Themes', component: ListThemesComponent},
+{path: 'Themes',
+component: ListThemesComponent},
 {
   path: 'Auteurs/Create',
   component: CreateAuteursComponent
