@@ -79,19 +79,22 @@ namespace FilRougeBiblio.API.Controllers
         // PUT: Exemplaires/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPut,Route("Edit/{id}")]
-        public async Task<ActionResult<Exemplaire>> Edit(int id, Exemplaire exemplaire)
+        [HttpPut,Route("Edit")]
+        public async Task<ActionResult<Exemplaire>> Edit(int id, string numero, int livreId)
         {
-            if (id != exemplaire.Id)
+            Exemplaire exemplaire = new Exemplaire()
             {
-                return NotFound();
-            }
+                Id = id,
+                NumeroInventaire = numero,
+                MiseEnService = DateTime.Now,
+                Livre = await LivreRepository.GetById(livreId)
+            };
 
-            if (ModelState.IsValid)
+            if (id != 0)
             {
                 try
                 {
-                    await Repository.Create(exemplaire);
+                    await Repository.Update(exemplaire);
 
                 }
                 catch (DbUpdateConcurrencyException)

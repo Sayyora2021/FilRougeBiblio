@@ -29,8 +29,13 @@ export class ExemplaireService {
 
 
 
-  update(exemplaire:IExemplaire,id:number){
-    this.http.put<IExemplaire>(this.path + '/Edit/'+id,exemplaire).subscribe();
+  update(exemplaire:IExemplaire){
+    const body = {
+      id: exemplaire.id,
+      livreId: exemplaire.livre.id,
+      numero: exemplaire.numeroInventaire
+    };
+    this.http.put<IExemplaire>(this.path + `/Edit?numero=${exemplaire.numeroInventaire}&livreId=${exemplaire.livre.id}&id=${exemplaire.id}`,body).subscribe();
   }
 
 

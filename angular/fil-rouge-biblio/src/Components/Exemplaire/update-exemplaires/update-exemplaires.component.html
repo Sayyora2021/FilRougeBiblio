@@ -7,9 +7,9 @@
     </div>
 
     <div class="form-check">
-        <label class="form-check-label" for="livre">Livre</label>
-        <select name="livre" id="livre">
-            <option *ngFor="let livre of livres" value="livre">{{livre.titre}}</option>
+        <label class="form-check-label" for="livre">Livre : {{ exemplaire.livre.titre }}</label>
+        <select name="livre" id="livre" [(ngModel)]="exemplaire.livre" selected="exemplaire.livre">
+            <option *ngFor="let livre of livres" [ngValue]="livre">{{livre.titre}}</option>
         </select>
     </div>
 
