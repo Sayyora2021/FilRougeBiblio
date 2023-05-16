@@ -7,6 +7,9 @@ import { ListLecteursComponent } from 'src/Components/Lecteur/list-lecteurs/list
 import { CreateMotclefsComponent } from 'src/Components/MotClefs/create-motclefs/create-motclefs.component';
 
 import { UpdateLecteursComponent } from 'src/Components/Lecteur/update-lecteurs/update-lecteurs.component';
+import { DetailsMotclefsComponent } from 'src/Components/MotClefs/details-motclefs/details-motclefs.component';
+import { DeleteMotclefsComponent } from 'src/Components/MotClefs/delete-motclefs/delete-motclefs.component';
+import { ListMotclefsComponent } from 'src/Components/MotClefs/list-motclefs/list-motclefs.component';
 
 const routes: Routes = [{
   path: 'Lecteurs/Create',
@@ -28,7 +31,18 @@ component: CreateMotclefsComponent
 },{
   path: 'Lecteurs/Edit/:id',
   component: UpdateLecteursComponent
-}];
+},{
+  path: 'MotClefs/Details/:id',
+  component: DetailsMotclefsComponent
+},{
+  path: 'MotClefs/Delete/:id',
+  component: DeleteMotclefsComponent
+},{
+  path: 'MotClefs',
+  component: ListMotclefsComponent
+}
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

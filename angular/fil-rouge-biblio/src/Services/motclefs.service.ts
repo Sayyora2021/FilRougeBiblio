@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IMotClef } from 'src/Interfaces/IMotClef';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, map } from 'rxjs';
 
 
 
@@ -17,5 +18,20 @@ export class MotclefsService {
     
     this.http.post<IMotClef>('https://localhost:7120/api/MotClefs/Create',motclef).subscribe();
     
+  }
+  details(id:number) : Observable<IMotClef>{
+    return this.http.get<IMotClef>('https://localhost:7120/api/MotClefs/Details/' + id);
+  }
+  delete(id:number){
+    this.http.delete<IMotClef>('https://localhost:7120/api/MotClefs/Delete/'+id).subscribe();
+  }
+  listAll() : Observable<IMotClef[]>{
+
+    return this.http.get<IMotClef[]>('https://localhost:7120/api/MotClefs').pipe(
+    map((data: IMotClef[]) => {
+      return data;
+    })
+  );
+
   }
 }
