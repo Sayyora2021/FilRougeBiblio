@@ -10,13 +10,9 @@ import { CreateMotclefsComponent } from 'src/Components/MotClefs/create-motclefs
 import { ListLecteursComponent } from 'src/Components/Lecteur/list-lecteurs/list-lecteurs.component';
 import { DeleteLecteursComponent } from 'src/Components/Lecteur/delete-lecteurs/delete-lecteurs.component';
 import { UpdateLecteursComponent } from 'src/Components/Lecteur/update-lecteurs/update-lecteurs.component';
-<<<<<<< HEAD
 import { DetailsMotclefsComponent } from 'src/Components/MotClefs/details-motclefs/details-motclefs.component';
 import { DeleteMotclefsComponent } from 'src/Components/MotClefs/delete-motclefs/delete-motclefs.component';
 import { ListMotclefsComponent } from 'src/Components/MotClefs/list-motclefs/list-motclefs.component';
-
-
-=======
 import { ListThemesComponent } from 'src/Components/Themes/list-themes/list-themes.component';
 import { CreateAuteursComponent } from 'src/Components/Auteur/create-auteurs/create-auteurs.component';
 import { ListAuteursComponent } from 'src/Components/Auteur/list-auteurs/list-auteurs.component';
@@ -26,7 +22,7 @@ import { ListExemplairesComponent } from 'src/Components/Exemplaire/list-exempla
 import { CreateExemplairesComponent } from 'src/Components/Exemplaire/create-exemplaires/create-exemplaires.component';
 import { DeleteExemplairesComponent } from 'src/Components/Exemplaire/delete-exemplaires/delete-exemplaires.component';
 import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exemplaires/update-exemplaires.component';
->>>>>>> ed9f18ff8769f6013d956991329e6553b9778e2b
+import { UpdateMotclefsComponent } from 'src/Components/MotClefs/update-motclefs/update-motclefs.component';
 
 @NgModule({
   declarations: [
@@ -36,12 +32,10 @@ import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exe
     ListLecteursComponent,
     DeleteLecteursComponent,
     UpdateLecteursComponent,
-<<<<<<< HEAD
     DetailsMotclefsComponent,
     DeleteMotclefsComponent,
-    ListMotclefsComponent
-    
-=======
+    ListMotclefsComponent,
+    UpdateMotclefsComponent,
     ListThemesComponent,
     CreateAuteursComponent,
     ListAuteursComponent,
@@ -51,7 +45,6 @@ import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exe
     CreateExemplairesComponent,
     DeleteExemplairesComponent,
     UpdateExemplairesComponent
->>>>>>> ed9f18ff8769f6013d956991329e6553b9778e2b
   ],
   imports: [
     BrowserModule,
