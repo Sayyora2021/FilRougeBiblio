@@ -10,6 +10,10 @@ import { CreateMotclefsComponent } from 'src/Components/MotClefs/create-motclefs
 import { ListLecteursComponent } from 'src/Components/Lecteur/list-lecteurs/list-lecteurs.component';
 import { DeleteLecteursComponent } from 'src/Components/Lecteur/delete-lecteurs/delete-lecteurs.component';
 import { UpdateLecteursComponent } from 'src/Components/Lecteur/update-lecteurs/update-lecteurs.component';
+import { CreateAuteursComponent } from 'src/Components/Auteur/create-auteurs/create-auteurs.component';
+import { ListAuteursComponent } from 'src/Components/Auteur/list-auteurs/list-auteurs.component';
+import { DeleteAuteursComponent } from 'src/Components/Auteur/delete-auteurs/delete-auteurs.component';
+import { UpdateAuteursComponent } from 'src/Components/Auteur/update-auteurs/update-auteurs.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { UpdateLecteursComponent } from 'src/Components/Lecteur/update-lecteurs/
     CreateMotclefsComponent,
     ListLecteursComponent,
     DeleteLecteursComponent,
-    UpdateLecteursComponent
+    UpdateLecteursComponent,
+    CreateAuteursComponent,
+    ListAuteursComponent,
+    DeleteAuteursComponent,
+    UpdateAuteursComponent
   ],
   imports: [
     BrowserModule,
