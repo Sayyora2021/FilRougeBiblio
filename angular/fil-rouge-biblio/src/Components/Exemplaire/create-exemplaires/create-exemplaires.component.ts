@@ -23,11 +23,7 @@ export class CreateExemplairesComponent {
   }
 
   create(){
-
-    this.exemplaire.miseEnService = new Date().toISOString();
-
-    console.log(this.exemplaire);
-
+    
     this.exemplaireService.create(this.exemplaire);
     this.router.navigate(['/Exemplaires']);
   }

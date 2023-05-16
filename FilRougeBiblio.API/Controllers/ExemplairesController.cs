@@ -16,14 +16,16 @@ namespace FilRougeBiblio.API.Controllers
     public class ExemplairesController : ControllerBase
     {
         private readonly IExemplaireRepository Repository;
+        private readonly ILivreRepository LivreRepository;
 
-        public ExemplairesController(IExemplaireRepository repository)
+        public ExemplairesController(IExemplaireRepository repository, ILivreRepository livreRepository)
         {
             Repository = repository;
+            LivreRepository = livreRepository;
         }
 
         // GET: Exemplaires
-        [HttpGet,Route("")]
+        [HttpGet, Route("")]
         public async Task<ActionResult<List<Exemplaire>>> Index()
         {
             return !await Repository.IsEmpty() ?
@@ -54,11 +56,18 @@ namespace FilRougeBiblio.API.Controllers
         // POST: Exemplaires/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost,Route("Create")]
-        public async Task<ActionResult<Exemplaire>> Create(Exemplaire exemplaire)
+        [HttpPost, Route("Create")]
+        public async Task<ActionResult<Exemplaire>> Create(string numero, int livreId)
         {
-            if (ModelState.IsValid)
+            if (numero != "" && livreId != 0)
             {
+                Exemplaire exemplaire = new Exemplaire()
+                {
+                    NumeroInventaire = numero,
+                    MiseEnService = DateTime.Now,
+                    Livre = await LivreRepository.GetById(livreId)
+                };
+
                 await Repository.Create(exemplaire);
 
                 return exemplaire;

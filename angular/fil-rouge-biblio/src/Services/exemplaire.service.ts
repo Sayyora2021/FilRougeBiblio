@@ -18,7 +18,12 @@ export class ExemplaireService {
 
 
   create(exemplaire:IExemplaire){
-    this.http.post<IExemplaire>(this.path + '/Create',exemplaire).subscribe();
+    const body = {
+      livreId: exemplaire.livre.id,
+      numero: exemplaire.numeroInventaire
+    };
+    console.log(body);
+    this.http.post(this.path + `/Create?numero=${exemplaire.numeroInventaire}&livreId=${exemplaire.livre.id}`,body).subscribe();
   }
 
 

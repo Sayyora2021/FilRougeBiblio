@@ -1,17 +1,17 @@
 <form [(ngModel)]="exemplaire" class="container">
-    
-    <div class="form-group">
-      <label for="numeroInventaire">numero d'inventaire</label>
-      <input type="text" class="form-control" id="numeroInventaireInput" [(ngModel)]="exemplaire.numeroInventaire" name="numeroInventaire">
-    </div>
-    
-    <div class="form-check">
-      <label class="form-check-label" for="livre">Livre</label>
-      <select name="livre" id="livre" [(ngModel)]="exemplaire.livre" >
-        <option *ngFor="let livre of livres" [ngValue]="livre">{{livre.titre}}</option>
-      </select>
-    </div>
-    
-    
-    <button (click)="create()" class="btn btn-primary">Enregistrer</button>
-  </form>  
+
+  <div class="form-group">
+    <label for="numeroInventaire">numero d'inventaire</label>
+    <input type="text" class="form-control" id="numeroInventaireInput" [(ngModel)]="exemplaire.numeroInventaire"
+      name="numeroInventaire">
+  </div>
+
+  <div class="form-check">
+    <label class="form-check-label" for="livre">Livre</label>
+    <select name="livre" id="livre" [(ngModel)]="exemplaire.livre">
+      <option *ngFor="let livre of livres" [ngValue]="livre">{{livre.titre}}</option>
+    </select>
+  </div>
+
+  <button (click)="create()" class="btn btn-primary">Enregistrer</button>
+</form>
