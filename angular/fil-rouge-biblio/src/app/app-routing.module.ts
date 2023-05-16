@@ -11,7 +11,7 @@ const routes: Routes = [{
   path: 'Lecteurs',
   component: ListLecteursComponent
 },{
-  path: 'Lecteurs/Delete/{id}',
+  path: 'Lecteurs/Delete/:id',
   component: DeleteLecteursComponent
 }];
 
