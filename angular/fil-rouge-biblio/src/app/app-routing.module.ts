@@ -12,6 +12,11 @@ import { ListLecteursComponent } from 'src/Components/Lecteur/list-lecteurs/list
 import { CreateMotclefsComponent } from 'src/Components/MotClefs/create-motclefs/create-motclefs.component';
 
 import { UpdateLecteursComponent } from 'src/Components/Lecteur/update-lecteurs/update-lecteurs.component';
+import { ListExemplairesComponent } from 'src/Components/Exemplaire/list-exemplaires/list-exemplaires.component';
+import { CreateExemplairesComponent } from 'src/Components/Exemplaire/create-exemplaires/create-exemplaires.component';
+import { DetailsExemplairesComponent } from 'src/Components/Exemplaire/details-exemplaires/details-exemplaires.component';
+import { DeleteExemplairesComponent } from 'src/Components/Exemplaire/delete-exemplaires/delete-exemplaires.component';
+import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exemplaires/update-exemplaires.component';
 
 const routes: Routes = [{
   path: 'Lecteurs/Create',
@@ -48,6 +53,21 @@ component: CreateMotclefsComponent
 },{
   path: 'Auteurs/Edit/:id',
   component: UpdateAuteursComponent
+},{
+  path: 'Exemplaires',
+  component: ListExemplairesComponent
+},{
+  path: 'Exemplaires/Create',
+  component: CreateExemplairesComponent
+},{
+  path: 'Exemplaires/Details/:id',
+  component: DetailsExemplairesComponent
+},{
+  path: 'Exemplaires/Delete/:id',
+  component: DeleteExemplairesComponent
+},{
+  path: 'Exemplaires/Edit/:id',
+  component: UpdateExemplairesComponent
 }];
 
 @NgModule({

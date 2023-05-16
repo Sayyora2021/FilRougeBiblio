@@ -14,6 +14,10 @@ import { CreateAuteursComponent } from 'src/Components/Auteur/create-auteurs/cre
 import { ListAuteursComponent } from 'src/Components/Auteur/list-auteurs/list-auteurs.component';
 import { DeleteAuteursComponent } from 'src/Components/Auteur/delete-auteurs/delete-auteurs.component';
 import { UpdateAuteursComponent } from 'src/Components/Auteur/update-auteurs/update-auteurs.component';
+import { ListExemplairesComponent } from 'src/Components/Exemplaire/list-exemplaires/list-exemplaires.component';
+import { CreateExemplairesComponent } from 'src/Components/Exemplaire/create-exemplaires/create-exemplaires.component';
+import { DeleteExemplairesComponent } from 'src/Components/Exemplaire/delete-exemplaires/delete-exemplaires.component';
+import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exemplaires/update-exemplaires.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { UpdateAuteursComponent } from 'src/Components/Auteur/update-auteurs/upd
     CreateAuteursComponent,
     ListAuteursComponent,
     DeleteAuteursComponent,
-    UpdateAuteursComponent
+    UpdateAuteursComponent,
+    ListExemplairesComponent,
+    CreateExemplairesComponent,
+    DeleteExemplairesComponent,
+    UpdateExemplairesComponent
   ],
   imports: [
     BrowserModule,

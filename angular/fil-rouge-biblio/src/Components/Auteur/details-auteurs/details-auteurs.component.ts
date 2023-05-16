@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IAuteur } from 'src/Interfaces/IAuteur';
+import { ILivre } from 'src/Interfaces/ILivre';
 import { AuteurService } from 'src/Services/auteur.service';
 
 @Component({

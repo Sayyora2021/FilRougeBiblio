@@ -32,7 +32,7 @@ namespace FilRougeBiblio.API.Controllers
         }
 
         // GET: Lecteurs/Details/5
-        [HttpGet, Route("Detail/{id}")]
+        [HttpGet, Route("Details/{id}")]
         public async Task<ActionResult<Lecteur>> Details(int? id)
         {
             if (id == null || await Repository.IsEmpty())

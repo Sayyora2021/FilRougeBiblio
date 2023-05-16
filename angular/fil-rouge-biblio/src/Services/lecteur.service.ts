@@ -39,7 +39,7 @@ export class LecteurService {
 
 
   details(id:number) : Observable<ILecteur>{
-    return this.http.get<ILecteur>(this.path + '/Detail/' + id);
+    return this.http.get<ILecteur>(this.path + '/Details/' + id);
   }
 
 
