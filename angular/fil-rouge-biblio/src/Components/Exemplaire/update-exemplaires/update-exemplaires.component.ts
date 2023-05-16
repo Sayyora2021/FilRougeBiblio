@@ -12,7 +12,7 @@ import { LivresService } from 'src/Services/livres.service';
 })
 export class UpdateExemplairesComponent {
 
-  exemplaire : IExemplaire = {} as IExemplaire;
+  exemplaire: IExemplaire = {} as IExemplaire;
   livres: ILivre[] = {} as ILivre[];
 
   constructor(private exemplaireService: ExemplaireService, private router: Router, private activatedRoute: ActivatedRoute,private livresService: LivresService){
@@ -28,10 +28,16 @@ export class UpdateExemplairesComponent {
           this.livres = data;
         });
 
+    livresService.listAll().subscribe(
+      (data: ILivre[]) => {
+        this.livres = data;
+      });
+      
+
   }
 
-  update(){
-    this.exemplaireService.update(this.exemplaire,this.exemplaire.id);
+  update() {
+    this.exemplaireService.update(this.exemplaire);
     this.router.navigate(['/Exemplaires']);
   }
 

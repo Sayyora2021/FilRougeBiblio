@@ -4,11 +4,11 @@ import { IMotClef } from 'src/Interfaces/IMotClef';
 import { MotclefsService } from 'src/Services/motclefs.service';
 
 @Component({
-  selector: 'app-delete-motclefs',
-  templateUrl: './delete-motclefs.component.html',
-  styleUrls: ['./delete-motclefs.component.css']
+  selector: 'app-update-motclefs',
+  templateUrl: './update-motclefs.component.html',
+  styleUrls: ['./update-motclefs.component.css']
 })
-export class DeleteMotclefsComponent {
+export class UpdateMotclefsComponent {
   motclefs : IMotClef = {id:0,tag:'',livres:[]};
 
   constructor(private motclefsService: MotclefsService, private router: Router, private activatedRoute: ActivatedRoute){
@@ -20,8 +20,8 @@ export class DeleteMotclefsComponent {
       });
   }
 
-  delete(){
-    this.motclefsService.delete(this.motclefs.id);
+  update(){
+    this.motclefsService.update(this.motclefs);
     this.router.navigate(['/MotClefs']);
   }
 }

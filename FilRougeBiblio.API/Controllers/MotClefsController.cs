@@ -70,16 +70,18 @@ namespace FilRougeBiblio.API.Controllers
         // POST: MotClefs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPut,Route("Edit/{id}")]
+        [HttpPut,Route("Edit")]
         
-        public async Task<ActionResult<MotClef>> Edit(int id, [Bind("Tag,Id")] MotClef motClef)
+        public async Task<ActionResult<MotClef>> Edit(int id,string tag)
         {
-            if (id != motClef.Id)
+            MotClef motClef = new MotClef()
             {
-                return NotFound();
-            }
+                Id = id,
+                Tag = tag,
+                Livres = new List<Livre>()
+            };
 
-            if (ModelState.IsValid)
+            if (id != 0)
             {
                 try
                 {

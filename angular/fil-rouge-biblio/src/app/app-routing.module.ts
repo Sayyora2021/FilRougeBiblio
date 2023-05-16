@@ -21,6 +21,7 @@ import { DetailsExemplairesComponent } from 'src/Components/Exemplaire/details-e
 import { DeleteExemplairesComponent } from 'src/Components/Exemplaire/delete-exemplaires/delete-exemplaires.component';
 import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exemplaires/update-exemplaires.component';
 import { LivresListFullComponent } from 'src/Components/Livres/livres-list-full/livres-list-full.component';
+import { UpdateMotclefsComponent } from 'src/Components/MotClefs/update-motclefs/update-motclefs.component';
 
 const routes: Routes = [{
   path: 'Lecteurs/Create',
@@ -42,6 +43,18 @@ component: CreateMotclefsComponent
 },{
   path: 'Lecteurs/Edit/:id',
   component: UpdateLecteursComponent
+},{
+  path: 'MotClefs/Details/:id',
+  component: DetailsMotclefsComponent
+},{
+  path: 'MotClefs/Delete/:id',
+  component: DeleteMotclefsComponent
+},{
+  path: 'MotClefs',
+  component: ListMotclefsComponent
+},
+{path: 'MotClefs/Edit/:id',
+component: UpdateMotclefsComponent
 },
 {path: 'Themes', component: ListThemesComponent},
 {
@@ -75,9 +88,11 @@ component: CreateMotclefsComponent
   path: 'Exemplaires/Edit/:id',
   component: UpdateExemplairesComponent
 },
-{ path:'Livres', component: LivresListFullComponent }
-
-];
+{ path:'Livres', component: LivresListFullComponent },
+{
+path: 'MotClefs/Edit/:id',
+component: UpdateMotclefsComponent
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

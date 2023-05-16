@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IMotClef } from 'src/Interfaces/IMotClef';
 import { MotclefsService } from 'src/Services/motclefs.service';
 
@@ -7,13 +7,16 @@ import { MotclefsService } from 'src/Services/motclefs.service';
   templateUrl: './list-motclefs.component.html',
   styleUrls: ['./list-motclefs.component.css']
 })
-export class ListMotclefsComponent {
+export class ListMotclefsComponent implements OnInit{
 motclefs?: IMotClef[];
 constructor(private motclefsService: MotclefsService){
-  this.motclefsService.listAll().subscribe(
-    (data: IMotClef[])=>{
-      this.motclefs=data;
-    }
-  )
+  
 }
+  ngOnInit(): void {
+    this.motclefsService.listAll().subscribe(
+      (data: IMotClef[])=>{
+        this.motclefs=data;
+      }
+    )
+  }
 }

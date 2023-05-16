@@ -24,11 +24,31 @@ import { CreateExemplairesComponent } from 'src/Components/Exemplaire/create-exe
 import { DeleteExemplairesComponent } from 'src/Components/Exemplaire/delete-exemplaires/delete-exemplaires.component';
 import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exemplaires/update-exemplaires.component';
 import { LivresListFullComponent } from '../Components/Livres/livres-list-full/livres-list-full.component';
+import { UpdateMotclefsComponent } from 'src/Components/MotClefs/update-motclefs/update-motclefs.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    CreateLecteurComponent,
+    CreateMotclefsComponent,
+    ListLecteursComponent,
+    DeleteLecteursComponent,
+    UpdateLecteursComponent,
+    DetailsMotclefsComponent,
+    DeleteMotclefsComponent,
+    ListMotclefsComponent,
+    UpdateMotclefsComponent,
+    ListThemesComponent,
+    CreateAuteursComponent,
+    ListAuteursComponent,
+    DeleteAuteursComponent,
+    UpdateAuteursComponent,
+    ListExemplairesComponent,
+    CreateExemplairesComponent,
+    DeleteExemplairesComponent,
+    UpdateExemplairesComponent,
     CreateLecteurComponent,
     CreateMotclefsComponent,
     ListLecteursComponent,
