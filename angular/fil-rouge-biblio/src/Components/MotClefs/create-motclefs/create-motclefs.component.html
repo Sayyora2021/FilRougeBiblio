@@ -1,15 +1,15 @@
-<form [(ngModel)]="motclef" class="container">
+<form class="container">
   <div class="form-group">
     <label for="nomInput">Tag</label>
     <input
       type="text"
       class="form-control"
       id="nomInput"
-      [(ngModel)]="motclef.tag"
-      tag="Tag"
+      [(ngModel)]="tag"
+      [ngModelOptions]="{ standalone: true }"
     />
   </div>
-
+  <p>{{ tag }}</p>
   <!-- <div class="form-group">
       <label for="prenomInput">Prénom</label>
       <input type="text" class="form-control" id="prenomInput" [(ngModel)]="lecteur.Prenom" name="Prenom">

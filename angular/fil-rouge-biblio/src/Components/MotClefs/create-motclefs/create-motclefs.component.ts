@@ -12,13 +12,16 @@ import { FormsModule } from '@angular/forms';
 })
 export class CreateMotclefsComponent {
 
-  motclef: IMotClef = {tag:'', livres:[], id: 0}
-
   constructor(private motclefsService: MotclefsService){
 
   }
+ tag?:string;
+  
   create(){
+   console.log(this.tag);
+   if(this.tag!= undefined){
+    this.motclefsService.create({tag:this.tag, livres:[], id: 0})
+   }
     
-    this.motclefsService.create(this.motclef);
   }
 }
