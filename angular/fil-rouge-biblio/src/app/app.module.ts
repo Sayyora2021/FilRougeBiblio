@@ -9,6 +9,7 @@ import { CreateLecteurComponent } from 'src/Components/Lecteur/create-lecteur/cr
 import { CreateMotclefsComponent } from 'src/Components/MotClefs/create-motclefs/create-motclefs.component';
 import { ListLecteursComponent } from 'src/Components/Lecteur/list-lecteurs/list-lecteurs.component';
 import { DeleteLecteursComponent } from 'src/Components/Lecteur/delete-lecteurs/delete-lecteurs.component';
+import { UpdateLecteursComponent } from 'src/Components/Lecteur/update-lecteurs/update-lecteurs.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DeleteLecteursComponent } from 'src/Components/Lecteur/delete-lecteurs/
     CreateLecteurComponent,
     CreateMotclefsComponent,
     ListLecteursComponent,
-    DeleteLecteursComponent
+    DeleteLecteursComponent,
+    UpdateLecteursComponent
   ],
   imports: [
     BrowserModule,
