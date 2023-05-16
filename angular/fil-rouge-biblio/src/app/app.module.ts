@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -10,7 +10,7 @@ import { CreateMotclefsComponent } from 'src/Components/MotClefs/create-motclefs
 import { ListLecteursComponent } from 'src/Components/Lecteur/list-lecteurs/list-lecteurs.component';
 import { DeleteLecteursComponent } from 'src/Components/Lecteur/delete-lecteurs/delete-lecteurs.component';
 import { UpdateLecteursComponent } from 'src/Components/Lecteur/update-lecteurs/update-lecteurs.component';
-
+import { ListThemesComponent } from 'src/Components/Themes/list-themes/list-themes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +18,8 @@ import { UpdateLecteursComponent } from 'src/Components/Lecteur/update-lecteurs/
     CreateMotclefsComponent,
     ListLecteursComponent,
     DeleteLecteursComponent,
-    UpdateLecteursComponent
+    UpdateLecteursComponent,
+    ListThemesComponent
   ],
   imports: [
     BrowserModule,
