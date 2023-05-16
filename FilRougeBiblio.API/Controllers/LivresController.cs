@@ -100,7 +100,6 @@ namespace FilRougeBiblio.API.Controllers
 
         // POST: Livres/Delete/5
         [HttpDelete, Route("Delete/{id}")]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult<Livre>> DeleteConfirmed(int id)
         {
             if (await LivreRepository.IsEmpty())

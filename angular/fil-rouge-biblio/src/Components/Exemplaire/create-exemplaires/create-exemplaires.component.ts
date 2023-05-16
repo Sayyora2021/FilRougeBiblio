@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { IExemplaire } from 'src/Interfaces/IExemplaire';
 import { ILivre } from 'src/Interfaces/ILivre';
 import { ExemplaireService } from 'src/Services/exemplaire.service';
-import { LivreService } from 'src/Services/livre.service';
+import { LivresService } from 'src/Services/livres.service';
 
 @Component({
   selector: 'app-create-exemplaires',
@@ -15,8 +15,8 @@ export class CreateExemplairesComponent {
   exemplaire: IExemplaire = {} as IExemplaire;
   livres: ILivre[] = {} as ILivre[];
 
-  constructor(private exemplaireService: ExemplaireService,private router: Router,private livreService: LivreService){
-    livreService.listAll().subscribe(
+  constructor(private exemplaireService: ExemplaireService,private router: Router,private livresService: LivresService){
+    livresService.listAll().subscribe(
       (data: ILivre[]) => {
         this.livres = data;
       });
