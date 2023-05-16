@@ -21,6 +21,7 @@ import { DetailsExemplairesComponent } from 'src/Components/Exemplaire/details-e
 import { DeleteExemplairesComponent } from 'src/Components/Exemplaire/delete-exemplaires/delete-exemplaires.component';
 import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exemplaires/update-exemplaires.component';
 import { UpdateMotclefsComponent } from 'src/Components/MotClefs/update-motclefs/update-motclefs.component';
+import { ListEmpruntsComponent } from 'src/Components/Emprunt/list-emprunts/list-emprunts.component';
 
 const routes: Routes = [{
   path: 'Lecteurs/Create',
@@ -91,6 +92,10 @@ component: ListThemesComponent},
 {
 path: 'MotClefs/Edit/:id',
 component: UpdateMotclefsComponent
+},
+{
+path: 'Emprunts',
+component: ListEmpruntsComponent
 }];
 
 @NgModule({

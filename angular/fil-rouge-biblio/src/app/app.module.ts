@@ -24,6 +24,7 @@ import { CreateExemplairesComponent } from 'src/Components/Exemplaire/create-exe
 import { DeleteExemplairesComponent } from 'src/Components/Exemplaire/delete-exemplaires/delete-exemplaires.component';
 import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exemplaires/update-exemplaires.component';
 import { UpdateMotclefsComponent } from 'src/Components/MotClefs/update-motclefs/update-motclefs.component';
+import { ListEmpruntsComponent } from 'src/Components/Emprunt/list-emprunts/list-emprunts.component';
 
 
 
@@ -62,6 +63,7 @@ import { UpdateMotclefsComponent } from 'src/Components/MotClefs/update-motclefs
     CreateExemplairesComponent,
     DeleteExemplairesComponent,
     UpdateExemplairesComponent,
+    ListEmpruntsComponent
     
     
   ],

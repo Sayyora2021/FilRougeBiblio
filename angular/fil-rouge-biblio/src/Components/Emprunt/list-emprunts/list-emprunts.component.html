@@ -1,0 +1,13 @@
+<div *ngIf="emprunts" class="container">
+    <h2>Liste des emprunts</h2>
+    <a href="/Emprunts/Create" class="btn btn-primary">Ajouter un emprunt</a>
+    <ul class="list-group border border-black">
+        <li *ngFor="let emprunt of emprunts" class="list-group-item d-flex justify-content-between align-items-center border border-black">
+            <span class="list-group-item">{{ emprunt.exemplaire.livre.titre }} | {{ emprunt.lecteur.nom }} | {{ emprunt.lecteur.prenom }} | {{ emprunt.dateEmprunt }} | {{ emprunt.dateRetour }}</span>
+            <div class="btn-group list-group-item">
+                <button *ngIf="emprunt.dateRetourReel == null" (click)="rendre(emprunt.id)" class="btn btn-primary">Rendre</button>
+                <label *ngIf="emprunt.dateRetourReel != null">Date retour réel : {{ emprunt.dateRetourReel }}</label>
+            </div>
+        </li>
+    </ul>
+</div>
