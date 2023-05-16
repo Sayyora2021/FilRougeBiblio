@@ -21,7 +21,7 @@ export class UpdateMotclefsComponent {
   }
 
   update(){
-    this.motclefsService.update(this.motclefs,this.motclefs.id);
+    this.motclefsService.update(this.motclefs);
     this.router.navigate(['/MotClefs']);
   }
 }

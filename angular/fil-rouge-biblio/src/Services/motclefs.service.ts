@@ -32,10 +32,6 @@ export class MotclefsService {
     this.http.delete<IMotClef>('https://localhost:7120/api/MotClefs/Delete/'+id).subscribe();
   }
 
-  update(motclefs: IMotClef,id:number){
-    this.http.put<IMotClef>('https://localhost:7120/api/MotClefs/Edit/'+id,motclefs).subscribe();
-  }
-
 
   listAll() : Observable<IMotClef[]>{
 
