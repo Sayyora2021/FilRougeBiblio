@@ -73,6 +73,10 @@ component: CreateMotclefsComponent
 },{
   path: 'Exemplaires/Edit/:id',
   component: UpdateExemplairesComponent
+},
+{
+path: 'MotClefs/Edit/:id',
+component: UpdateExemplairesComponent
 }];
 
 @NgModule({
