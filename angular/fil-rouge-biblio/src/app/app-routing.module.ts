@@ -10,7 +10,7 @@ import { DeleteLecteursComponent } from 'src/Components/Lecteur/delete-lecteurs/
 import { DetailsLecteursComponent } from 'src/Components/Lecteur/details-lecteurs/details-lecteurs.component';
 import { ListLecteursComponent } from 'src/Components/Lecteur/list-lecteurs/list-lecteurs.component';
 import { CreateMotclefsComponent } from 'src/Components/MotClefs/create-motclefs/create-motclefs.component';
-
+import { ListThemesComponent } from 'src/Components/Themes/list-themes/list-themes.component';
 import { UpdateLecteursComponent } from 'src/Components/Lecteur/update-lecteurs/update-lecteurs.component';
 import { ListExemplairesComponent } from 'src/Components/Exemplaire/list-exemplaires/list-exemplaires.component';
 import { CreateExemplairesComponent } from 'src/Components/Exemplaire/create-exemplaires/create-exemplaires.component';
@@ -38,7 +38,9 @@ component: CreateMotclefsComponent
 },{
   path: 'Lecteurs/Edit/:id',
   component: UpdateLecteursComponent
-},{
+},
+{path: 'Themes', component: ListThemesComponent},
+{
   path: 'Auteurs/Create',
   component: CreateAuteursComponent
 },{

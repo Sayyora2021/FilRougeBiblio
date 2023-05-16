@@ -1,0 +1,31 @@
+<h2>Liste des thèmes</h2>
+<div *ngIf="themes" class="container">
+    
+    <ul class="list-group border border-black">
+        <li *ngFor="let theme of themes" class="list-group-item d-flex justify-content-between align-items-center border border-black">
+            <span class="list-group-item">
+                <input [(ngModel)]="theme.nom" type="text" value="theme.nom" name="nomInput"/>
+                <input [(ngModel)]="theme.description" type="text" value="theme.description" name="descriptionInput"/>
+            </span>
+            <div class="btn-group list-group-item">
+                <button (click)="voirLivres(theme)" class="btn btn-success">Voir livres ({{ theme.livres.length}})</button>
+                <button (click)="update(theme)" class="btn btn-primary">Mettre à jour</button>
+                <button (click)="delete(theme)" class="btn btn-danger">Supprimer</button>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<form [(ngModel)]="nouveauTheme" class="container" name="nouveauTheme">
+    <div class="form-group">
+        <label for="nomInput">Nom</label>
+        <input type="text" class="form-control" id="nomInput" [(ngModel)]="nouveauTheme.nom" name="Nom">
+      </div>
+      
+      <div class="form-group">
+        <label for="descriptionInput">Description</label>
+        <input type="text" class="form-control" id="descriptionInput" [(ngModel)]="nouveauTheme.description" name="Description">
+      </div>
+      <button type="submit" (click)="create()" class="btn btn-primary">Enregistrer</button>
+</form>
+
