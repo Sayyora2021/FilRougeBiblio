@@ -11,11 +11,14 @@ import { Observable, map } from 'rxjs';
 export class MotclefsService {
 
   constructor(private http: HttpClient) { }
- 
+
+  update(motclef:IMotClef){
+    
+    this.http.put<IMotClef>(`https://localhost:7120/api/MotClefs/Edit?id=${motclef.id}&tag=${motclef.tag}`,motclef).subscribe();
+    
+  }
 
   create(motclef:IMotClef){
-    console.log(motclef);
-    
     this.http.post<IMotClef>('https://localhost:7120/api/MotClefs/Create',motclef).subscribe();
     
   }
