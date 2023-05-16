@@ -64,7 +64,8 @@ import { ListEmpruntsComponent } from 'src/Components/Emprunt/list-emprunts/list
     CreateExemplairesComponent,
     DeleteExemplairesComponent,
     UpdateExemplairesComponent,
-    ListEmpruntsComponent
+    ListEmpruntsComponent,
+    LivresListFullComponent
     
     
   ],
