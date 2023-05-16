@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CreateAuteursComponent } from 'src/Components/Auteur/create-auteurs/create-auteurs.component';
+import { DeleteAuteursComponent } from 'src/Components/Auteur/delete-auteurs/delete-auteurs.component';
+import { DetailsAuteursComponent } from 'src/Components/Auteur/details-auteurs/details-auteurs.component';
+import { ListAuteursComponent } from 'src/Components/Auteur/list-auteurs/list-auteurs.component';
+import { UpdateAuteursComponent } from 'src/Components/Auteur/update-auteurs/update-auteurs.component';
 import { CreateLecteurComponent } from 'src/Components/Lecteur/create-lecteur/create-lecteur.component';
 import { DeleteLecteursComponent } from 'src/Components/Lecteur/delete-lecteurs/delete-lecteurs.component';
 import { DetailsLecteursComponent } from 'src/Components/Lecteur/details-lecteurs/details-lecteurs.component';
@@ -29,8 +34,23 @@ component: CreateMotclefsComponent
   path: 'Lecteurs/Edit/:id',
   component: UpdateLecteursComponent
 },
-{path: 'Themes', component: ListThemesComponent}
-];
+{path: 'Themes', component: ListThemesComponent},
+{
+  path: 'Auteurs/Create',
+  component: CreateAuteursComponent
+},{
+  path: 'Auteurs',
+  component: ListAuteursComponent
+},{
+  path: 'Auteurs/Details/:id',
+  component: DetailsAuteursComponent
+},{
+  path: 'Auteurs/Delete/:id',
+  component: DeleteAuteursComponent
+},{
+  path: 'Auteurs/Edit/:id',
+  component: UpdateAuteursComponent
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
