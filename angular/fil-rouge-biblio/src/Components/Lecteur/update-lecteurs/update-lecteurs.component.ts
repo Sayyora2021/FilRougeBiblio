@@ -4,11 +4,11 @@ import { ILecteur } from 'src/Interfaces/ILecteur';
 import { LecteurService } from 'src/Services/lecteur.service';
 
 @Component({
-  selector: 'app-delete-lecteurs',
-  templateUrl: './delete-lecteurs.component.html',
-  styleUrls: ['./delete-lecteurs.component.css']
+  selector: 'app-update-lecteurs',
+  templateUrl: './update-lecteurs.component.html',
+  styleUrls: ['./update-lecteurs.component.css']
 })
-export class DeleteLecteursComponent {
+export class UpdateLecteursComponent {
 
   lecteur : ILecteur = {id:0,adresse:'',cotisation:false,email:'',listEmprunts:[],nom:'',prenom:'',telephone:''};
 
@@ -21,8 +21,8 @@ export class DeleteLecteursComponent {
       });
   }
 
-  delete(){
-    this.lecteurService.delete(this.lecteur.id);
+  update(){
+    this.lecteurService.update(this.lecteur,this.lecteur.id);
     this.router.navigate(['/Lecteurs']);
   }
 
