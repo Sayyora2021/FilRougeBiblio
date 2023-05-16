@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CreateLecteurComponent } from 'src/Components/Lecteur/create-lecteur/create-lecteur.component';
+import { CreateMotclefsComponent } from 'src/Components/MotClefs/create-motclefs/create-motclefs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateLecteurComponent
+    CreateLecteurComponent,
+    CreateMotclefsComponent
   ],
   imports: [
     BrowserModule,

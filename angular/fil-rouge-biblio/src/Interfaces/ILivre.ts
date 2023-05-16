@@ -1,7 +1,7 @@
 import { IAuteur } from "./IAuteur";
 import { IExemplaire } from "./IExemplaire";
 import { ITheme } from "./ITheme";
-import { IMotClef } from "./MotClef";
+import { IMotClef } from "./IMotClef";
 
 export interface ILivre {
     Id: number,
