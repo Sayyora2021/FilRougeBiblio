@@ -8,6 +8,9 @@ import { Observable, map } from 'rxjs';
 })
 export class LecteurService {
 
+  path = 'https://localhost:7120/api/Lecteurs';
+
+
   constructor(private http: HttpClient) { 
   }
 
@@ -15,28 +18,28 @@ export class LecteurService {
 
 
   create(lecteur:ILecteur){
-    this.http.post<ILecteur>('https://localhost:7120/api/Lecteurs/Create',lecteur).subscribe();
+    this.http.post<ILecteur>(this.path + '/Create',lecteur).subscribe();
   }
 
 
 
 
   update(lecteur:ILecteur,id:number){
-    this.http.put<ILecteur>('https://localhost:7120/api/Lecteurs/Edit/'+id,lecteur).subscribe();
+    this.http.put<ILecteur>(this.path + '/Edit/'+id,lecteur).subscribe();
   }
 
 
 
 
   delete(id:number){
-    this.http.delete<ILecteur>('https://localhost:7120/api/Lecteurs/Delete/'+id).subscribe();
+    this.http.delete<ILecteur>(this.path + '/Delete/'+id).subscribe();
   }
 
 
 
 
   details(id:number) : Observable<ILecteur>{
-    return this.http.get<ILecteur>('https://localhost:7120/api/Lecteurs/Detail/' + id);
+    return this.http.get<ILecteur>(this.path + '/Details/' + id);
   }
 
 
@@ -44,7 +47,7 @@ export class LecteurService {
 
   listAll() : Observable<ILecteur[]>{
 
-    return this.http.get<ILecteur[]>('https://localhost:7120/api/Lecteurs').pipe(
+    return this.http.get<ILecteur[]>(this.path).pipe(
     map((data: ILecteur[]) => {
       return data;
     })

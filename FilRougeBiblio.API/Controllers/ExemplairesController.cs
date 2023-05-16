@@ -63,7 +63,7 @@ namespace FilRougeBiblio.API.Controllers
 
                 return exemplaire;
             }
-            return NoContent();
+            return BadRequest();
         }
 
 

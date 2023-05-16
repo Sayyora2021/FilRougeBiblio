@@ -84,7 +84,7 @@ namespace FilRougeBiblio.API.Controllers
             {
                 try
                 {
-                    await Repository.Create(auteur);
+                    await Repository.Update(auteur);
 
                 }
                 catch (DbUpdateConcurrencyException)
