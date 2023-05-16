@@ -15,6 +15,7 @@ export class ListLecteursComponent {
     this.lecteurService.listAll().subscribe(
       (data: ILecteur[]) => {
         this.lecteurs = data;
+        console.log(this.lecteurs);
       });
   }
 }

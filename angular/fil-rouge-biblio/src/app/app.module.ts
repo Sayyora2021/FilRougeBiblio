@@ -7,12 +7,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CreateLecteurComponent } from 'src/Components/Lecteur/create-lecteur/create-lecteur.component';
 import { ListLecteursComponent } from 'src/Components/Lecteur/list-lecteurs/list-lecteurs.component';
+import { DeleteLecteursComponent } from 'src/Components/Lecteur/delete-lecteurs/delete-lecteurs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateLecteurComponent,
-    ListLecteursComponent
+    ListLecteursComponent,
+    DeleteLecteursComponent
   ],
   imports: [
     BrowserModule,

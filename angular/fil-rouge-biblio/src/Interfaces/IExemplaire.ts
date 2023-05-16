@@ -1,8 +1,8 @@
 import { ILivre } from "./ILivre";
 
 export interface IExemplaire {
-    Id: number,
-    Livre: ILivre,
-    NumeroInventaire: string,
-    MiseEnService: Date
+    id: number,
+    livre: ILivre,
+    numeroInventaire: string,
+    miseEnService: Date
 }

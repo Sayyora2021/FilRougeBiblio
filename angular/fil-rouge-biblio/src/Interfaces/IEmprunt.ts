@@ -2,10 +2,10 @@ import { IExemplaire } from "./IExemplaire";
 import { ILecteur } from "./ILecteur";
 
 export interface IEmprunt {
-    Id: number,
-    Exemplaire: IExemplaire,
-    Lecteur: ILecteur,
-    DateEmprunt: Date,
-    DateRetour: Date,
-    DateRetourReel: Date
+    id: number,
+    exemplaire: IExemplaire,
+    lecteur: ILecteur,
+    dateEmprunt: Date,
+    dateRetour: Date,
+    dateRetourReel: Date
 }

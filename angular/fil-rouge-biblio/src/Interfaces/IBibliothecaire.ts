@@ -1,5 +1,5 @@
 export interface IBibliothecaire {
-    Id: number,
-    Email: string,
-    MotDePasse: string,
+    id: number,
+    email: string,
+    motDePasse: string,
 }

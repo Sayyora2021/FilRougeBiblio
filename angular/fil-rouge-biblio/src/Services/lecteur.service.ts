@@ -35,7 +35,7 @@ export class LecteurService {
 
 
 
-  detail(id:number) : Observable<ILecteur>{
+  details(id:number) : Observable<ILecteur>{
     return this.http.get<ILecteur>('https://localhost:7120/api/Lecteurs/Detail/' + id);
   }
 

@@ -10,7 +10,7 @@ import { LecteurService } from 'src/Services/lecteur.service';
 })
 export class CreateLecteurComponent {
 
-  lecteur: ILecteur = {Nom:'',Adresse:'',Cotisation:false,Email:'',ListEmprunts:[],Prenom:'',Telephone:'',Id:0}
+  lecteur: ILecteur = {nom:'',adresse:'',cotisation:false,email:'',listEmprunts:[],prenom:'',telephone:'',id:0}
 
   constructor(private lecteurService: LecteurService,private router: Router){
   }
