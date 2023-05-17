@@ -30,6 +30,7 @@ import { DetailsThemeComponent } from 'src/Components/Themes/details-theme/detai
 import { CreateEmpruntsComponent } from 'src/Components/Emprunt/create-emprunts/create-emprunts.component';
 import { DetailsAuteursComponent } from 'src/Components/Auteur/details-auteurs/details-auteurs.component';
 import { DetailsLecteursComponent } from 'src/Components/Lecteur/details-lecteurs/details-lecteurs.component';
+import { CreateLivreComponent } from 'src/Components/Livres/create-livre/create-livre.component';
 
 
 
@@ -73,7 +74,8 @@ import { DetailsLecteursComponent } from 'src/Components/Lecteur/details-lecteur
     DetailsThemeComponent,
     CreateEmpruntsComponent,
     DetailsAuteursComponent,
-    DetailsLecteursComponent
+    DetailsLecteursComponent,
+    CreateLivreComponent
   ],
   imports: [
     BrowserModule,
