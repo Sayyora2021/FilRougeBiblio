@@ -21,7 +21,7 @@
                 <span *ngIf="livre.exemplaires">Nombre d'exemplaire(s): {{ livre.exemplaires.length }}</span><span *ngIf="!livre.exemplaires">Aucun exemplaire en stock</span>
             <div class="btn-group list-group-item">
                 
-                <!--<button (click)="update(livre)" class="btn btn-primary">Mettre à jour</button>-->
+                <a href="/Livres/Infos/{{ livre.id }}" class="btn btn-primary">Modifier</a>
                 <button (click)="delete(livre)" class="btn btn-danger">Supprimer</button>
             </div>
         </li>
