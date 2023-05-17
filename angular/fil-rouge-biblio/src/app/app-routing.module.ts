@@ -5,12 +5,9 @@ import { DeleteAuteursComponent } from 'src/Components/Auteur/delete-auteurs/del
 import { DetailsAuteursComponent } from 'src/Components/Auteur/details-auteurs/details-auteurs.component';
 import { ListAuteursComponent } from 'src/Components/Auteur/list-auteurs/list-auteurs.component';
 import { UpdateAuteursComponent } from 'src/Components/Auteur/update-auteurs/update-auteurs.component';
-import { CreateLecteurComponent } from 'src/Components/Lecteur/create-lecteur/create-lecteur.component';
-import { DeleteLecteursComponent } from 'src/Components/Lecteur/delete-lecteurs/delete-lecteurs.component';
 import { DetailsLecteursComponent } from 'src/Components/Lecteur/details-lecteurs/details-lecteurs.component';
 import { ListLecteursComponent } from 'src/Components/Lecteur/list-lecteurs/list-lecteurs.component';
 import { ListThemesComponent } from 'src/Components/Themes/list-themes/list-themes.component';
-import { UpdateLecteursComponent } from 'src/Components/Lecteur/update-lecteurs/update-lecteurs.component';
 import { DetailsMotclefsComponent } from 'src/Components/MotClefs/details-motclefs/details-motclefs.component';
 import { ListMotclefsComponent } from 'src/Components/MotClefs/list-motclefs/list-motclefs.component';
 import { ListExemplairesComponent } from 'src/Components/Exemplaire/list-exemplaires/list-exemplaires.component';
@@ -27,28 +24,20 @@ import { CreateEmpruntsComponent } from 'src/Components/Emprunt/create-emprunts/
 import { DetailsEditLivreComponent } from 'src/Components/Livres/details-edit-livre/details-edit-livre.component';
 import { HomeComponent } from 'src/Components/Accueil/home/home.component';
 import { GestionCategoriesComponent } from 'src/Components/Mixes/gestion-categories/gestion-categories.component';
+import { GestionUtilisateursComponent } from 'src/Components/Mixes/gestion-utilisateurs/gestion-utilisateurs.component';
 
 
 const routes: Routes = [
   {
   path: '',
   component: HomeComponent
-  },{
-  path: 'Lecteurs/Create',
-  component: CreateLecteurComponent
-},
+  },
 {
   path: 'Lecteurs',
   component: ListLecteursComponent
 },{
-  path: 'Lecteurs/Delete/:id',
-  component: DeleteLecteursComponent
-},{
   path: 'Lecteurs/Details/:id',
   component: DetailsLecteursComponent
-},{
-  path: 'Lecteurs/Edit/:id',
-  component: UpdateLecteursComponent
 },{
   path: 'MotClefs/Details/:id',
   component: DetailsMotclefsComponent
@@ -108,7 +97,8 @@ path: 'Emprunts/Create',
 component: CreateEmpruntsComponent
 },
 { path: 'Livres/Infos/:id', component: DetailsEditLivreComponent},
-{ path: 'GestionCategories', component: GestionCategoriesComponent }
+{ path: 'GestionCategories', component: GestionCategoriesComponent },
+{ path: 'GestionUtilisateurs', component: GestionUtilisateursComponent }
 ];
 
 @NgModule({

@@ -5,10 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, UntypedFormArray } from '@angular/forms';
-import { CreateLecteurComponent } from 'src/Components/Lecteur/create-lecteur/create-lecteur.component';
 import { ListLecteursComponent } from 'src/Components/Lecteur/list-lecteurs/list-lecteurs.component';
-import { DeleteLecteursComponent } from 'src/Components/Lecteur/delete-lecteurs/delete-lecteurs.component';
-import { UpdateLecteursComponent } from 'src/Components/Lecteur/update-lecteurs/update-lecteurs.component';
 import { DetailsMotclefsComponent } from 'src/Components/MotClefs/details-motclefs/details-motclefs.component';
 import { ListMotclefsComponent } from 'src/Components/MotClefs/list-motclefs/list-motclefs.component';
 import { AuteurService } from 'src/Services/auteur.service';
@@ -32,16 +29,14 @@ import { DetailsEditLivreComponent } from 'src/Components/Livres/details-edit-li
 import { ListBibliothecaireComponent } from 'src/Components/Bibliothecaire/list-bibliothecaire/list-bibliothecaire.component';
 import { DetailsBibliothecaireComponent } from 'src/Components/Bibliothecaire/details-bibliothecaire/details-bibliothecaire.component';
 import { GestionCategoriesComponent } from 'src/Components/Mixes/gestion-categories/gestion-categories.component';
+import { GestionUtilisateursComponent } from 'src/Components/Mixes/gestion-utilisateurs/gestion-utilisateurs.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateLecteurComponent,
     ListLecteursComponent,
-    DeleteLecteursComponent,
-    UpdateLecteursComponent,
     DetailsMotclefsComponent,
     ListMotclefsComponent,
     ListThemesComponent,
@@ -53,10 +48,7 @@ import { GestionCategoriesComponent } from 'src/Components/Mixes/gestion-categor
     CreateExemplairesComponent,
     DeleteExemplairesComponent,
     UpdateExemplairesComponent,
-    CreateLecteurComponent,
     ListLecteursComponent,
-    DeleteLecteursComponent,
-    UpdateLecteursComponent,
     ListThemesComponent,
     CreateAuteursComponent,
     ListAuteursComponent,
@@ -78,7 +70,8 @@ DetailsBibliothecaireComponent,
     DetailsAuteursComponent,
     DetailsLecteursComponent,
     CreateLivreComponent,
-    GestionCategoriesComponent
+    GestionCategoriesComponent,
+    GestionUtilisateursComponent
   ],
   imports: [
     BrowserModule,
