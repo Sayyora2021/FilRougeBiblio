@@ -31,9 +31,14 @@ import { ListEmpruntsComponent } from 'src/Components/Emprunt/list-emprunts/list
 import { DetailsThemeComponent } from 'src/Components/Themes/details-theme/details-theme.component';
 import { CreateEmpruntsComponent } from 'src/Components/Emprunt/create-emprunts/create-emprunts.component';
 import { DetailsEditLivreComponent } from 'src/Components/Livres/details-edit-livre/details-edit-livre.component';
+import { HomeComponent } from 'src/Components/Accueil/home/home.component';
 
 
-const routes: Routes = [{
+const routes: Routes = [
+  {
+  path: '',
+  component: HomeComponent
+  },{
   path: 'Lecteurs/Create',
   component: CreateLecteurComponent
 },

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using FilRougeBiblio.Core.Entities;
 using FilRougeBiblio.Infrastructure.Data;
 using FilRougeBiblio.Core.Seedwork;
+using System.ComponentModel.DataAnnotations;
 
 namespace FilRougeBiblio.API.Controllers
 {
