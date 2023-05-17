@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IBibliothecaire } from 'src/Interfaces/IBibliothecaire';
-import { BibliothecaireService } from 'src/bibliothecaire.service';
+import { BibliothecaireService } from 'src/Services/bibliothecaire.service';
 
 @Component({
   selector: 'app-details-bibliothecaire',

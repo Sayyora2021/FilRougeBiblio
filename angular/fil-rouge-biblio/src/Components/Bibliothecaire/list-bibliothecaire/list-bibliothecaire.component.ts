@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IBibliothecaire } from 'src/Interfaces/IBibliothecaire';
-import { BibliothecaireService } from 'src/bibliothecaire.service';
+import { BibliothecaireService } from 'src/Services/bibliothecaire.service';
 
 @Component({
   selector: 'app-list-bibliothecaire',
@@ -10,6 +10,8 @@ import { BibliothecaireService } from 'src/bibliothecaire.service';
 export class ListBibliothecaireComponent implements OnInit{
 bibliothecaire?: IBibliothecaire[];
 nomFiltre: string = '';
+nouveauBibliothecaire: IBibliothecaire = { email: '', motDePasse: '', id: 0 }
+
   constructor(private bibliothecaireService: BibliothecaireService){
   }
 
@@ -31,5 +33,19 @@ nomFiltre: string = '';
     } else {
       this.bibliothecaire = this.bibliothecaire;
     }
+  }
+
+  delete(bibliothecaire: IBibliothecaire) {
+    this.bibliothecaireService.delete(bibliothecaire.id);
+    this.bibliothecaire?.splice(this.bibliothecaire.indexOf(bibliothecaire), 1);
+  }
+
+  update(bibliothecaire: IBibliothecaire) {
+    this.bibliothecaireService.update(bibliothecaire);
+  }
+
+  create() {
+    this.bibliothecaireService.create(this.nouveauBibliothecaire);
+    this.ngOnInit(); this.ngOnInit();
   }
 }

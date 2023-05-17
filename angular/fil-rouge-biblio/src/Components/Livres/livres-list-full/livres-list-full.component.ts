@@ -27,7 +27,7 @@ export class LivresListFullComponent implements OnInit {
   
   delete(livre:ILivre) {
     this.livresService.delete(livre.id);
-    this.livres?.splice(this.livres.indexOf(livre));
+    this.livres?.splice(this.livres.indexOf(livre),1);
   }
 
   filtrer() {
