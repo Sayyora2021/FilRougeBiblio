@@ -26,7 +26,7 @@ namespace FilRougeBiblio.Infrastructure.Data
             if(emprunt.Lecteur.ListEmprunts.Where(e => e.DateRetourReel == null).ToList().Count >= 3) { throw new Exception("Emprunt impossible: nombre d'emprunt maximum atteint."); }
 
             // exemplaire disponible.
-            if(Context.Emprunts.Any(e => e.Exemplaire.Id == e.Exemplaire.Id && e.DateRetourReel == null)) { throw new Exception("Emprunt impossible: aucun exemplaire disponible."); }
+            if(Context.Emprunts.All(e => e.Exemplaire.Id == e.Exemplaire.Id && e.DateRetourReel == null)) { throw new Exception("Emprunt impossible: aucun exemplaire disponible."); }
 
             await Context.Emprunts.AddAsync(emprunt);
             await Context.SaveChangesAsync();
