@@ -17,6 +17,7 @@ import { MotclefsService } from 'src/Services/motclefs.service';
 export class LivresListFullComponent implements OnInit {
   
   livres?: ILivre[];
+  nomFiltre: string = '';
 
   constructor(private livresService:LivresService, private auteursService:AuteurService, private themesService:ThemesService, private motclefService:MotclefsService) { }
 
@@ -29,6 +30,15 @@ export class LivresListFullComponent implements OnInit {
     this.livres?.splice(this.livres.indexOf(livre));
   }
 
-  
+  filtrer() {
+    if (this.nomFiltre && this.nomFiltre.trim() !== '') {
+      if (this.livres)
+        this.livres = this.livres.filter(livre =>
+          livre.titre.toLowerCase().includes(this.nomFiltre.toLowerCase())
+        );
+    } else {
+      this.livres = this.livres;
+    }
+  }
 
 }

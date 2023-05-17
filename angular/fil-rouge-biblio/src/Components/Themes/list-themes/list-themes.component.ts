@@ -14,6 +14,7 @@ export class ListThemesComponent implements OnInit {
   
   themes?: ITheme[];
   nouveauTheme: ITheme = { id: 0, nom:'', description:'', livres: [] };
+  nomFiltre: string = '';
 
   constructor(private themesService:ThemesService, private router: Router ) { }
 
@@ -34,6 +35,17 @@ export class ListThemesComponent implements OnInit {
   update(theme:ITheme) {
     console.log(theme);
     this.themesService.update(theme);
+  }
+
+  filtrer() {
+    if (this.nomFiltre && this.nomFiltre.trim() !== '') {
+      if (this.themes)
+        this.themes = this.themes.filter(theme =>
+          theme.nom.toLowerCase().includes(this.nomFiltre.toLowerCase())
+        );
+    } else {
+      this.themes = this.themes;
+    }
   }
 
  }
