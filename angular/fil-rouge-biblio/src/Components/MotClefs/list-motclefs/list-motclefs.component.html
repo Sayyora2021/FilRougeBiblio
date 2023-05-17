@@ -1,21 +1,29 @@
 <div *ngIf="motclefs" class="container">
-  <h2 class="text-center" >Liste des tags</h2>
-    <div>
-        <div class="container text-center" style="margin-bottom: 10px;">
-            <div class="row align-items-start">
-                <div class="col">
-                  <a href="/MotClefs/Create" class="btn btn-primary">Ajouter un mot clef</a>
-                </div>
-                <div class="col">
-                    <input type="text" [(ngModel)]="nomFiltre" placeholder="Nom du lecteur">
-                    <button (click)="filtrer()">Filtrer</button>
-                </div>
-                <div class="col">
-                    <a class="btn btn-secondary" href="/MotClefs">Réinitialiser</a>
-                </div>
-            </div>
+  <h2 class="text-center">Liste des tags</h2>
+  <div>
+    <div class="container text-center" style="margin-bottom: 10px">
+      <div class="row align-items-start">
+        <div class="col">
+          <a href="/MotClefs/Create" class="btn btn-primary btn-scale"
+            >Ajouter un mot clef</a
+          >
         </div>
+        <div class="col">
+          <input
+            type="text"
+            [(ngModel)]="nomFiltre"
+            placeholder="Nom du lecteur"
+          />
+          <button (click)="filtrer()">Filtrer</button>
+        </div>
+        <div class="col">
+          <a class="btn btn-secondary btn-scale" href="/MotClefs"
+            >Réinitialiser</a
+          >
+        </div>
+      </div>
     </div>
+  </div>
   <ul class="list-group border border-black">
     <li
       *ngFor="let motclefs of motclefs"
