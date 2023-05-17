@@ -63,11 +63,11 @@ namespace FilRougeBiblio.Infrastructure.Data
         }
         public async Task<List<Livre>> ListAll()
         {
-            return await Context.Livres.Include(c => c.Auteurs).Include(c => c.Themes).Include(c => c.Tags).ToListAsync();
+            return await Context.Livres.Include(c => c.Auteurs).Include(c => c.Themes).Include(c => c.Tags).Include(c => c.Exemplaires).ToListAsync();
         }
         public async Task<Livre> GetById(int id)
         {
-            return await Context.Livres.Include(c => c.Auteurs).Include(c => c.Tags).Include(c => c.Themes).FirstOrDefaultAsync(c => c.Id == id);
+            return await Context.Livres.Include(c => c.Auteurs).Include(c => c.Tags).Include(c => c.Themes).Include(c => c.Exemplaires).FirstOrDefaultAsync(c => c.Id == id);
         }
 
         public async Task<bool> Exists(int id)
