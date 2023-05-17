@@ -9,6 +9,7 @@ using FilRougeBiblio.Core.Entities;
 using FilRougeBiblio.Infrastructure.Data;
 using FilRougeBiblio.Core.Seedwork;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Text.Json.Serialization;
 
 namespace FilRougeBiblio.API.Controllers
 {
@@ -18,11 +19,17 @@ namespace FilRougeBiblio.API.Controllers
     {
 
         private readonly ILivreRepository LivreRepository;
+        private readonly IAuteurRepository AuteurRepository;
+        private readonly IThemeRepository ThemeRepository;
+        private readonly IMotClefRepository MotClefRepository;
 
-        public LivresController(ILivreRepository livreRepository)
+        public LivresController(ILivreRepository livreRepository, IMotClefRepository motClefRepository, IAuteurRepository auteurRepository, IThemeRepository themeRepository)
         {
             LivreRepository = livreRepository;
-            
+            AuteurRepository = auteurRepository;
+            ThemeRepository = themeRepository;
+            MotClefRepository = motClefRepository;
+       
         }
 
         // GET: Livres
@@ -55,15 +62,44 @@ namespace FilRougeBiblio.API.Controllers
         // POST: Livres/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost,Route("Create")]
-        public async Task<ActionResult<Livre>> Create(Livre livre)
+        [HttpPost, Route("Create")]
+        public async Task<ActionResult<Livre>> Create([FromBody] ApiLivreCreate livreEnvoye)
         {
-            if (ModelState.IsValid)
+            Livre livre = new Livre();
+            livre.Titre = livreEnvoye.Titre;
+            livre.ISBN = livreEnvoye.Isbn;
+
+            livre.Auteurs = new List<Auteur>();
+            livre.Tags = new List<MotClef>();
+            livre.Themes = new List<Theme>();
+
+            foreach(int auteurId in livreEnvoye.auteursIds)
+            {
+                Auteur auteur = await AuteurRepository.GetById(auteurId);
+                livre.Auteurs.Add(auteur);
+            }
+
+            foreach (int themeId in livreEnvoye.themesIds)
+            {
+                Theme theme = await ThemeRepository.GetById(themeId);
+                livre.Themes.Add(theme);
+            }
+
+            foreach (int tagId in livreEnvoye.tagsIds)
+            {
+                MotClef tag = await MotClefRepository.GetById(tagId);
+                livre.Tags.Add(tag);
+            }
+
+            try
             {
                 await LivreRepository.Create(livre);
-                return livre;
+                return Ok();
+            } 
+            catch (Exception e)
+            {
+                return Problem(e.Message);
             }
-            return BadRequest();
         }
 
         
@@ -124,4 +160,13 @@ namespace FilRougeBiblio.API.Controllers
 
 
     }
+}
+
+public class ApiLivreCreate  {
+    public string? Titre { get; set; }
+    public string? Isbn { get; set; }
+
+    public int[] auteursIds { get; set; }
+    public int[] themesIds { get; set; }
+    public int[] tagsIds { get; set; }
 }

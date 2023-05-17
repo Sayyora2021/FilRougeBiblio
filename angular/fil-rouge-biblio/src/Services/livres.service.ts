@@ -18,7 +18,14 @@ export class LivresService {
 
 
   create(livre:ILivre){
-    this.http.post<ILivre>(this.path + '/Create',livre).subscribe();
+    let apiLivre = { titre: livre.titre, isbn: livre.isbn, auteursIds: Array<number>() , themesIds: Array<number>(), tagsIds: Array<number>() }
+    
+    livre.tags.forEach(tg => apiLivre.tagsIds.push(tg.id));
+    livre.themes.forEach(th => apiLivre.themesIds.push(th.id));
+    livre.auteurs.forEach(a => apiLivre.auteursIds.push(a.id));
+
+    console.log("apiLivre"); console.log(apiLivre);
+    this.http.post(this.path + '/Create', apiLivre).subscribe(data => { console.log('reponse creation:'); console.log(data) });
   }
 
 
