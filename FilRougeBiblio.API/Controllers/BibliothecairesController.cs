@@ -34,7 +34,7 @@ namespace FilRougeBiblio.API.Controllers
         
 
         // GET: api/Bibliothecaires/5
-        [HttpGet, Route("Detail/{id}")]
+        [HttpGet, Route("Details/{id}")]
         public async Task<ActionResult<Bibliothecaire>> Details(int? id)
         {
           if (id == null || await Repository.IsEmpty())
@@ -55,7 +55,7 @@ namespace FilRougeBiblio.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost, Route("Create")]
-        [ValidateAntiForgeryToken]
+        
         public async Task<ActionResult<Bibliothecaire>> Create(Bibliothecaire bibliothecaire)
         {
             if (ModelState.IsValid)
@@ -73,7 +73,6 @@ namespace FilRougeBiblio.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPut, Route("Edit/{id}")]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult<Bibliothecaire>> Edit(int id, [Bind("Email,Password,Id")] Bibliothecaire bibliothecaire)
         {
             if (id != bibliothecaire.Id)
@@ -85,7 +84,7 @@ namespace FilRougeBiblio.API.Controllers
             {
                 try
                 {
-                    await Repository.Create(bibliothecaire);
+                    await Repository.Update(bibliothecaire);
 
                 }
                 catch (DbUpdateConcurrencyException)
@@ -107,7 +106,7 @@ namespace FilRougeBiblio.API.Controllers
 
         // POST: Bibliothecaire/Delete/5
         [HttpDelete, Route("Delete/{id}")]
-        [ValidateAntiForgeryToken]
+        
         public async Task<ActionResult<Bibliothecaire>> Delete(int id)
         {
             if (await Repository.IsEmpty())
