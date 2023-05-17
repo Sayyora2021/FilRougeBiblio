@@ -32,11 +32,26 @@ export class CreateEmpruntsComponent implements OnInit {
         this.exemplaires = data;
       });
 
+    this.filtrerExemplaire();
+
   }
 
   create() {
     this.empruntService.create(this.emprunt);
     this.router.navigate(['/Emprunts']);
   }
+
+  filtrerExemplaire() {
+
+    let emprunts: IEmprunt[];
+  this.empruntService.listAll().subscribe((data: IEmprunt[]) => {
+    emprunts = data.filter(e => e.dateRetourReel == null);
+    this.exemplaires = this.exemplaires.filter(exemplaire => {
+      return !emprunts.some(emprunt => emprunt.exemplaire.id === exemplaire.id);
+    });
+  });
+
+  }
+  
 
 }
