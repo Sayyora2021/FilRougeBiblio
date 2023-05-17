@@ -29,7 +29,8 @@ export class ThemesService {
   }
 
   update(theme:ITheme) {
-    this.http.put<ITheme>('https://localhost:7120/api/Themes/Edit/'+ theme.id, theme).subscribe(d => console.log(d))
+    let apiTheme = { Nom: theme.nom, Description: theme.description }
+    this.http.put<ITheme>('https://localhost:7120/api/Themes/Edit/'+ theme.id, apiTheme).subscribe(d => console.log(d))
   }
 
   details(id:number) : Observable<ITheme>{

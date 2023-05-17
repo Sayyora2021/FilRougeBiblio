@@ -60,4 +60,26 @@ export class ListEmpruntsComponent implements OnInit {
     }
   }
 
+  trierEmprunts(event: any) {
+    const option = event.target.value;
+    if(this.emprunts)
+    switch (option) {
+      case 'rendu':
+        this.emprunts.sort((a, b) => (a.dateRetourReel > b.dateRetourReel ? 1 : -1));
+        break;
+      case 'nonrendu':
+        this.emprunts.sort((a, b) => (a.dateRetourReel < b.dateRetourReel ? 1 : -1));
+        break;
+        case 'recent':
+        this.emprunts.sort((a, b) => (a.dateEmprunt > b.dateEmprunt ? 1 : -1));
+        break;
+      case 'ancien':
+        this.emprunts.sort((a, b) => (a.dateEmprunt < b.dateEmprunt ? 1 : -1));
+        break;
+      default:
+        break;
+    }
+  }
+
+
 }
