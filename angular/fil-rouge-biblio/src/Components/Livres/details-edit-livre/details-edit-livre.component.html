@@ -1,33 +1,49 @@
 <div *ngIf="livre">
+  <h3>Edition livre id {{ livre.id }}</h3>
 
-<h3>Edition livre id {{ livre.id }}</h3>
+  <form class="form-group">
+    <input
+      [(ngModel)]="livre.isbn"
+      type="text"
+      value="livre.isbn"
+      name="iSBNInput"
+      placeholder="ISBN"
+    />
+    <input
+      [(ngModel)]="livre.titre"
+      type="text"
+      value="livre.titre"
+      name="titreInput"
+      placeholder="TITRE"
+    />
 
-<form class="form-group">
-<input [(ngModel)]="livre.isbn" type="text" value="livre.isbn" name="iSBNInput" placeholder="ISBN"/>
-<input [(ngModel)]="livre.titre" type="text" value="livre.titre" name="titreInput" placeholder="TITRE"/>
+    <div class="form-check">
+      <label class="form-check-label">Auteur(s)</label>
+      <select multiple name="auteurs" id="auteurs" [(ngModel)]="livre.auteurs">
+        <option *ngFor="let auteur of auteurs" [ngValue]="auteur">
+          {{ auteur.nom }} {{ auteur.prenom }}
+        </option>
+      </select>
+    </div>
 
-<div class="form-check">
-    <label class="form-check-label">Auteur(s)</label>
-    <select multiple name="auteurs" id="auteurs" [(ngModel)]="livre.auteurs">
-      <option *ngFor="let auteur of auteurs" [ngValue]="auteur">{{ auteur.nom }} {{ auteur.prenom }}</option>
-    </select>
-</div>
+    <div class="form-check">
+      <label class="form-check-label">Theme(s)</label>
+      <select multiple name="themes" id="themes" [(ngModel)]="livre.themes">
+        <option *ngFor="let theme of themes" [ngValue]="theme">
+          {{ theme.nom }}
+        </option>
+      </select>
+    </div>
 
-<div class="form-check">
-    <label class="form-check-label">Theme(s)</label>
-    <select multiple name="themes" id="themes" [(ngModel)]="livre.themes">
-      <option *ngFor="let theme of themes" [ngValue]="theme">{{ theme.nom }}</option>
-    </select>
-</div>
+    <div class="form-check">
+      <label class="form-check-label">Mot(s) clef(s)</label>
+      <select multiple name="tags" id="tags" [(ngModel)]="livre.tags">
+        <option *ngFor="let tag of tags" [ngValue]="tag">{{ tag.tag }}</option>
+      </select>
+    </div>
 
-<div class="form-check">
-    <label class="form-check-label">Mot(s) clef(s)</label>
-    <select multiple name="tags" id="tags" [(ngModel)]="livre.tags">
-      <option *ngFor="let tag of tags" [ngValue]="tag">{{ tag.tag }}</option>
-    </select>
-</div>
-
-<button type="submit" (click)="update()" class="btn btn-primary">Enregistrer</button>
-</form>
-
+    <button type="submit" (click)="update()" class="btn btn-primary">
+      Enregistrer
+    </button>
+  </form>
 </div>

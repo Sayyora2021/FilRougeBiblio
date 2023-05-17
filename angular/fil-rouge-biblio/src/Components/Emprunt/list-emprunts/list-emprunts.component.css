@@ -2,3 +2,11 @@ h2 {
   color: rgb(6, 135, 6);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+.btn-scale {
+  transition: transform 0.3s;
+  margin: 5px;
+}
+
+.btn-scale:hover {
+  transform: scale(1.1);
+}

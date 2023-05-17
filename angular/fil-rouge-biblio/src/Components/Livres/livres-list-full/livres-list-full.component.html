@@ -1,45 +1,67 @@
 <h2 class="text-center">Liste des Livres</h2>
 <div *ngIf="livres" class="container">
-    <div>
-        <div class="container text-center" style="margin-bottom: 10px;">
-            <div class="row align-items-start">
-                <div class="col">
-                </div>
-                <div class="col">
-                    <input type="text" [(ngModel)]="nomFiltre" placeholder="Nom du livre">
-                    <button (click)="filtrer()">Filtrer</button>
-                </div>
-                <div class="col">
-                    <a class="btn btn-secondary" href="/Livres">Réinitialiser</a>
-                </div>
-            </div>
+  <div>
+    <div class="container text-center" style="margin-bottom: 10px">
+      <div class="row align-items-start">
+        <div class="col"></div>
+        <div class="col">
+          <input
+            type="text"
+            [(ngModel)]="nomFiltre"
+            placeholder="Nom du livre"
+          />
+          <button (click)="filtrer()">Filtrer</button>
         </div>
+        <div class="col">
+          <a class="btn btn-secondary btn-scale" href="/Livres"
+            >Réinitialiser</a
+          >
+        </div>
+      </div>
     </div>
-    <ul class="list-group border border-black">
-        <li *ngFor="let livre of livres" class="list-group-item d-flex justify-content-between align-items-center border border-black">
-            
-                
-                
-                <span>ISBN: {{ livre.isbn }}</span>|
-                <span>Titre: {{ livre.titre }}</span> |
-                
-                <span *ngIf="livre.auteurs">
-                    Auteur(s): <span *ngFor="let auteur of livre.auteurs">|<a href="/Auteurs/Details/{{ auteur.id }}">{{ auteur.nom }}</a></span>|
-                </span>
-                <span *ngIf="livre.tags">
-                    Mot(s) Clef(s): <span *ngFor="let tag of livre.tags">|<a href="/MotClefs/Details/{{ tag.id }}">{{ tag.tag }}</a></span>|
-                </span>
-                <span *ngIf="livre.tags">
-                    Theme(s): <span *ngFor="let theme of livre.themes">|<a href="/Themes/Details/{{ theme.id }}">{{ theme.nom }} ({{ theme.description }})</a></span>|
-                </span>
-                <span *ngIf="livre.exemplaires">Nombre d'exemplaire(s): {{ livre.exemplaires.length }}</span><span *ngIf="!livre.exemplaires">Aucun exemplaire en stock</span>
-            <div class="btn-group list-group-item">
-                
-                <a href="/Livres/Infos/{{ livre.id }}" class="btn btn-primary">Modifier</a>
-                <button (click)="delete(livre)" class="btn btn-danger">Supprimer</button>
-            </div>
-        </li>
-    </ul>
-    <app-create-livre></app-create-livre>
-</div>
+  </div>
+  <ul class="list-group border border-black">
+    <li
+      *ngFor="let livre of livres"
+      class="list-group-item d-flex justify-content-between align-items-center border border-black"
+    >
+      <span>ISBN: {{ livre.isbn }}</span
+      >| <span>Titre: {{ livre.titre }}</span> |
 
+      <span *ngIf="livre.auteurs">
+        Auteur(s):
+        <span *ngFor="let auteur of livre.auteurs"
+          >|<a href="/Auteurs/Details/{{ auteur.id }}">{{
+            auteur.nom
+          }}</a></span
+        >|
+      </span>
+      <span *ngIf="livre.tags">
+        Mot(s) Clef(s):
+        <span *ngFor="let tag of livre.tags"
+          >|<a href="/MotClefs/Details/{{ tag.id }}">{{ tag.tag }}</a></span
+        >|
+      </span>
+      <span *ngIf="livre.tags">
+        Theme(s):
+        <span *ngFor="let theme of livre.themes"
+          >|<a href="/Themes/Details/{{ theme.id }}"
+            >{{ theme.nom }} ({{ theme.description }})</a
+          ></span
+        >|
+      </span>
+      <span *ngIf="livre.exemplaires"
+        >Nombre d'exemplaire(s): {{ livre.exemplaires.length }}</span
+      ><span *ngIf="!livre.exemplaires">Aucun exemplaire en stock</span>
+      <div class="btn-group list-group-item">
+        <a href="/Livres/Infos/{{ livre.id }}" class="btn btn-primary"
+          >Modifier</a
+        >
+        <button (click)="delete(livre)" class="btn btn-danger">
+          Supprimer
+        </button>
+      </div>
+    </li>
+  </ul>
+  <app-create-livre></app-create-livre>
+</div>
