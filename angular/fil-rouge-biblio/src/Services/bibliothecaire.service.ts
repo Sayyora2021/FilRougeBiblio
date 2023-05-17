@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IBibliothecaire } from './Interfaces/IBibliothecaire';
+import { IBibliothecaire } from '../Interfaces/IBibliothecaire';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 
@@ -21,8 +21,8 @@ export class BibliothecaireService {
   return this.http.get<IBibliothecaire>(this.path+ '/Details/' + id);
 }
 
-update(bibliothecaire:IBibliothecaire,id:number){
-  this.http.put<IBibliothecaire>(this.path + '/Edit/'+id, bibliothecaire).subscribe();
+update(bibliothecaire:IBibliothecaire){
+  this.http.put<IBibliothecaire>(this.path + '/Edit/'+bibliothecaire.id, bibliothecaire).subscribe();
 }
 
 

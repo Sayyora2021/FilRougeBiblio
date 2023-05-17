@@ -29,9 +29,7 @@ import { DetailsAuteursComponent } from 'src/Components/Auteur/details-auteurs/d
 import { DetailsLecteursComponent } from 'src/Components/Lecteur/details-lecteurs/details-lecteurs.component';
 import { CreateLivreComponent } from 'src/Components/Livres/create-livre/create-livre.component';
 import { DetailsEditLivreComponent } from 'src/Components/Livres/details-edit-livre/details-edit-livre.component';
-import { CreateBibliothecaireComponent } from 'src/Components/Bibliothecaire/create-bibliothecaire/create-bibliothecaire.component';
 import { ListBibliothecaireComponent } from 'src/Components/Bibliothecaire/list-bibliothecaire/list-bibliothecaire.component';
-import { UpdateBibliothecaireComponent } from 'src/Components/Bibliothecaire/update-bibliothecaire/update-bibliothecaire.component';
 import { DetailsBibliothecaireComponent } from 'src/Components/Bibliothecaire/details-bibliothecaire/details-bibliothecaire.component';
 import { GestionCategoriesComponent } from 'src/Components/Mixes/gestion-categories/gestion-categories.component';
 
@@ -68,10 +66,8 @@ import { GestionCategoriesComponent } from 'src/Components/Mixes/gestion-categor
     CreateExemplairesComponent,
     DeleteExemplairesComponent,
     UpdateExemplairesComponent,
-CreateBibliothecaireComponent, 
 ListBibliothecaireComponent,
 ListBibliothecaireComponent, 
-UpdateBibliothecaireComponent,
 DetailsBibliothecaireComponent,    
     ListEmpruntsComponent,
     LivresListFullComponent,
