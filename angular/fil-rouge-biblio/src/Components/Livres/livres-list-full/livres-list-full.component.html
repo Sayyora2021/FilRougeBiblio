@@ -5,8 +5,9 @@
         <li *ngFor="let livre of livres" class="list-group-item d-flex justify-content-between align-items-center border border-black">
             
                 
-                <input [(ngModel)]="livre.isbn" type="text" value="livre.isbn" name="iSBNInput"/>
-                <input [(ngModel)]="livre.titre" type="text" value="livre.titre" name="titreInput"/>
+                
+                <span>ISBN: {{ livre.isbn }}</span>|
+                <span>Titre: {{ livre.titre }}</span> |
                 
                 <span *ngIf="livre.auteurs">
                     Auteur(s): <span *ngFor="let auteur of livre.auteurs">|<a href="/Auteurs/Details/{{ auteur.id }}">{{ auteur.nom }}</a></span>|
