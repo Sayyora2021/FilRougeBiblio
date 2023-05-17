@@ -8,7 +8,7 @@
                 <input [(ngModel)]="theme.description" type="text" value="theme.description" name="descriptionInput"/>
             </span>
             <div class="btn-group list-group-item">
-                <button (click)="voirLivres(theme)" class="btn btn-success">Voir livres ({{ theme.livres.length}})</button>
+                <a href="/Themes/Details/{{ theme.id }}" class="btn btn-success">Voir livres ({{ theme.livres.length}})</a>
                 <button (click)="update(theme)" class="btn btn-primary">Mettre à jour</button>
                 <button (click)="delete(theme)" class="btn btn-danger">Supprimer</button>
             </div>
