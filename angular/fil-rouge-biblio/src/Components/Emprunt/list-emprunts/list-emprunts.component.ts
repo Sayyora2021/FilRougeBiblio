@@ -64,16 +64,16 @@ export class ListEmpruntsComponent implements OnInit {
     const option = event.target.value;
     if(this.emprunts)
     switch (option) {
-      case 'dateRetourReelAsc':
+      case 'rendu':
         this.emprunts.sort((a, b) => (a.dateRetourReel > b.dateRetourReel ? 1 : -1));
         break;
-      case 'dateRetourReelDesc':
+      case 'nonrendu':
         this.emprunts.sort((a, b) => (a.dateRetourReel < b.dateRetourReel ? 1 : -1));
         break;
-        case 'dateEmpruntAsc':
+        case 'recent':
         this.emprunts.sort((a, b) => (a.dateEmprunt > b.dateEmprunt ? 1 : -1));
         break;
-      case 'dateEmpruntDesc':
+      case 'ancien':
         this.emprunts.sort((a, b) => (a.dateEmprunt < b.dateEmprunt ? 1 : -1));
         break;
       default:
