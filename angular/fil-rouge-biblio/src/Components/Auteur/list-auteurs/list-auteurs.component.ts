@@ -10,7 +10,7 @@ import { AuteurService } from 'src/Services/auteur.service';
 export class ListAuteursComponent implements OnInit{
 
   auteurs? : IAuteur[];
-
+  nomFiltre: string = '';
   constructor(private auteurService: AuteurService) {
     
   }
@@ -20,5 +20,14 @@ export class ListAuteursComponent implements OnInit{
         this.auteurs = data;
       });
   }
-
+  filtrerEmprunts() {
+    if (this.nomFiltre && this.nomFiltre.trim() !== '') {
+      if (this.auteurs)
+        this.auteurs = this.auteurs.filter(auteur =>
+          auteur.nom.toLowerCase().includes(this.nomFiltre.toLowerCase())
+        );
+    } else {
+      this.auteurs = this.auteurs;
+    }
+  }
 }
