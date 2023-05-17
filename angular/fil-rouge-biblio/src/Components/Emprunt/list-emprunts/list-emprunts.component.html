@@ -9,9 +9,16 @@
                 <div class="col">
                     <input type="text" [(ngModel)]="nomFiltre" placeholder="Nom du lecteur">
                     <button (click)="filtrer()">Filtrer</button>
+                    <a class="btn btn-secondary" href="/Emprunts">Réinitialiser</a>
                 </div>
                 <div class="col">
-                    <a class="btn btn-secondary" href="/Emprunts">Réinitialiser</a>
+                    Trier
+                    <select (change)="trierEmprunts($event)">
+                        <option value="dateRetourReelAsc">Non Rendu</option>
+                        <option value="dateRetourReelDesc">rendu</option>
+                        <option value="dateEmpruntAsc">dateEmprunt Croissant</option>
+                        <option value="dateEmpruntDesc">dateEmprunt Decroissant</option>
+                    </select>
                 </div>
             </div>
         </div>
