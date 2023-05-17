@@ -15,11 +15,13 @@
         <thead>
             <tr>
                 <th>Livre</th>
+                <th>Details</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let livre of auteur.livres">
                 <td>{{ livre.titre }}</td>
+                <td><a class="btn btn-primary" href="/Livres/{{livre.id}}">Details</a></td>
             </tr>
         </tbody>
     </table>

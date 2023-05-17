@@ -15,7 +15,7 @@
             </ul>
         </div>
     </div>
-    <h2>Liste des emprunts</h2>
+    <h2>Liste des emprunts</h2><a class="btn btn-primary" href="Emprunts?search={{lecteur.nom}}">Consulter</a>
     <table class="table">
         <thead>
             <tr>
@@ -28,7 +28,7 @@
         <tbody>
             <tr *ngFor="let emprunt of lecteur.listEmprunts">
                 <td>{{ emprunt.id }}</td>
-                <td>{{ emprunt.exemplaire.livre.titre }}</td>
+                <td>{{ emprunt.exemplaire }}</td>
                 <td>{{ emprunt.dateEmprunt }}</td>
                 <td>{{ emprunt.dateRetour }}</td>
             </tr>

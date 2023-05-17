@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { IEmprunt } from 'src/Interfaces/IEmprunt';
 import { EmpruntService } from 'src/Services/emprunt.service';
 
@@ -10,30 +10,40 @@ import { EmpruntService } from 'src/Services/emprunt.service';
 })
 export class ListEmpruntsComponent implements OnInit {
 
-  emprunts? : IEmprunt[];
+  emprunts?: IEmprunt[];
   nomFiltre: string = '';
 
-  constructor(private empruntService: EmpruntService, private router: Router) {
-    
-  }
-  
-  ngOnInit(): void {
-    this.empruntService.listAll().subscribe(
-      (data: IEmprunt[]) => {
-        this.emprunts = data;
-      });
+  constructor(private empruntService: EmpruntService, private router: Router, private activatedRoute: ActivatedRoute) {
+    this.filtrerEmprunts();
   }
 
-  rendre(id:number){
+  ngOnInit(): void {
+
+    this.activatedRoute.queryParamMap.subscribe((params: ParamMap) => {
+      const search = params.get('search');
+      if (search) {
+        this.nomFiltre = search;
+      }
+      this.empruntService.listAll().subscribe(
+        (data: IEmprunt[]) => {
+          this.emprunts = data;
+        });
+    });
+
+    this.filtrerEmprunts();
+
+  }
+
+  rendre(id: number) {
     this.empruntService.rendre(id);
   }
 
   filtrerEmprunts() {
     if (this.nomFiltre && this.nomFiltre.trim() !== '') {
-      if(this.emprunts)
-      this.emprunts = this.emprunts.filter(emprunt =>
-        emprunt.lecteur.nom.toLowerCase().includes(this.nomFiltre.toLowerCase())
-      );
+      if (this.emprunts)
+        this.emprunts = this.emprunts.filter(emprunt =>
+          emprunt.lecteur.nom.toLowerCase().includes(this.nomFiltre.toLowerCase())
+        );
     } else {
       this.emprunts = this.emprunts;
     }

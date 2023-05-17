@@ -34,7 +34,7 @@ namespace FilRougeBiblio.API.Controllers
         
 
         // GET: api/Bibliothecaires/5
-        [HttpGet, Route("Detail/{id}")]
+        [HttpGet, Route("Details/{id}")]
         public async Task<ActionResult<Bibliothecaire>> Details(int? id)
         {
           if (id == null || await Repository.IsEmpty())
