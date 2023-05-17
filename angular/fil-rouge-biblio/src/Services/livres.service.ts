@@ -18,14 +18,16 @@ export class LivresService {
 
 
   create(livre:ILivre){
-    this.http.post<ILivre>(this.path + '/Create',livre).subscribe();
+    let apiLivre = this.livreToApiLivre(livre);
+    console.log("apiLivre"); console.log(apiLivre);
+    this.http.post(this.path + '/Create', apiLivre).subscribe(data => { console.log('reponse creation:'); console.log(data) });
   }
 
 
-
-
-  update(livre:ILivre,id:number){
-    this.http.put<ILivre>(this.path + '/Edit/'+id,livre).subscribe();
+  update(livre:ILivre){
+    let apiLivre = this.livreToApiLivre(livre);
+    console.log("apiLivre"); console.log(apiLivre);
+    this.http.put(this.path + '/Edit/'+livre.id, apiLivre).subscribe();
   }
 
 
@@ -43,8 +45,6 @@ export class LivresService {
   }
 
 
-
-
   listAll() : Observable<ILivre[]>{
 
     return this.http.get<ILivre[]>(this.path).pipe(
@@ -53,6 +53,16 @@ export class LivresService {
     })
   );
 
+  }
+
+  private livreToApiLivre(livre: ILivre) {
+    let apiLivre = { titre: livre.titre, isbn: livre.isbn, auteursIds: Array<number>() , themesIds: Array<number>(), tagsIds: Array<number>() }
+    
+    livre.tags.forEach(tg => apiLivre.tagsIds.push(tg.id));
+    livre.themes.forEach(th => apiLivre.themesIds.push(th.id));
+    livre.auteurs.forEach(a => apiLivre.auteursIds.push(a.id));
+
+    return apiLivre;
   }
 
 }
