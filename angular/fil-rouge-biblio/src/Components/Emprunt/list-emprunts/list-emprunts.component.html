@@ -1,11 +1,24 @@
 <div *ngIf="emprunts" class="container">
-    <h2>Liste des emprunts</h2>
-    <a href="/Emprunts/Create" class="btn btn-primary">Ajouter un emprunt</a>
-    <input type="text" [(ngModel)]="nomFiltre" placeholder="Nom du lecteur">
-    <button (click)="filtrerEmprunts()">Filtrer</button>
-    <a class="btn btn-secondary" href="/Emprunts">Réinitialiser</a>
+    <h2 class="text-center">Liste des emprunts</h2>
+    <div>
+        <div class="container text-center" style="margin-bottom: 10px;">
+            <div class="row align-items-start">
+                <div class="col">
+                    <a href="/Emprunts/Create" class="btn btn-primary">Ajouter un emprunt</a>
+                </div>
+                <div class="col">
+                    <input type="text" [(ngModel)]="nomFiltre" placeholder="Nom du lecteur">
+                    <button (click)="filtrerEmprunts()">Filtrer</button>
+                </div>
+                <div class="col">
+                    <a class="btn btn-secondary" href="/Emprunts">Réinitialiser</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <ul class="list-group border border-black">
-        <li *ngFor="let emprunt of emprunts" class="list-group-item d-flex justify-content-between align-items-center border border-black">
+        <li *ngFor="let emprunt of emprunts"
+            class="list-group-item d-flex justify-content-between align-items-center border border-black">
             <div class="d-flex flex-column">
                 <span class="list-group-item">
                     <strong>Titre du livre :</strong> {{ emprunt.exemplaire.livre.titre }}
@@ -24,7 +37,8 @@
                 </span>
             </div>
             <div class="btn-group list-group-item">
-                <button *ngIf="emprunt.dateRetourReel == null" (click)="rendre(emprunt.id)" class="btn btn-primary">Rendre</button>
+                <button *ngIf="emprunt.dateRetourReel == null" (click)="rendre(emprunt.id)"
+                    class="btn btn-primary">Rendre</button>
                 <label *ngIf="emprunt.dateRetourReel != null">
                     <strong>Date de retour réel :</strong> {{ emprunt.dateRetourReel }}
                 </label>
