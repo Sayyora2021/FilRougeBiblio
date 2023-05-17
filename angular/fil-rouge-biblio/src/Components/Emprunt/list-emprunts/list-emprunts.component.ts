@@ -36,6 +36,7 @@ export class ListEmpruntsComponent implements OnInit {
 
   rendre(id: number) {
     this.empruntService.rendre(id);
+    this.router.navigate(['Emprunts']);
   }
 
   filtrerEmprunts() {
