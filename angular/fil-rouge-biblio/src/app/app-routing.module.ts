@@ -27,6 +27,9 @@ import { ListBibliothecaireComponent } from 'src/Components/Bibliothecaire/list-
 import { DetailsBibliothecaireComponent } from 'src/Components/Bibliothecaire/details-bibliothecaire/details-bibliothecaire.component';
 import { UpdateBibliothecaireComponent } from 'src/Components/Bibliothecaire/update-bibliothecaire/update-bibliothecaire.component';
 import { DeleteBibliothecaireComponent } from 'src/Components/Bibliothecaire/delete-bibliothecaire/delete-bibliothecaire.component';
+import { ListEmpruntsComponent } from 'src/Components/Emprunt/list-emprunts/list-emprunts.component';
+import { DetailsThemeComponent } from 'src/Components/Themes/details-theme/details-theme.component';
+import { CreateEmpruntsComponent } from 'src/Components/Emprunt/create-emprunts/create-emprunts.component';
 
 
 const routes: Routes = [{
