@@ -27,7 +27,7 @@ export class ListEmpruntsComponent implements OnInit {
       this.empruntService.listAll().subscribe(
         (data: IEmprunt[]) => {
           this.emprunts = data;
-          this.filtrerEmprunts();
+          this.filtrerEmpruntsExactName();
         });
     });
 
@@ -44,6 +44,16 @@ export class ListEmpruntsComponent implements OnInit {
       if (this.emprunts)
         this.emprunts = this.emprunts.filter(emprunt =>
           emprunt.lecteur.nom.toLowerCase().includes(this.nomFiltre.toLowerCase())
+        );
+    } else {
+      this.emprunts = this.emprunts;
+    }
+  }
+  filtrerEmpruntsExactName() {
+    if (this.nomFiltre && this.nomFiltre.trim() !== '') {
+      if (this.emprunts)
+        this.emprunts = this.emprunts.filter(emprunt =>
+          emprunt.lecteur.nom.toLowerCase() == this.nomFiltre.toLowerCase()
         );
     } else {
       this.emprunts = this.emprunts;
