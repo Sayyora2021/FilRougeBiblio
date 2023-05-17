@@ -26,6 +26,7 @@ import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exe
 import { LivresListFullComponent } from '../Components/Livres/livres-list-full/livres-list-full.component';
 import { UpdateMotclefsComponent } from 'src/Components/MotClefs/update-motclefs/update-motclefs.component';
 import { ListEmpruntsComponent } from 'src/Components/Emprunt/list-emprunts/list-emprunts.component';
+import { CreateEmpruntsComponent } from 'src/Components/Emprunt/create-emprunts/create-emprunts.component';
 
 
 
@@ -65,7 +66,8 @@ import { ListEmpruntsComponent } from 'src/Components/Emprunt/list-emprunts/list
     DeleteExemplairesComponent,
     UpdateExemplairesComponent,
     ListEmpruntsComponent,
-    LivresListFullComponent
+    LivresListFullComponent,
+    CreateEmpruntsComponent
     
     
   ],
