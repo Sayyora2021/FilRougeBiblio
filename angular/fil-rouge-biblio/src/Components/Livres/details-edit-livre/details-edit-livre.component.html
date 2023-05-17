@@ -20,7 +20,7 @@
     <div class="form-check">
       <label class="form-check-label">Auteur(s)</label>
       <select multiple name="auteurs" id="auteurs" [(ngModel)]="livre.auteurs">
-        <option *ngFor="let auteur of auteurs" [ngValue]="auteur">
+        <option *ngFor="let auteur of auteurs" [ngValue]="auteur" [selected]="livre.auteurs.includes(auteur)">
           {{ auteur.nom }} {{ auteur.prenom }}
         </option>
       </select>
@@ -29,7 +29,7 @@
     <div class="form-check">
       <label class="form-check-label">Theme(s)</label>
       <select multiple name="themes" id="themes" [(ngModel)]="livre.themes">
-        <option *ngFor="let theme of themes" [ngValue]="theme">
+        <option *ngFor="let theme of themes" [ngValue]="theme" [selected]="livre.themes.includes(theme)">
           {{ theme.nom }}
         </option>
       </select>
@@ -38,7 +38,7 @@
     <div class="form-check">
       <label class="form-check-label">Mot(s) clef(s)</label>
       <select multiple name="tags" id="tags" [(ngModel)]="livre.tags">
-        <option *ngFor="let tag of tags" [ngValue]="tag">{{ tag.tag }}</option>
+        <option *ngFor="let tag of tags" [ngValue]="tag" [selected]="livre.tags.includes(tag)">{{ tag.tag }}</option>
       </select>
     </div>
 
