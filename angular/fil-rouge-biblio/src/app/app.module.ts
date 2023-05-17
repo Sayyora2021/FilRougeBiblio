@@ -28,6 +28,7 @@ import { UpdateMotclefsComponent } from 'src/Components/MotClefs/update-motclefs
 import { ListEmpruntsComponent } from 'src/Components/Emprunt/list-emprunts/list-emprunts.component';
 import { DetailsThemeComponent } from 'src/Components/Themes/details-theme/details-theme.component';
 import { CreateEmpruntsComponent } from 'src/Components/Emprunt/create-emprunts/create-emprunts.component';
+import { CreateLivreComponent } from 'src/Components/Livres/create-livre/create-livre.component';
 
 
 
@@ -69,7 +70,8 @@ import { CreateEmpruntsComponent } from 'src/Components/Emprunt/create-emprunts/
     ListEmpruntsComponent,
     LivresListFullComponent,
     DetailsThemeComponent,
-    CreateEmpruntsComponent
+    CreateEmpruntsComponent,
+    CreateLivreComponent
   ],
   imports: [
     BrowserModule,

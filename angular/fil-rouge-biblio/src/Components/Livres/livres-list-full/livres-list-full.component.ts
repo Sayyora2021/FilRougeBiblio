@@ -29,9 +29,6 @@ export class LivresListFullComponent implements OnInit {
     this.livres?.splice(this.livres.indexOf(livre));
   }
 
-  update(livre:ILivre) {}
+  
 
-  create(livre:ILivre) {
-    
-  }
 }
