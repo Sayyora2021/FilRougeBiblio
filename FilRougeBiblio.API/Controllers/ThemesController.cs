@@ -71,34 +71,19 @@ namespace FilRougeBiblio.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPut,Route("Edit/{id}")]
-        public async Task<ActionResult<Theme>> Edit(int id, Theme theme)
+        public async Task<ActionResult<Theme>> Edit(int id, [FromBody] ApiTheme apiTheme)
         {
-            if (id != theme.Id)
+           try
             {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    await Repository.Update(theme);
-
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!await ThemeExists(theme.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                Theme theme = await Repository.GetById(id);
+                theme.Nom = apiTheme.Nom;
+                theme.Description = apiTheme.Description;
+                await Repository.Update(theme);
                 return Ok();
+            } catch (Exception ex)
+            {
+                return Problem(ex.Message);
             }
-            return BadRequest();
         }
 
 
@@ -130,4 +115,10 @@ namespace FilRougeBiblio.API.Controllers
         }
 
     }
+}
+
+public class ApiTheme
+{
+    public string Description { get; set; }
+    public string Nom { get; set; }
 }
