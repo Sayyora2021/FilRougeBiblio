@@ -23,7 +23,7 @@ export class ListLecteursComponent implements OnInit{
       });
   }
 
-  filtrerEmprunts() {
+  filtrer() {
     if (this.nomFiltre && this.nomFiltre.trim() !== '') {
       if (this.lecteurs)
         this.lecteurs = this.lecteurs.filter(lecteur =>

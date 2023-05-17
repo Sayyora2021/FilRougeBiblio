@@ -1,8 +1,21 @@
 <div *ngIf="bibliothecaire" class="container">
-  <h2>Liste des bibliothecaires</h2>
-  <a href="/Bibliothecaires/Create" class="btn btn-primary"
-    >Ajouter un bibliothecaire</a
-  >
+  <h2 class="text-center">Liste des bibliothecaires</h2>
+    <div>
+        <div class="container text-center" style="margin-bottom: 10px;">
+            <div class="row align-items-start">
+                <div class="col">
+                  <a href="/Bibliothecaires/Create" class="btn btn-primary">Ajouter un bibliothecaire</a>
+                </div>
+                <div class="col">
+                    <input type="text" [(ngModel)]="nomFiltre" placeholder="Email du bibliothecaire">
+                    <button (click)="filtrer()">Filtrer</button>
+                </div>
+                <div class="col">
+                    <a class="btn btn-secondary" href="/Bibliothecaires">Réinitialiser</a>
+                </div>
+            </div>
+        </div>
+    </div>
   <ul class="list-group border border-black">
     <li
       *ngFor="let bibliothecaire of bibliothecaire"

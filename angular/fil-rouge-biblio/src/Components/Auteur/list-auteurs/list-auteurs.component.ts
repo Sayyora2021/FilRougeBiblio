@@ -20,7 +20,7 @@ export class ListAuteursComponent implements OnInit{
         this.auteurs = data;
       });
   }
-  filtrerEmprunts() {
+  filtrer() {
     if (this.nomFiltre && this.nomFiltre.trim() !== '') {
       if (this.auteurs)
         this.auteurs = this.auteurs.filter(auteur =>

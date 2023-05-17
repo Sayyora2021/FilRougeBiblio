@@ -39,7 +39,7 @@ export class ListEmpruntsComponent implements OnInit {
     this.router.navigate(['Emprunts']);
   }
 
-  filtrerEmprunts() {
+  filtrer() {
     if (this.nomFiltre && this.nomFiltre.trim() !== '') {
       if (this.emprunts)
         this.emprunts = this.emprunts.filter(emprunt =>
