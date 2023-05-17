@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, UntypedFormArray } from '@angular/forms';
 import { CreateLecteurComponent } from 'src/Components/Lecteur/create-lecteur/create-lecteur.component';
 import { CreateMotclefsComponent } from 'src/Components/MotClefs/create-motclefs/create-motclefs.component';
 import { ListLecteursComponent } from 'src/Components/Lecteur/list-lecteurs/list-lecteurs.component';
@@ -31,6 +31,10 @@ import { CreateEmpruntsComponent } from 'src/Components/Emprunt/create-emprunts/
 import { DetailsAuteursComponent } from 'src/Components/Auteur/details-auteurs/details-auteurs.component';
 import { DetailsLecteursComponent } from 'src/Components/Lecteur/details-lecteurs/details-lecteurs.component';
 import { CreateLivreComponent } from 'src/Components/Livres/create-livre/create-livre.component';
+import { CreateBibliothecaireComponent } from 'src/Components/Bibliothecaire/create-bibliothecaire/create-bibliothecaire.component';
+import { ListBibliothecaireComponent } from 'src/Components/Bibliothecaire/list-bibliothecaire/list-bibliothecaire.component';
+import { UpdateBibliothecaireComponent } from 'src/Components/Bibliothecaire/update-bibliothecaire/update-bibliothecaire.component';
+import { DetailsBibliothecaireComponent } from 'src/Components/Bibliothecaire/details-bibliothecaire/details-bibliothecaire.component';
 
 
 
@@ -69,6 +73,11 @@ import { CreateLivreComponent } from 'src/Components/Livres/create-livre/create-
     CreateExemplairesComponent,
     DeleteExemplairesComponent,
     UpdateExemplairesComponent,
+CreateBibliothecaireComponent, 
+ListBibliothecaireComponent,
+ListBibliothecaireComponent, 
+UpdateBibliothecaireComponent,
+DetailsBibliothecaireComponent,    
     ListEmpruntsComponent,
     LivresListFullComponent,
     DetailsThemeComponent,

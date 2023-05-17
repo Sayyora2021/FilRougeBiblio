@@ -1,0 +1,28 @@
+<form [(ngModel)]="bibliothecaire" class="container">
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="email"
+      name="email"
+      [(ngModel)]="bibliothecaire.email"
+      [ngModelOptions]="{ standalone: true }"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="password">Mot de passe:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="password"
+      name="password"
+      [(ngModel)]="bibliothecaire.motDePasse"
+      [ngModelOptions]="{ standalone: true }"
+      required
+    />
+  </div>
+  <button (click)="update()" class="btn btn-primary">Mettre à jour</button>
+</form>

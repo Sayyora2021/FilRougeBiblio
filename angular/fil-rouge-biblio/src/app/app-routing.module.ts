@@ -22,9 +22,12 @@ import { DeleteExemplairesComponent } from 'src/Components/Exemplaire/delete-exe
 import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exemplaires/update-exemplaires.component';
 import { LivresListFullComponent } from 'src/Components/Livres/livres-list-full/livres-list-full.component';
 import { UpdateMotclefsComponent } from 'src/Components/MotClefs/update-motclefs/update-motclefs.component';
-import { ListEmpruntsComponent } from 'src/Components/Emprunt/list-emprunts/list-emprunts.component';
-import { DetailsThemeComponent } from 'src/Components/Themes/details-theme/details-theme.component';
-import { CreateEmpruntsComponent } from 'src/Components/Emprunt/create-emprunts/create-emprunts.component';
+import { CreateBibliothecaireComponent } from 'src/Components/Bibliothecaire/create-bibliothecaire/create-bibliothecaire.component';
+import { ListBibliothecaireComponent } from 'src/Components/Bibliothecaire/list-bibliothecaire/list-bibliothecaire.component';
+import { DetailsBibliothecaireComponent } from 'src/Components/Bibliothecaire/details-bibliothecaire/details-bibliothecaire.component';
+import { UpdateBibliothecaireComponent } from 'src/Components/Bibliothecaire/update-bibliothecaire/update-bibliothecaire.component';
+import { DeleteBibliothecaireComponent } from 'src/Components/Bibliothecaire/delete-bibliothecaire/delete-bibliothecaire.component';
+
 
 const routes: Routes = [{
   path: 'Lecteurs/Create',
@@ -96,6 +99,26 @@ component: ListThemesComponent},
 {
 path: 'MotClefs/Edit/:id',
 component: UpdateMotclefsComponent
+},
+{
+  path: 'Bibliothecaires/Create',
+  component: CreateBibliothecaireComponent
+},
+{
+  path: 'Bibliothecaires',
+  component: ListBibliothecaireComponent
+},
+{
+  path: 'Bibliothecaires/Details/:id',
+  component: DetailsBibliothecaireComponent
+},
+{
+  path: 'Bibliothecaires/Edit/:id',
+  component: UpdateBibliothecaireComponent
+},
+{
+  path: 'Bibliothecaires/Delete/:id',
+  component: DeleteBibliothecaireComponent
 },
 {
 path: 'Emprunts',
