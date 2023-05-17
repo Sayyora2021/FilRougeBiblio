@@ -12,16 +12,16 @@ export class EmpruntService {
 
 
   constructor(private http: HttpClient) { 
-    
+
   }
 
-  create(lecteur:IEmprunt){
-    this.http.post<IEmprunt>(this.path + '/Create',lecteur).subscribe();
+  create(emprunt:IEmprunt){
+    this.http.post<IEmprunt>(this.path + `/Create?lecteurId=${emprunt.lecteur.id}&exemplaireId=${emprunt.exemplaire.id}`,emprunt).subscribe();
   }
 
 
-  delete(id:number){
-    this.http.delete<IEmprunt>(this.path + '/Delete/'+id).subscribe();
+  rendre(id:number){
+    this.http.put<IEmprunt>(this.path + '/Rendre?empruntId='+ id,id).subscribe();
   }
 
   listAll() : Observable<IEmprunt[]>{

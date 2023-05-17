@@ -23,7 +23,7 @@ export class ListEmpruntsComponent implements OnInit {
   }
 
   rendre(id:number){
-    this.empruntService.delete(id);
+    this.empruntService.rendre(id);
   }
 
 }

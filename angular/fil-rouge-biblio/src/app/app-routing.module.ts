@@ -24,6 +24,7 @@ import { LivresListFullComponent } from 'src/Components/Livres/livres-list-full/
 import { UpdateMotclefsComponent } from 'src/Components/MotClefs/update-motclefs/update-motclefs.component';
 import { ListEmpruntsComponent } from 'src/Components/Emprunt/list-emprunts/list-emprunts.component';
 import { DetailsThemeComponent } from 'src/Components/Themes/details-theme/details-theme.component';
+import { CreateEmpruntsComponent } from 'src/Components/Emprunt/create-emprunts/create-emprunts.component';
 
 const routes: Routes = [{
   path: 'Lecteurs/Create',
@@ -100,8 +101,11 @@ component: UpdateMotclefsComponent
 path: 'Emprunts',
 component: ListEmpruntsComponent
 },
-{ path:'Themes/Details/:id', component: DetailsThemeComponent  }
-];
+{ path:'Themes/Details/:id', component: DetailsThemeComponent  },
+{
+path: 'Emprunts/Create',
+component: CreateEmpruntsComponent
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
