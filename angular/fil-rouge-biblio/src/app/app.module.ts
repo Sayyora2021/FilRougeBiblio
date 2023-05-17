@@ -29,6 +29,7 @@ import { DetailsEditLivreComponent } from 'src/Components/Livres/details-edit-li
 import { ListBibliothecaireComponent } from 'src/Components/Bibliothecaire/list-bibliothecaire/list-bibliothecaire.component';
 import { DetailsBibliothecaireComponent } from 'src/Components/Bibliothecaire/details-bibliothecaire/details-bibliothecaire.component';
 import { GestionCategoriesComponent } from 'src/Components/Mixes/gestion-categories/gestion-categories.component';
+import { GestionUtilisateursComponent } from 'src/Components/Mixes/gestion-utilisateurs/gestion-utilisateurs.component';
 
 
 
@@ -69,7 +70,8 @@ DetailsBibliothecaireComponent,
     DetailsAuteursComponent,
     DetailsLecteursComponent,
     CreateLivreComponent,
-    GestionCategoriesComponent
+    GestionCategoriesComponent,
+    GestionUtilisateursComponent
   ],
   imports: [
     BrowserModule,

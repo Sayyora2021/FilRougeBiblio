@@ -24,6 +24,7 @@ import { CreateEmpruntsComponent } from 'src/Components/Emprunt/create-emprunts/
 import { DetailsEditLivreComponent } from 'src/Components/Livres/details-edit-livre/details-edit-livre.component';
 import { HomeComponent } from 'src/Components/Accueil/home/home.component';
 import { GestionCategoriesComponent } from 'src/Components/Mixes/gestion-categories/gestion-categories.component';
+import { GestionUtilisateursComponent } from 'src/Components/Mixes/gestion-utilisateurs/gestion-utilisateurs.component';
 
 
 const routes: Routes = [
@@ -96,7 +97,8 @@ path: 'Emprunts/Create',
 component: CreateEmpruntsComponent
 },
 { path: 'Livres/Infos/:id', component: DetailsEditLivreComponent},
-{ path: 'GestionCategories', component: GestionCategoriesComponent }
+{ path: 'GestionCategories', component: GestionCategoriesComponent },
+{ path: 'GestionUtilisateurs', component: GestionUtilisateursComponent }
 ];
 
 @NgModule({
