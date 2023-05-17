@@ -1,6 +1,21 @@
 <div *ngIf="auteurs" class="container">
-    <h2>Liste des auteurs</h2>
-    <a href="/Auteurs/Create" class="btn btn-primary">Ajouter un auteur</a>
+    <h2 class="text-center">Liste des auteurs</h2>
+    <div>
+        <div class="container text-center" style="margin-bottom: 10px;">
+            <div class="row align-items-start">
+                <div class="col">
+                    <a href="/Auteurs/Create" class="btn btn-primary">Ajouter un auteur</a>
+                </div>
+                <div class="col">
+                    <input type="text" [(ngModel)]="nomFiltre" placeholder="Nom de l'auteur">
+                    <button (click)="filtrer()">Filtrer</button>
+                </div>
+                <div class="col">
+                    <a class="btn btn-secondary" href="/Auteurs">Réinitialiser</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <ul class="list-group border border-black">
         <li *ngFor="let auteur of auteurs" class="list-group-item d-flex justify-content-between align-items-center border border-black">
             <span class="list-group-item">{{ auteur.nom }} {{ auteur.prenom }}</span>

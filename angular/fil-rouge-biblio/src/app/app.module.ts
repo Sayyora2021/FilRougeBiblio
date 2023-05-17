@@ -31,6 +31,7 @@ import { CreateEmpruntsComponent } from 'src/Components/Emprunt/create-emprunts/
 import { DetailsAuteursComponent } from 'src/Components/Auteur/details-auteurs/details-auteurs.component';
 import { DetailsLecteursComponent } from 'src/Components/Lecteur/details-lecteurs/details-lecteurs.component';
 import { CreateLivreComponent } from 'src/Components/Livres/create-livre/create-livre.component';
+import { DetailsEditLivreComponent } from 'src/Components/Livres/details-edit-livre/details-edit-livre.component';
 import { CreateBibliothecaireComponent } from 'src/Components/Bibliothecaire/create-bibliothecaire/create-bibliothecaire.component';
 import { ListBibliothecaireComponent } from 'src/Components/Bibliothecaire/list-bibliothecaire/list-bibliothecaire.component';
 import { UpdateBibliothecaireComponent } from 'src/Components/Bibliothecaire/update-bibliothecaire/update-bibliothecaire.component';
@@ -82,6 +83,8 @@ DetailsBibliothecaireComponent,
     LivresListFullComponent,
     DetailsThemeComponent,
     CreateEmpruntsComponent,
+    CreateLivreComponent,
+    DetailsEditLivreComponent,
     DetailsAuteursComponent,
     DetailsLecteursComponent,
     CreateLivreComponent

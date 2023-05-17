@@ -9,6 +9,7 @@ import { BibliothecaireService } from 'src/bibliothecaire.service';
 })
 export class ListBibliothecaireComponent implements OnInit{
 bibliothecaire?: IBibliothecaire[];
+nomFiltre: string = '';
   constructor(private bibliothecaireService: BibliothecaireService){
   }
 
@@ -21,5 +22,14 @@ bibliothecaire?: IBibliothecaire[];
       })
      
   }
-
+  filtrer() {
+    if (this.nomFiltre && this.nomFiltre.trim() !== '') {
+      if (this.bibliothecaire)
+        this.bibliothecaire = this.bibliothecaire.filter(bibliothecaire =>
+          bibliothecaire.email.toLowerCase().includes(this.nomFiltre.toLowerCase())
+        );
+    } else {
+      this.bibliothecaire = this.bibliothecaire;
+    }
+  }
 }

@@ -10,6 +10,7 @@ import { LecteurService } from 'src/Services/lecteur.service';
 export class ListLecteursComponent implements OnInit{
 
   lecteurs? : ILecteur[];
+  nomFiltre: string = '';
 
   constructor(private lecteurService: LecteurService) {
     
@@ -21,4 +22,16 @@ export class ListLecteursComponent implements OnInit{
         this.lecteurs = data;
       });
   }
+
+  filtrer() {
+    if (this.nomFiltre && this.nomFiltre.trim() !== '') {
+      if (this.lecteurs)
+        this.lecteurs = this.lecteurs.filter(lecteur =>
+          lecteur.nom.toLowerCase().includes(this.nomFiltre.toLowerCase())
+        );
+    } else {
+      this.lecteurs = this.lecteurs;
+    }
+  }
+
 }

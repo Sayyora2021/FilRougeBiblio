@@ -9,6 +9,7 @@ import { MotclefsService } from 'src/Services/motclefs.service';
 })
 export class ListMotclefsComponent implements OnInit{
 motclefs?: IMotClef[];
+nomFiltre: string = '';
 constructor(private motclefsService: MotclefsService){
   
 }
@@ -18,5 +19,15 @@ constructor(private motclefsService: MotclefsService){
         this.motclefs=data;
       }
     )
+  }
+  filtrer() {
+    if (this.nomFiltre && this.nomFiltre.trim() !== '') {
+      if (this.motclefs)
+        this.motclefs = this.motclefs.filter(motClef =>
+          motClef.tag.toLowerCase().includes(this.nomFiltre.toLowerCase())
+        );
+    } else {
+      this.motclefs = this.motclefs;
+    }
   }
 }

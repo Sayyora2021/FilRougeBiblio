@@ -9,6 +9,10 @@ using FilRougeBiblio.Core.Entities;
 using FilRougeBiblio.Infrastructure.Data;
 using FilRougeBiblio.Core.Seedwork;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Text.Json.Serialization;
+using NuGet.ProjectModel;
+using NuGet.LibraryModel;
+using System.Drawing.Text;
 
 namespace FilRougeBiblio.API.Controllers
 {
@@ -18,11 +22,17 @@ namespace FilRougeBiblio.API.Controllers
     {
 
         private readonly ILivreRepository LivreRepository;
+        private readonly IAuteurRepository AuteurRepository;
+        private readonly IThemeRepository ThemeRepository;
+        private readonly IMotClefRepository MotClefRepository;
 
-        public LivresController(ILivreRepository livreRepository)
+        public LivresController(ILivreRepository livreRepository, IMotClefRepository motClefRepository, IAuteurRepository auteurRepository, IThemeRepository themeRepository)
         {
             LivreRepository = livreRepository;
-            
+            AuteurRepository = auteurRepository;
+            ThemeRepository = themeRepository;
+            MotClefRepository = motClefRepository;
+       
         }
 
         // GET: Livres
@@ -55,15 +65,28 @@ namespace FilRougeBiblio.API.Controllers
         // POST: Livres/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost,Route("Create")]
-        public async Task<ActionResult<Livre>> Create(Livre livre)
+        [HttpPost, Route("Create")]
+        public async Task<ActionResult<Livre>> Create([FromBody] ApiLivre apiLivre)
         {
-            if (ModelState.IsValid)
+            Livre livre = new Livre();
+            livre.Titre = apiLivre.Titre;
+            livre.ISBN = apiLivre.Isbn;
+
+            livre.Auteurs = new List<Auteur>();
+            livre.Tags = new List<MotClef>();
+            livre.Themes = new List<Theme>();
+
+            await PopulateAuteursThemesTags(livre, apiLivre.auteursIds, apiLivre.themesIds, apiLivre.tagsIds);
+
+            try
             {
                 await LivreRepository.Create(livre);
-                return livre;
+                return Ok();
+            } 
+            catch (Exception e)
+            {
+                return Problem(e.Message);
             }
-            return BadRequest();
         }
 
         
@@ -72,30 +95,22 @@ namespace FilRougeBiblio.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPut,Route("Edit/{id}")]
-        public async Task<ActionResult<Livre>> Edit(int id, Livre livre)
+        public async Task<ActionResult<Livre>> Edit(int id, [FromBody] ApiLivre apiLivre)
         {
-            if (ModelState.IsValid)
+            try
             {
-                try
-                {
+                Livre livre = await LivreRepository.GetById(id);
+                livre.Titre = apiLivre.Titre;
+                livre.ISBN = apiLivre.Isbn;
+                livre.Auteurs.Clear();
+                livre.Tags.Clear();
+                livre.Themes.Clear();
+                await PopulateAuteursThemesTags(livre, apiLivre.auteursIds, apiLivre.themesIds, apiLivre.tagsIds);
 
-                    await LivreRepository.Update(livre);
-
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!await LivreExists(livre.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return livre;
+                await LivreRepository.Update(livre);
+                return Ok();
             }
-            return BadRequest();
+            catch (Exception ex) { return Problem(ex.Message); }
         }
 
         // POST: Livres/Delete/5
@@ -122,6 +137,36 @@ namespace FilRougeBiblio.API.Controllers
             return await LivreRepository.Exists(id);
         }
 
+        [ApiExplorerSettings(IgnoreApi = true)]
+        private async Task PopulateAuteursThemesTags(Livre livre, int[] auteursIds, int[] themesIds, int[] tagsIds)
+        {
+            foreach (int auteurId in auteursIds)
+            {
+                Auteur auteur = await AuteurRepository.GetById(auteurId);
+                livre.Auteurs.Add(auteur);
+            }
 
+            foreach (int themeId in themesIds)
+            {
+                Theme theme = await ThemeRepository.GetById(themeId);
+                livre.Themes.Add(theme);
+            }
+
+            foreach (int tagId in tagsIds)
+            {
+                MotClef tag = await MotClefRepository.GetById(tagId);
+                livre.Tags.Add(tag);
+            }
+        }
     }
 }
+
+public class ApiLivre  {
+    public string? Titre { get; set; }
+    public string? Isbn { get; set; }
+
+    public int[] auteursIds { get; set; }
+    public int[] themesIds { get; set; }
+    public int[] tagsIds { get; set; }
+}
+

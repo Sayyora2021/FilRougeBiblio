@@ -30,6 +30,7 @@ import { DeleteBibliothecaireComponent } from 'src/Components/Bibliothecaire/del
 import { ListEmpruntsComponent } from 'src/Components/Emprunt/list-emprunts/list-emprunts.component';
 import { DetailsThemeComponent } from 'src/Components/Themes/details-theme/details-theme.component';
 import { CreateEmpruntsComponent } from 'src/Components/Emprunt/create-emprunts/create-emprunts.component';
+import { DetailsEditLivreComponent } from 'src/Components/Livres/details-edit-livre/details-edit-livre.component';
 
 
 const routes: Routes = [{
@@ -131,7 +132,9 @@ component: ListEmpruntsComponent
 {
 path: 'Emprunts/Create',
 component: CreateEmpruntsComponent
-}];
+},
+{ path: 'Livres/Infos/:id', component: DetailsEditLivreComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
