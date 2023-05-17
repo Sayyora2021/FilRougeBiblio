@@ -30,4 +30,8 @@ export class LivresListFullComponent implements OnInit {
   }
 
   update(livre:ILivre) {}
+
+  create(livre:ILivre) {
+    
+  }
 }
