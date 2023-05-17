@@ -28,9 +28,9 @@
         <tbody>
             <tr *ngFor="let emprunt of lecteur.listEmprunts">
                 <td>{{ emprunt.id }}</td>
-                <td>{{ emprunt.exemplaire }}</td>
+                <td>{{ emprunt.exemplaire.livre.titre }}</td>
                 <td>{{ emprunt.dateEmprunt }}</td>
-                <td>{{ emprunt.dateRetour }}</td>
+                <td>{{ emprunt.dateRetourReel ? emprunt.dateRetourReel : 'Non rendu' }}</td>
             </tr>
         </tbody>
     </table>

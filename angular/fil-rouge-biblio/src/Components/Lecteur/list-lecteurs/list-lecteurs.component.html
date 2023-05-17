@@ -1,29 +1,54 @@
 <div *ngIf="lecteurs" class="container">
-    <h2 class="text-center" >Liste des lecteurs</h2>
-    <div>
-        <div class="container text-center" style="margin-bottom: 10px;">
-            <div class="row align-items-start">
-                <div class="col">
-                    <a href="/Lecteurs/Create" class="btn btn-primary">Ajouter un lecteur</a>
-                </div>
-                <div class="col">
-                    <input type="text" [(ngModel)]="nomFiltre" placeholder="Nom du lecteur">
-                    <button (click)="filtrer()">Filtrer</button>
-                </div>
-                <div class="col">
-                    <a class="btn btn-secondary" href="/Lecteurs">Réinitialiser</a>
-                </div>
-            </div>
+  <h2 class="text-center">Liste des lecteurs</h2>
+  <div>
+    <div class="container text-center" style="margin-bottom: 10px">
+      <div class="row align-items-start">
+        <div class="col">
+          <a href="/Lecteurs/Create" class="btn btn-primary btn-scale"
+            >Ajouter un lecteur</a
+          >
         </div>
+        <div class="col">
+          <input
+            type="text"
+            [(ngModel)]="nomFiltre"
+            placeholder="Nom du lecteur"
+          />
+          <button (click)="filtrer()">Filtrer</button>
+        </div>
+        <div class="col">
+          <a class="btn btn-secondary btn-scale" href="/Lecteurs"
+            >Réinitialiser</a
+          >
+        </div>
+      </div>
     </div>
-    <ul class="list-group border border-black">
-        <li *ngFor="let lecteur of lecteurs" class="list-group-item d-flex justify-content-between align-items-center border border-black">
-            <span class="list-group-item">{{ lecteur.nom }} {{ lecteur.prenom }} <input style="opacity: 1;" class="form-check-input" type="checkbox" [(ngModel)]="lecteur.cotisation" disabled /></span>
-            <div class="btn-group list-group-item">
-                <a href="/Lecteurs/Edit/{{lecteur.id}}" class="btn btn-primary">Modifier</a>
-                <a href="/Lecteurs/Delete/{{lecteur.id}}" class="btn btn-danger">Supprimer</a>
-                <a href="/Lecteurs/Details/{{lecteur.id}}" class="btn btn-info">Details</a>
-            </div>
-        </li>
-    </ul>
+  </div>
+  <ul class="list-group border border-black">
+    <li
+      *ngFor="let lecteur of lecteurs"
+      class="list-group-item d-flex justify-content-between align-items-center border border-black"
+    >
+      <span class="list-group-item"
+        >{{ lecteur.nom }} {{ lecteur.prenom }}
+        <input
+          style="opacity: 1"
+          class="form-check-input"
+          type="checkbox"
+          [(ngModel)]="lecteur.cotisation"
+          disabled
+      /></span>
+      <div class="btn-group list-group-item">
+        <a href="/Lecteurs/Edit/{{ lecteur.id }}" class="btn btn-primary"
+          >Modifier</a
+        >
+        <a href="/Lecteurs/Delete/{{ lecteur.id }}" class="btn btn-danger"
+          >Supprimer</a
+        >
+        <a href="/Lecteurs/Details/{{ lecteur.id }}" class="btn btn-info"
+          >Details</a
+        >
+      </div>
+    </li>
+  </ul>
 </div>

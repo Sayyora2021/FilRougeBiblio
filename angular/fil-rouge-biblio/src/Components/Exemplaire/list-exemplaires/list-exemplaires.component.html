@@ -1,29 +1,49 @@
 <div *ngIf="exemplaires" class="container">
-    <h2 class="text-center">Liste des exemplaires</h2>
-    <div>
-        <div class="container text-center" style="margin-bottom: 10px;">
-            <div class="row align-items-start">
-                <div class="col">
-                    <a href="/Exemplaires/Create" class="btn btn-primary">Ajouter un exemplaire</a>
-                </div>
-                <div class="col">
-                    <input type="text" [(ngModel)]="nomFiltre" placeholder="Nom du livre">
-                    <button (click)="filtrer()">Filtrer</button>
-                </div>
-                <div class="col">
-                    <a class="btn btn-secondary" href="/Exemplaires">Réinitialiser</a>
-                </div>
-            </div>
+  <h2 class="text-center">Liste des exemplaires</h2>
+  <div>
+    <div class="container text-center" style="margin-bottom: 10px">
+      <div class="row align-items-start">
+        <div class="col">
+          <a href="/Exemplaires/Create" class="btn btn-primary btn-scale"
+            >Ajouter un exemplaire</a
+          >
         </div>
+        <div class="col">
+          <input
+            type="text"
+            [(ngModel)]="nomFiltre"
+            placeholder="Nom du livre"
+          />
+          <button (click)="filtrer()">Filtrer</button>
+        </div>
+        <div class="col">
+          <a class="btn btn-secondary btn-scale" href="/Exemplaires"
+            >Réinitialiser</a
+          >
+        </div>
+      </div>
     </div>
-    <ul class="list-group border border-black">
-        <li *ngFor="let exemplaire of exemplaires" class="list-group-item d-flex justify-content-between align-items-center border border-black">
-            <span class="list-group-item">{{ exemplaire.id }} {{ exemplaire.livre.titre }} {{ exemplaire.numeroInventaire }} {{ exemplaire.miseEnService }}</span>
-            <div class="btn-group list-group-item">
-                <a href="/Exemplaires/Edit/{{exemplaire.id}}" class="btn btn-primary">Modifier</a>
-                <a href="/Exemplaires/Delete/{{exemplaire.id}}" class="btn btn-danger">Supprimer</a>
-                <a href="/Exemplaires/Details/{{exemplaire.id}}" class="btn btn-info">Details</a>
-            </div>
-        </li>
-    </ul>
+  </div>
+  <ul class="list-group border border-black">
+    <li
+      *ngFor="let exemplaire of exemplaires"
+      class="list-group-item d-flex justify-content-between align-items-center border border-black"
+    >
+      <span class="list-group-item"
+        >{{ exemplaire.id }} {{ exemplaire.livre.titre }}
+        {{ exemplaire.numeroInventaire }} {{ exemplaire.miseEnService }}</span
+      >
+      <div class="btn-group list-group-item">
+        <a href="/Exemplaires/Edit/{{ exemplaire.id }}" class="btn btn-primary"
+          >Modifier</a
+        >
+        <a href="/Exemplaires/Delete/{{ exemplaire.id }}" class="btn btn-danger"
+          >Supprimer</a
+        >
+        <a href="/Exemplaires/Details/{{ exemplaire.id }}" class="btn btn-info"
+          >Details</a
+        >
+      </div>
+    </li>
+  </ul>
 </div>

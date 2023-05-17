@@ -32,7 +32,21 @@
                 </div>
             </div>
         </div>
-    </div>
+        <div class="col">
+          <input
+            type="text"
+            [(ngModel)]="nomFiltre"
+            placeholder="Nom du tag"
+          />
+          <button (click)="filtrer()">Filtrer</button>
+        </div>
+        <div class="col">
+          <a class="btn btn-secondary btn-scale" href="/MotClefs">Réinitialiser</a>
+        </div>
+      </div>
+   
+  
+
   <ul class="list-group border border-black">
     <li
       *ngFor="let motclefs of motclefs"
@@ -55,9 +69,6 @@
       </div>
     </li>
   </ul>
-
-
-  
 
 </div>
 

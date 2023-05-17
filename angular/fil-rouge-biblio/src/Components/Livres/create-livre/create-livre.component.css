@@ -1,0 +1,11 @@
+.btn-scale {
+  transition: transform 0.3s;
+}
+
+.btn-scale:hover {
+  transform: scale(1.1);
+}
+h3 {
+  color: rgb(6, 135, 6);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
