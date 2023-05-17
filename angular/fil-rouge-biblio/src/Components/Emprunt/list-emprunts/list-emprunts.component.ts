@@ -14,7 +14,7 @@ export class ListEmpruntsComponent implements OnInit {
   nomFiltre: string = '';
 
   constructor(private empruntService: EmpruntService, private router: Router, private activatedRoute: ActivatedRoute) {
-    this.filtrerEmprunts();
+    
   }
 
   ngOnInit(): void {
@@ -23,6 +23,7 @@ export class ListEmpruntsComponent implements OnInit {
       const search = params.get('search');
       if (search) {
         this.nomFiltre = search;
+        this.filtrerEmprunts();
       }
       this.empruntService.listAll().subscribe(
         (data: IEmprunt[]) => {
@@ -30,7 +31,6 @@ export class ListEmpruntsComponent implements OnInit {
         });
     });
 
-    this.filtrerEmprunts();
 
   }
 
