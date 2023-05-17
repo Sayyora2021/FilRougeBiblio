@@ -11,7 +11,7 @@ export class ListLecteursComponent implements OnInit{
 
   lecteurs? : ILecteur[];
   nomFiltre: string = '';
-
+  nouveauLecteur: ILecteur = { id: 0, nom: '', prenom:'', listEmprunts: [], email:'', telephone:'', adresse:'', cotisation: false }
   constructor(private lecteurService: LecteurService) {
     
   }
@@ -32,6 +32,20 @@ export class ListLecteursComponent implements OnInit{
     } else {
       this.lecteurs = this.lecteurs;
     }
+  }
+
+  delete(lecteur: ILecteur) {
+    this.lecteurService.delete(lecteur.id);
+    this.lecteurs?.splice(this.lecteurs.indexOf(lecteur), 1);
+  }
+
+  update(lecteur: ILecteur) {
+    this.lecteurService.update(lecteur);
+  }
+
+  create() {
+    this.lecteurService.create(this.nouveauLecteur);
+    this.ngOnInit(); this.ngOnInit();
   }
 
 }

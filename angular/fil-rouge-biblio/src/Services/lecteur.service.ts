@@ -24,8 +24,8 @@ export class LecteurService {
 
 
 
-  update(lecteur:ILecteur,id:number){
-    this.http.put<ILecteur>(this.path + '/Edit/'+id,lecteur).subscribe();
+  update(lecteur:ILecteur){
+    this.http.put<ILecteur>(this.path + '/Edit/'+lecteur.id,lecteur).subscribe();
   }
 
 
