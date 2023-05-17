@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IMotClef } from 'src/Interfaces/IMotClef';
 import { MotclefsService } from 'src/Services/motclefs.service';
+import { Form } from '@angular/forms';
 
 @Component({
   selector: 'app-list-motclefs',
@@ -10,6 +11,8 @@ import { MotclefsService } from 'src/Services/motclefs.service';
 export class ListMotclefsComponent implements OnInit{
 motclefs?: IMotClef[];
 nomFiltre: string = '';
+nouveauTag: IMotClef = { tag: '', id: 0, livres: [] };
+
 constructor(private motclefsService: MotclefsService){
   
 }
@@ -29,5 +32,19 @@ constructor(private motclefsService: MotclefsService){
     } else {
       this.motclefs = this.motclefs;
     }
+  }
+
+  delete(motClef: IMotClef) {
+    this.motclefsService.delete(motClef.id);
+    this.motclefs?.splice(this.motclefs.indexOf(motClef), 1);
+  }
+
+  update(motClef: IMotClef) {
+    this.motclefsService.update(motClef);
+  }
+
+  create() {
+    this.motclefsService.create(this.nouveauTag);
+    this.ngOnInit(); this.ngOnInit();
   }
 }

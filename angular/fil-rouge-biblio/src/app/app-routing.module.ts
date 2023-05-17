@@ -9,11 +9,9 @@ import { CreateLecteurComponent } from 'src/Components/Lecteur/create-lecteur/cr
 import { DeleteLecteursComponent } from 'src/Components/Lecteur/delete-lecteurs/delete-lecteurs.component';
 import { DetailsLecteursComponent } from 'src/Components/Lecteur/details-lecteurs/details-lecteurs.component';
 import { ListLecteursComponent } from 'src/Components/Lecteur/list-lecteurs/list-lecteurs.component';
-import { CreateMotclefsComponent } from 'src/Components/MotClefs/create-motclefs/create-motclefs.component';
 import { ListThemesComponent } from 'src/Components/Themes/list-themes/list-themes.component';
 import { UpdateLecteursComponent } from 'src/Components/Lecteur/update-lecteurs/update-lecteurs.component';
 import { DetailsMotclefsComponent } from 'src/Components/MotClefs/details-motclefs/details-motclefs.component';
-import { DeleteMotclefsComponent } from 'src/Components/MotClefs/delete-motclefs/delete-motclefs.component';
 import { ListMotclefsComponent } from 'src/Components/MotClefs/list-motclefs/list-motclefs.component';
 import { ListExemplairesComponent } from 'src/Components/Exemplaire/list-exemplaires/list-exemplaires.component';
 import { CreateExemplairesComponent } from 'src/Components/Exemplaire/create-exemplaires/create-exemplaires.component';
@@ -21,7 +19,6 @@ import { DetailsExemplairesComponent } from 'src/Components/Exemplaire/details-e
 import { DeleteExemplairesComponent } from 'src/Components/Exemplaire/delete-exemplaires/delete-exemplaires.component';
 import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exemplaires/update-exemplaires.component';
 import { LivresListFullComponent } from 'src/Components/Livres/livres-list-full/livres-list-full.component';
-import { UpdateMotclefsComponent } from 'src/Components/MotClefs/update-motclefs/update-motclefs.component';
 import { CreateBibliothecaireComponent } from 'src/Components/Bibliothecaire/create-bibliothecaire/create-bibliothecaire.component';
 import { ListBibliothecaireComponent } from 'src/Components/Bibliothecaire/list-bibliothecaire/list-bibliothecaire.component';
 import { DetailsBibliothecaireComponent } from 'src/Components/Bibliothecaire/details-bibliothecaire/details-bibliothecaire.component';
@@ -32,6 +29,7 @@ import { DetailsThemeComponent } from 'src/Components/Themes/details-theme/detai
 import { CreateEmpruntsComponent } from 'src/Components/Emprunt/create-emprunts/create-emprunts.component';
 import { DetailsEditLivreComponent } from 'src/Components/Livres/details-edit-livre/details-edit-livre.component';
 import { HomeComponent } from 'src/Components/Accueil/home/home.component';
+import { GestionCategoriesComponent } from 'src/Components/Mixes/gestion-categories/gestion-categories.component';
 
 
 const routes: Routes = [
@@ -41,10 +39,6 @@ const routes: Routes = [
   },{
   path: 'Lecteurs/Create',
   component: CreateLecteurComponent
-},
-{
-path: 'MotClefs/Create',
-component: CreateMotclefsComponent
 },
 {
   path: 'Lecteurs',
@@ -62,14 +56,8 @@ component: CreateMotclefsComponent
   path: 'MotClefs/Details/:id',
   component: DetailsMotclefsComponent
 },{
-  path: 'MotClefs/Delete/:id',
-  component: DeleteMotclefsComponent
-},{
   path: 'MotClefs',
   component: ListMotclefsComponent
-},
-{path: 'MotClefs/Edit/:id',
-component: UpdateMotclefsComponent
 },
 {path: 'Themes',
 component: ListThemesComponent},
@@ -106,10 +94,6 @@ component: ListThemesComponent},
 },
 { path:'Livres', component: LivresListFullComponent },
 {
-path: 'MotClefs/Edit/:id',
-component: UpdateMotclefsComponent
-},
-{
   path: 'Bibliothecaires/Create',
   component: CreateBibliothecaireComponent
 },
@@ -138,7 +122,8 @@ component: ListEmpruntsComponent
 path: 'Emprunts/Create',
 component: CreateEmpruntsComponent
 },
-{ path: 'Livres/Infos/:id', component: DetailsEditLivreComponent}
+{ path: 'Livres/Infos/:id', component: DetailsEditLivreComponent},
+{ path: 'GestionCategories', component: GestionCategoriesComponent }
 ];
 
 @NgModule({

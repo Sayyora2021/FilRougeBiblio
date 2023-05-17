@@ -6,12 +6,10 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, UntypedFormArray } from '@angular/forms';
 import { CreateLecteurComponent } from 'src/Components/Lecteur/create-lecteur/create-lecteur.component';
-import { CreateMotclefsComponent } from 'src/Components/MotClefs/create-motclefs/create-motclefs.component';
 import { ListLecteursComponent } from 'src/Components/Lecteur/list-lecteurs/list-lecteurs.component';
 import { DeleteLecteursComponent } from 'src/Components/Lecteur/delete-lecteurs/delete-lecteurs.component';
 import { UpdateLecteursComponent } from 'src/Components/Lecteur/update-lecteurs/update-lecteurs.component';
 import { DetailsMotclefsComponent } from 'src/Components/MotClefs/details-motclefs/details-motclefs.component';
-import { DeleteMotclefsComponent } from 'src/Components/MotClefs/delete-motclefs/delete-motclefs.component';
 import { ListMotclefsComponent } from 'src/Components/MotClefs/list-motclefs/list-motclefs.component';
 import { AuteurService } from 'src/Services/auteur.service';
 import { ListThemesComponent } from 'src/Components/Themes/list-themes/list-themes.component';
@@ -24,7 +22,6 @@ import { CreateExemplairesComponent } from 'src/Components/Exemplaire/create-exe
 import { DeleteExemplairesComponent } from 'src/Components/Exemplaire/delete-exemplaires/delete-exemplaires.component';
 import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exemplaires/update-exemplaires.component';
 import { LivresListFullComponent } from '../Components/Livres/livres-list-full/livres-list-full.component';
-import { UpdateMotclefsComponent } from 'src/Components/MotClefs/update-motclefs/update-motclefs.component';
 import { ListEmpruntsComponent } from 'src/Components/Emprunt/list-emprunts/list-emprunts.component';
 import { DetailsThemeComponent } from 'src/Components/Themes/details-theme/details-theme.component';
 import { CreateEmpruntsComponent } from 'src/Components/Emprunt/create-emprunts/create-emprunts.component';
@@ -36,6 +33,7 @@ import { CreateBibliothecaireComponent } from 'src/Components/Bibliothecaire/cre
 import { ListBibliothecaireComponent } from 'src/Components/Bibliothecaire/list-bibliothecaire/list-bibliothecaire.component';
 import { UpdateBibliothecaireComponent } from 'src/Components/Bibliothecaire/update-bibliothecaire/update-bibliothecaire.component';
 import { DetailsBibliothecaireComponent } from 'src/Components/Bibliothecaire/details-bibliothecaire/details-bibliothecaire.component';
+import { GestionCategoriesComponent } from 'src/Components/Mixes/gestion-categories/gestion-categories.component';
 
 
 
@@ -43,14 +41,11 @@ import { DetailsBibliothecaireComponent } from 'src/Components/Bibliothecaire/de
   declarations: [
     AppComponent,
     CreateLecteurComponent,
-    CreateMotclefsComponent,
     ListLecteursComponent,
     DeleteLecteursComponent,
     UpdateLecteursComponent,
     DetailsMotclefsComponent,
-    DeleteMotclefsComponent,
     ListMotclefsComponent,
-    UpdateMotclefsComponent,
     ListThemesComponent,
     CreateAuteursComponent,
     ListAuteursComponent,
@@ -61,7 +56,6 @@ import { DetailsBibliothecaireComponent } from 'src/Components/Bibliothecaire/de
     DeleteExemplairesComponent,
     UpdateExemplairesComponent,
     CreateLecteurComponent,
-    CreateMotclefsComponent,
     ListLecteursComponent,
     DeleteLecteursComponent,
     UpdateLecteursComponent,
@@ -87,7 +81,8 @@ DetailsBibliothecaireComponent,
     DetailsEditLivreComponent,
     DetailsAuteursComponent,
     DetailsLecteursComponent,
-    CreateLivreComponent
+    CreateLivreComponent,
+    GestionCategoriesComponent
   ],
   imports: [
     BrowserModule,
