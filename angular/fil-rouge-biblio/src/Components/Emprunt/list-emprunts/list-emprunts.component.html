@@ -1,6 +1,42 @@
 <div *ngIf="emprunts" class="container">
     <h2>Liste des emprunts</h2>
     <a href="/Emprunts/Create" class="btn btn-primary">Ajouter un emprunt</a>
+    <input type="text" [(ngModel)]="nomFiltre" placeholder="Nom du lecteur">
+    <button (click)="filtrerEmprunts()">Filtrer</button>
+    <a class="btn btn-secondary" href="/Emprunts">Réinitialiser</a>
+    <ul class="list-group border border-black">
+        <li *ngFor="let emprunt of emprunts" class="list-group-item d-flex justify-content-between align-items-center border border-black">
+            <div class="d-flex flex-column">
+                <span class="list-group-item">
+                    <strong>Titre du livre :</strong> {{ emprunt.exemplaire.livre.titre }}
+                </span>
+                <span class="list-group-item">
+                    <strong>Nom du lecteur :</strong> {{ emprunt.lecteur.nom }}
+                </span>
+                <span class="list-group-item">
+                    <strong>Prénom du lecteur :</strong> {{ emprunt.lecteur.prenom }}
+                </span>
+                <span class="list-group-item">
+                    <strong>Date d'emprunt :</strong> {{ emprunt.dateEmprunt }}
+                </span>
+                <span class="list-group-item">
+                    <strong>Date de retour :</strong> {{ emprunt.dateRetour }}
+                </span>
+            </div>
+            <div class="btn-group list-group-item">
+                <button *ngIf="emprunt.dateRetourReel == null" (click)="rendre(emprunt.id)" class="btn btn-primary">Rendre</button>
+                <label *ngIf="emprunt.dateRetourReel != null">
+                    <strong>Date de retour réel :</strong> {{ emprunt.dateRetourReel }}
+                </label>
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+<!-- <div *ngIf="emprunts" class="container">
+    <h2>Liste des emprunts</h2>
+    <a href="/Emprunts/Create" class="btn btn-primary">Ajouter un emprunt</a>
     <ul class="list-group border border-black">
         <li *ngFor="let emprunt of emprunts" class="list-group-item d-flex justify-content-between align-items-center border border-black">
             <span class="list-group-item">{{ emprunt.exemplaire.livre.titre }} | {{ emprunt.lecteur.nom }} | {{ emprunt.lecteur.prenom }} | {{ emprunt.dateEmprunt }} | {{ emprunt.dateRetour }}</span>
@@ -10,4 +46,4 @@
             </div>
         </li>
     </ul>
-</div>
+</div> -->
