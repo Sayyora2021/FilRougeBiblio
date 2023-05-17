@@ -36,7 +36,4 @@ export class ListThemesComponent implements OnInit {
     this.themesService.update(theme);
   }
 
-  voirLivres(theme:ITheme) {
-
-  }
-}
+ }

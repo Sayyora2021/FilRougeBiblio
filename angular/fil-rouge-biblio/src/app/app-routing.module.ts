@@ -23,6 +23,7 @@ import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exe
 import { LivresListFullComponent } from 'src/Components/Livres/livres-list-full/livres-list-full.component';
 import { UpdateMotclefsComponent } from 'src/Components/MotClefs/update-motclefs/update-motclefs.component';
 import { ListEmpruntsComponent } from 'src/Components/Emprunt/list-emprunts/list-emprunts.component';
+import { DetailsThemeComponent } from 'src/Components/Themes/details-theme/details-theme.component';
 import { CreateEmpruntsComponent } from 'src/Components/Emprunt/create-emprunts/create-emprunts.component';
 
 const routes: Routes = [{
@@ -100,6 +101,7 @@ component: UpdateMotclefsComponent
 path: 'Emprunts',
 component: ListEmpruntsComponent
 },
+{ path:'Themes/Details/:id', component: DetailsThemeComponent  },
 {
 path: 'Emprunts/Create',
 component: CreateEmpruntsComponent
