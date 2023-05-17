@@ -20,6 +20,7 @@ import { CreateExemplairesComponent } from 'src/Components/Exemplaire/create-exe
 import { DetailsExemplairesComponent } from 'src/Components/Exemplaire/details-exemplaires/details-exemplaires.component';
 import { DeleteExemplairesComponent } from 'src/Components/Exemplaire/delete-exemplaires/delete-exemplaires.component';
 import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exemplaires/update-exemplaires.component';
+import { LivresListFullComponent } from 'src/Components/Livres/livres-list-full/livres-list-full.component';
 import { UpdateMotclefsComponent } from 'src/Components/MotClefs/update-motclefs/update-motclefs.component';
 import { CreateBibliothecaireComponent } from 'src/Components/Bibliothecaire/create-bibliothecaire/create-bibliothecaire.component';
 import { ListBibliothecaireComponent } from 'src/Components/Bibliothecaire/list-bibliothecaire/list-bibliothecaire.component';
@@ -94,6 +95,7 @@ component: ListThemesComponent},
   path: 'Exemplaires/Edit/:id',
   component: UpdateExemplairesComponent
 },
+{ path:'Livres', component: LivresListFullComponent },
 {
 path: 'MotClefs/Edit/:id',
 component: UpdateMotclefsComponent
@@ -117,8 +119,16 @@ component: UpdateMotclefsComponent
 {
   path: 'Bibliothecaires/Delete/:id',
   component: DeleteBibliothecaireComponent
-}
-];
+},
+{
+path: 'Emprunts',
+component: ListEmpruntsComponent
+},
+{ path:'Themes/Details/:id', component: DetailsThemeComponent  },
+{
+path: 'Emprunts/Create',
+component: CreateEmpruntsComponent
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

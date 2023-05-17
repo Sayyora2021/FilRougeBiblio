@@ -23,12 +23,18 @@ import { ListExemplairesComponent } from 'src/Components/Exemplaire/list-exempla
 import { CreateExemplairesComponent } from 'src/Components/Exemplaire/create-exemplaires/create-exemplaires.component';
 import { DeleteExemplairesComponent } from 'src/Components/Exemplaire/delete-exemplaires/delete-exemplaires.component';
 import { UpdateExemplairesComponent } from 'src/Components/Exemplaire/update-exemplaires/update-exemplaires.component';
+import { LivresListFullComponent } from '../Components/Livres/livres-list-full/livres-list-full.component';
 import { UpdateMotclefsComponent } from 'src/Components/MotClefs/update-motclefs/update-motclefs.component';
+import { ListEmpruntsComponent } from 'src/Components/Emprunt/list-emprunts/list-emprunts.component';
+import { DetailsThemeComponent } from 'src/Components/Themes/details-theme/details-theme.component';
+import { CreateEmpruntsComponent } from 'src/Components/Emprunt/create-emprunts/create-emprunts.component';
+import { DetailsAuteursComponent } from 'src/Components/Auteur/details-auteurs/details-auteurs.component';
+import { DetailsLecteursComponent } from 'src/Components/Lecteur/details-lecteurs/details-lecteurs.component';
+import { CreateLivreComponent } from 'src/Components/Livres/create-livre/create-livre.component';
 import { CreateBibliothecaireComponent } from 'src/Components/Bibliothecaire/create-bibliothecaire/create-bibliothecaire.component';
 import { ListBibliothecaireComponent } from 'src/Components/Bibliothecaire/list-bibliothecaire/list-bibliothecaire.component';
-import { DetailsBibliothecaireComponent } from 'src/Components/Bibliothecaire/details-bibliothecaire/details-bibliothecaire.component';
 import { UpdateBibliothecaireComponent } from 'src/Components/Bibliothecaire/update-bibliothecaire/update-bibliothecaire.component';
-
+import { DetailsBibliothecaireComponent } from 'src/Components/Bibliothecaire/details-bibliothecaire/details-bibliothecaire.component';
 
 
 
@@ -69,18 +75,23 @@ import { UpdateBibliothecaireComponent } from 'src/Components/Bibliothecaire/upd
     UpdateExemplairesComponent,
 CreateBibliothecaireComponent, 
 ListBibliothecaireComponent,
-DetailsBibliothecaireComponent, 
+ListBibliothecaireComponent, 
 UpdateBibliothecaireComponent,
-DetailsBibliothecaireComponent
-
-    
-    
+DetailsBibliothecaireComponent,    
+    ListEmpruntsComponent,
+    LivresListFullComponent,
+    DetailsThemeComponent,
+    CreateEmpruntsComponent,
+    DetailsAuteursComponent,
+    DetailsLecteursComponent,
+    CreateLivreComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

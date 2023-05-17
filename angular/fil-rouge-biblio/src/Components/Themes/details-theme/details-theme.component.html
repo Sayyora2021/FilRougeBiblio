@@ -1,0 +1,12 @@
+<div *ngIf="theme">
+    <h2>{{ theme.nom}}:</h2>
+    <h3>{{ theme.description }}</h3>
+
+    <span *ngIf="!theme.livres || theme.livres.length < 1">Aucun livre pour ce thème à ce jour.</span>
+    <div *ngIf="theme.livres && theme.livres.length > 0">
+    <hr />
+        <ul>
+            <li *ngFor="let livre of theme.livres"><a href="/Livres/Details/{{ livre.id }}">{{ livre.titre }}</a></li>
+        </ul>
+    </div>
+</div>

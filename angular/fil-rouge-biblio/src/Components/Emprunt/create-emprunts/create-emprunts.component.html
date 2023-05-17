@@ -1,0 +1,18 @@
+<form [(ngModel)]="emprunt" class="container">
+    
+    <div class="form-check">
+        <label class="form-check-label">Livre</label>
+        <select name="exemplaire" id="exemplaire" [(ngModel)]="emprunt.exemplaire">
+          <option *ngFor="let exemplaire of exemplaires" [ngValue]="exemplaire">{{exemplaire.livre.titre}}</option>
+        </select>
+      </div>
+    
+    <div class="form-check">
+        <label class="form-check-label">Lecteur</label>
+        <select name="lecteur" id="lecteur" [(ngModel)]="emprunt.lecteur">
+          <option *ngFor="let lecteur of lecteurs" [ngValue]="lecteur">{{lecteur.prenom}} {{lecteur.nom}}</option>
+        </select>
+      </div>
+    
+    <button type="submit" (click)="create()" class="btn btn-primary">Enregistrer</button>
+  </form>  
