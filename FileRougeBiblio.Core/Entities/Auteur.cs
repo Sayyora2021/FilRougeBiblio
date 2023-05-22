@@ -16,6 +16,6 @@ namespace FilRougeBiblio.Core.Entities
         [MaxLength(50)]
         public string Nom { get; set; } = null!;
 
-        public virtual List<Livre> Livres { get; set; } = null!;
+        public virtual List<Livre> Livres   { get; set; } = null!;
     }
 }
