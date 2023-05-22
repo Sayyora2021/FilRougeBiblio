@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { apiconfig } from 'apiconfig';
 import { Observable, map } from 'rxjs';
 import { IExemplaire } from 'src/Interfaces/IExemplaire';
 
@@ -8,7 +9,7 @@ import { IExemplaire } from 'src/Interfaces/IExemplaire';
 })
 export class ExemplaireService {
 
-  path = 'https://localhost:7120/api/Exemplaires';
+  path = apiconfig.adress + '/Exemplaires';
 
 
   constructor(private http: HttpClient) { 

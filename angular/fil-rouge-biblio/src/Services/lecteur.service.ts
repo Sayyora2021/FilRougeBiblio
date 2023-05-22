@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ILecteur } from 'src/Interfaces/ILecteur';
 import { Observable, map } from 'rxjs';
+import { apiconfig } from 'apiconfig';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LecteurService {
 
-  path = 'https://localhost:7120/api/Lecteurs';
+  path = apiconfig + '/Lecteurs';
 
 
   constructor(private http: HttpClient) { 

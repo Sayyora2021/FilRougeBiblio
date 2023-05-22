@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { apiconfig } from 'apiconfig';
 import { Observable, map } from 'rxjs';
 import { ILivre } from 'src/Interfaces/ILivre';
 
@@ -8,8 +9,7 @@ import { ILivre } from 'src/Interfaces/ILivre';
 })
 export class LivresService {
 
-  path = 'https://localhost:7120/api/Livres';
-
+  path = apiconfig.adress+'/Livres';
 
   constructor(private http: HttpClient) { 
   }

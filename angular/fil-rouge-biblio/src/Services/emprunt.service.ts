@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { apiconfig } from 'apiconfig';
 import { Observable, map } from 'rxjs';
 import { IEmprunt } from 'src/Interfaces/IEmprunt';
 
@@ -8,8 +9,7 @@ import { IEmprunt } from 'src/Interfaces/IEmprunt';
 })
 export class EmpruntService {
 
-  path = 'https://localhost:7120/api/Emprunts';
-
+  path = apiconfig.adress + '/Emprunts';
 
   constructor(private http: HttpClient) { 
 

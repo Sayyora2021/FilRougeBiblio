@@ -2,14 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { IAuteur } from 'src/Interfaces/IAuteur';
+import { apiconfig } from 'apiconfig';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuteurService {
 
-  path = 'https://localhost:7120/api/Auteurs';
-
+  path = apiconfig.adress + '/Auteurs';
 
   constructor(private http: HttpClient) { 
   }

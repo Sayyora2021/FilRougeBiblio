@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { IBibliothecaire } from '../Interfaces/IBibliothecaire';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
+import { apiconfig } from 'apiconfig';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BibliothecaireService {
-  path = 'https://localhost:7120/api/Bibliothecaires';
-
+  
+  path = apiconfig.adress + '/Bibliothecaires';
 
   constructor(private http: HttpClient) { }
 
