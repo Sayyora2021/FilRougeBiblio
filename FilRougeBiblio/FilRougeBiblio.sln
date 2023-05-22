@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilRougeBiblio.Core", "..\F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilRougeBiblio.Infrastructure", "..\FilRougeBiblio.Infastructure\FilRougeBiblio.Infrastructure.csproj", "{F7644D95-9D46-465C-8ED1-C9731476B7E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilRougeBiblio.API", "..\FilRougeBiblio.API\FilRougeBiblio.API.csproj", "{B59C101B-AE9F-4BD6-AECC-91418DA90212}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilRougeBiblio.API", "..\FilRougeBiblio.API\FilRougeBiblio.API.csproj", "{B59C101B-AE9F-4BD6-AECC-91418DA90212}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
