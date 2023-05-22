@@ -1,17 +1,30 @@
 <h2 class="text-center">Liste des thèmes</h2>
 
-
 <form [(ngModel)]="nouveauTheme" class="container" name="nouveauTheme">
-    <div class="form-group">
-        <label for="nomInput">Nom</label>
-        <input type="text" class="form-control" id="nomInput" [(ngModel)]="nouveauTheme.nom" name="Nom">
-      </div>
-      
-      <div class="form-group">
-        <label for="descriptionInput">Description</label>
-        <input type="text" class="form-control" id="descriptionInput" [(ngModel)]="nouveauTheme.description" name="Description">
-      </div>
-      <button type="submit" (click)="create()" class="btn btn-primary">Enregistrer</button>
+  <div class="form-group">
+    <label for="nomInput">Nom</label>
+    <input
+      type="text"
+      class="form-control"
+      id="nomInput"
+      [(ngModel)]="nouveauTheme.nom"
+      name="Nom"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="descriptionInput">Description</label>
+    <input
+      type="text"
+      class="form-control"
+      id="descriptionInput"
+      [(ngModel)]="nouveauTheme.description"
+      name="Description"
+    />
+  </div>
+  <button type="submit" (click)="create()" class="btn btn-primary">
+    Enregistrer
+  </button>
 </form>
 
 <div>
@@ -62,6 +75,3 @@
     </li>
   </ul>
 </div>
-
-
-
