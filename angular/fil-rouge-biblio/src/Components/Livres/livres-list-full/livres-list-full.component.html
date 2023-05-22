@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <ul class="list-group border border-black">
+  <!-- <ul class="list-group border border-black">
     <li
       *ngFor="let livre of livres"
       class="list-group-item d-flex justify-content-between align-items-center border border-black"
@@ -63,6 +63,62 @@
         </button>
       </div>
     </li>
-  </ul>
+  </ul> -->
+
+  <table class="border-black">
+    <tr>
+      <th>ISBN</th>
+      <th>Titre</th>
+      <th>Auteur(s)</th>
+      <th>Mot(s) Clef(s)</th>
+      <th>Theme(s)</th>
+      <th>Nombre d'exemplaires</th>
+      <th>Actions</th>
+    </tr>
+    <tbody>
+      <tr *ngFor="let livre of livres">
+        <td>{{ livre.isbn }}</td>
+        <td>{{ livre.titre }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let auteur of livre.auteurs">
+              <a href="/Auteurs/Details/{{ auteur.id }}">{{ auteur.nom }}</a>
+            </li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li *ngFor="let tag of livre.tags">
+              <a href="/MotClefs/Details/{{ tag.id }}">{{ tag.tag }}</a>
+            </li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li *ngFor="let theme of livre.themes">
+              <a href="/Themes/Details/{{ theme.id }}">
+                {{ theme.nom }} ({{ theme.description }})
+              </a>
+            </li>
+          </ul>
+        </td>
+        <td>
+          <span *ngIf="livre.exemplaires">
+            {{ livre.exemplaires.length }}
+          </span>
+          <span *ngIf="!livre.exemplaires">Aucun exemplaire en stock</span>
+        </td>
+        <td>
+          <a href="/Livres/Infos/{{ livre.id }}" class="btn btn-primary"
+            >Modifier</a
+          >
+          <button (click)="delete(livre)" class="btn btn-danger">
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
   <app-create-livre></app-create-livre>
 </div>
